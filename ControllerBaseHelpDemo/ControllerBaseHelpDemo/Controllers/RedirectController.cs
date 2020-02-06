@@ -118,7 +118,32 @@ namespace ControllerBaseHelpDemo.Controllers
         //RedirectToActionPermanent(string actionName, string controllerName, string fragment)
         //RedirectToActionPermanent(string actionName, string controllerName, object routeValues)
         //RedirectToActionPermanent(string actionName, string controllerName, object routeValues, string fragment)
-        //RedirectToActionResult RedirectToActionPreserveMethod(string actionName = null, string controllerName = null, object routeValues = null, string fragment = null)
-        //RedirectToActionResult RedirectToActionPermanentPreserveMethod(string actionName = null, string controllerName = null, object routeValues = null, string fragment = null)
+
+        // ToDo: MVC?
+        //RedirectToRoute(string routeName)
+        //RedirectToRoute(object routeValues)
+        //RedirectToRoute(string routeName, object routeValues)
+        //RedirectToRoute(string routeName, string fragment)
+
+
+        // ToDo: MVC?
+        //RedirectToRoutePermanent(string routeName)
+        //RedirectToRoutePermanent(object routeValues)
+        //RedirectToRoutePermanent(string routeName, object routeValues)
+        //RedirectToRoutePermanent(string routeName, string fragment)
+
+        // ToDo: MVC?
+        //RedirectToPage(string pageName)
+        //RedirectToPage(string pageName, object routeValues)
+        //RedirectToPage(string pageName, string pageHandler)
+        //RedirectToPage(string pageName, string pageHandler, object routeValues)
+        //RedirectToPage(string pageName, string pageHandler, string fragment)
+        //RedirectToPage(string pageName, string pageHandler, object routeValues, string fragment)
+
+        // ToDo: MVC?
+        //RedirectToPagePermanent(string pageName)
+        //RedirectToPagePermanent(string pageName, object routeValues)
+        //RedirectToPagePermanent(string pageName, string pageHandler)
+        //RedirectToPagePermanent(string pageName, string pageHandler, string fragment)
     }
 }
