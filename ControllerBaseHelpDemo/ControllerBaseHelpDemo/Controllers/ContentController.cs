@@ -31,7 +31,6 @@ namespace ControllerBaseHelpDemo.Controllers
             {
                 Name = "Skilltree",
                 Event = "ASP.NET Core Web API",
-                Time = new DateTime(2020, 5, 23),
                 URL = new Uri("https://skilltree.my")
             };
             string output = JsonConvert.SerializeObject(obj);
