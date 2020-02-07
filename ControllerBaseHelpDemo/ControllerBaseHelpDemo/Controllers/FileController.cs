@@ -45,7 +45,7 @@ namespace ControllerBaseHelpDemo.Controllers
 
         /// <summary>
         /// Return byte[] data and set download name.
-        /// 回傳 byte[] 資料，並設定下載檔案名稱。
+        /// 回傳 byte[] 資料並設定下載檔案名稱。
         /// </summary>
         /// <returns>FileContentResult</returns>
         public IActionResult DemoFile3()
@@ -56,7 +56,7 @@ namespace ControllerBaseHelpDemo.Controllers
 
         /// <summary>
         /// Return byte[] data and set download name and enable range processing.
-        /// 回傳 byte[] 資料，並設定下載檔案名稱，與啟用部份請求的處理(partial requests)。
+        /// 回傳 byte[] 資料並設定下載檔案名稱與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>FileContentResult</returns>
         public IActionResult DemoFile4()
@@ -67,7 +67,7 @@ namespace ControllerBaseHelpDemo.Controllers
 
         /// <summary>
         /// Return byte[] data and set "Last-Modified" and "ETag" header information.
-        /// 回傳 byte[] 資料，並設定 "Last-Modified" 和 "ETag" 標頭資訊。
+        /// 回傳 byte[] 資料並設定 "Last-Modified" 和 "ETag" 標頭資訊。
         /// </summary>
         /// <returns>FileContentResult</returns>
         public IActionResult DemoFile5()
@@ -78,7 +78,7 @@ namespace ControllerBaseHelpDemo.Controllers
 
         /// <summary>
         /// Return byte[] data and set "Last-Modified" and "ETag" header information and enable range processing.
-        /// 回傳 byte[] 資料，並設定 "Last-Modified" 和 "ETag" 標頭資訊，與啟用部份請求的處理(partial requests)。
+        /// 回傳 byte[] 資料並設定 "Last-Modified" 和 "ETag" 標頭資訊與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>FileContentResult</returns>
         public IActionResult DemoFile6()
@@ -89,7 +89,7 @@ namespace ControllerBaseHelpDemo.Controllers
 
         /// <summary>
         /// Return byte[] data and set "Last-Modified" and "ETag" header information and set download name.
-        /// 回傳 byte[] 資料，並設定 "Last-Modified" 和 "ETag" 標頭資訊，並設定下載檔案名稱。
+        /// 回傳 byte[] 資料並設定 "Last-Modified" 和 "ETag" 標頭資訊，並設定下載檔案名稱。
         /// </summary>
         /// <returns>FileContentResult</returns>
         public IActionResult DemoFile7()
@@ -100,7 +100,7 @@ namespace ControllerBaseHelpDemo.Controllers
 
         /// <summary>
         /// Return byte[] data and set "Last-Modified" and "ETag" header information and set download name and enable range processing.
-        /// 回傳 byte[] 資料，並設定 "Last-Modified" 和 "ETag" 標頭資訊，並設定下載檔案名稱，與啟用部份請求的處理(partial requests)。
+        /// 回傳 byte[] 資料並設定 "Last-Modified" 和 "ETag" 標頭資訊，並設定下載檔案名稱與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>FileContentResult</returns>
         public IActionResult DemoFile8()
@@ -139,7 +139,7 @@ namespace ControllerBaseHelpDemo.Controllers
 
         /// <summary>
         /// Return Stream data and enable range processing.
-        /// 回傳 Stream 型別資料，與啟用部份請求的處理(partial requests)。
+        /// 回傳 Stream 型別資料與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>FileStreamResult</returns>
         public IActionResult DemoFile10()
@@ -151,7 +151,7 @@ namespace ControllerBaseHelpDemo.Controllers
 
         /// <summary>
         /// Return Stream data and set download file.
-        /// 回傳 Stream 型別資料，並設定下載檔案名稱。
+        /// 回傳 Stream 型別資料並設定下載檔案名稱。
         /// </summary>
         /// <returns>FileStreamResult</returns>
         public IActionResult DemoFile11()
@@ -162,7 +162,7 @@ namespace ControllerBaseHelpDemo.Controllers
 
         /// <summary>
         /// Return Stream data and set download file and enable range processing.
-        /// 回傳 Stream 型別資料，並設定下載檔案名稱，與啟用部份請求的處理(partial requests)。
+        /// 回傳 Stream 型別資料並設定下載檔案名稱與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>FileStreamResult</returns>
         public IActionResult DemoFile12()
@@ -173,7 +173,7 @@ namespace ControllerBaseHelpDemo.Controllers
 
         /// <summary>
         /// Return Stream data and set "Last-Modified" and "ETag" header information.
-        /// 回傳 Stream 型別資料，並設定 "Last-Modified" 和 "ETag" 標頭資訊。
+        /// 回傳 Stream 型別資料並設定 "Last-Modified" 和 "ETag" 標頭資訊。
         /// </summary>
         /// <returns>FileStreamResult</returns>
         public IActionResult DemoFile13()
@@ -184,7 +184,7 @@ namespace ControllerBaseHelpDemo.Controllers
 
         /// <summary>
         /// Return Stream data and set "Last-Modified" and "ETag" header information and enable range processing.
-        /// 回傳 Stream 型別資料，並設定 "Last-Modified" 和 "ETag" 標頭資訊，與啟用部份請求的處理(partial requests)。
+        /// 回傳 Stream 型別資料並設定 "Last-Modified" 和 "ETag" 標頭資訊與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>FileStreamResult</returns>
         public IActionResult DemoFile14()
@@ -195,7 +195,7 @@ namespace ControllerBaseHelpDemo.Controllers
 
         /// <summary>
         /// Return Stream data and set "Last-Modified" and "ETag" header information and set download name.
-        /// 回傳 Stream 型別資料，並設定 "Last-Modified" 和 "ETag" 標頭資訊，設定下載檔案名稱。
+        /// 回傳 Stream 型別資料並設定 "Last-Modified" 和 "ETag" 標頭資訊，設定下載檔案名稱。
         /// </summary>
         /// <returns>FileStreamResult</returns>
         public IActionResult DemoFile15()
@@ -206,7 +206,7 @@ namespace ControllerBaseHelpDemo.Controllers
 
         /// <summary>
         /// Return Stream data and set "Last-Modified" and "ETag" header information and set download name and enable range processing.
-        /// 回傳 Stream 型別資料，並設定 "Last-Modified" 和 "ETag" 標頭資訊，設定下載檔案名稱，與啟用部份請求的處理(partial requests)。
+        /// 回傳 Stream 型別資料並設定 "Last-Modified" 和 "ETag" 標頭資訊，設定下載檔案名稱與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>FileStreamResult</returns>
         public IActionResult DemoFile16()
@@ -236,20 +236,90 @@ namespace ControllerBaseHelpDemo.Controllers
         /// VirtualFileResult 會到 wwwroot 目錄尋找檔案。
         /// </summary>
         /// <returns>VirtualFileResult</returns>
-        public IActionResult DemoFile98()
+        public IActionResult DemoFile17()
         {
             // Don't need use IWebHostEnvironment Instance.
-            return File("files\\TaiwanNo1.txt", "application/octet-stream");
+            return File("files\\Sample.txt", "application/octet-stream");
         }
 
         /// <summary>
-        /// VirtualFileResult it will look for the "wwwroot" directory and set download name.
-        /// VirtualFileResult 會到 wwwroot 目錄尋找檔案，並設定下載檔案名稱。
+        /// VirtualFileResult will look for the "wwwroot" directory and enable range processing.
+        /// VirtualFileResult 會到 wwwroot 目錄尋找檔案與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>VirtualFileResult</returns>
-        public IActionResult DemoFile99()
+        public IActionResult DemoFile18()
         {
-            return File("files\\TaiwanNo1.txt", "application/octet-stream", "SkilltreeNo1.txt");
+            // Don't need use IWebHostEnvironment Instance.
+            return File("files\\Sample.txt", "application/octet-stream", true);
+        }
+
+        /// <summary>
+        /// VirtualFileResult will look for the "wwwroot" directory and set download name.
+        /// VirtualFileResult 會到 wwwroot 目錄尋找檔案並設定下載檔案名稱。
+        /// </summary>
+        /// <returns>VirtualFileResult</returns>
+        public IActionResult DemoFile19()
+        {
+            return File("files\\Sample.txt", "application/octet-stream", "SkilltreeNo1.txt");
+        }
+
+        /// <summary>
+        /// VirtualFileResult will look for the "wwwroot" directory and set download name and enable range processing.
+        /// VirtualFileResult 會到 wwwroot 目錄尋找檔案並設定下載檔案名稱與啟用部份請求的處理(partial requests)。
+        /// </summary>
+        /// <returns>VirtualFileResult</returns>
+        public IActionResult DemoFile20()
+        {
+            return File("files\\Sample.txt", "application/octet-stream", "SkilltreeNo1.txt", true);
+        }
+
+        /// <summary>
+        /// VirtualFileResult will look for the "wwwroot" directory and set "Last-Modified" and "ETag" header information.
+        /// VirtualFileResult 會到 wwwroot 目錄尋找檔案並設定 "Last-Modified" 和 "ETag" 標頭資訊。
+        /// </summary>
+        /// <returns>VirtualFileResult</returns>
+        public IActionResult DemoFile21()
+        {
+            GetEtagData(out var lastModified, out var entityTag);
+            return File("files\\Sample.txt", "application/octet-stream", lastModified, entityTag);
+        }
+
+        /// <summary>
+        /// VirtualFileResult will look for the "wwwroot" directory and set "Last-Modified" and "ETag" header information,
+        /// and enable range processing.
+        /// VirtualFileResult 會到 wwwroot 目錄尋找檔案並設定 "Last-Modified" 和 "ETag" 標頭資訊與啟用部份請求的處理(partial requests)。
+        /// </summary>
+        /// <returns>VirtualFileResult</returns>
+        public IActionResult DemoFile22()
+        {
+            GetEtagData(out var lastModified, out var entityTag);
+            return File("files\\Sample.txt", "application/octet-stream", lastModified, entityTag, true);
+        }
+
+        /// <summary>
+        /// VirtualFileResult will look for the "wwwroot" directory and set download name.
+        /// VirtualFileResult 會到 wwwroot 目錄尋找檔案並設定下載檔案名稱。
+        /// </summary>
+        /// <returns>VirtualFileResult</returns>
+        public IActionResult DemoFile23()
+        {
+            return File("files\\Sample.txt", "application/octet-stream", "SkilltreeNo1.txt");
+        }
+
+        /// <summary>
+        /// VirtualFileResult will look for the "wwwroot" directory and set download name and enable range processing.
+        /// VirtualFileResult 會到 wwwroot 目錄尋找檔案並設定下載檔案名稱與啟用部份請求的處理(partial requests)。
+        /// </summary>
+        /// <returns>VirtualFileResult</returns>
+        public IActionResult DemoFile24()
+        {
+            return File("files\\Sample.txt", "application/octet-stream", "SkilltreeNo1.txt", true);
+        }
+
+        private void GetEtagData(out DateTimeOffset lastModified, out EntityTagHeaderValue entityTag)
+        {
+            lastModified = DateTimeOffset.Parse("2020/02/07 14:21:13 PM");
+            entityTag = new EntityTagHeaderValue("\"Etag\"");
         }
     }
 }
