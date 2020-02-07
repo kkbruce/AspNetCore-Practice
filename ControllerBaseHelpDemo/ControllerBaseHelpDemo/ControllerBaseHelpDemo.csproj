@@ -5,6 +5,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Files\Sample.pdf" />
+    <None Remove="Files\Sample.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Files\Sample.pdf">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Files\Sample.txt">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
   </ItemGroup>

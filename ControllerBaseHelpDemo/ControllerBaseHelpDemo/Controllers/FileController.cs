@@ -112,14 +112,14 @@ namespace ControllerBaseHelpDemo.Controllers
         private byte[] GetFileByte()
         {
             var wwwroot = _environment.WebRootPath;
-            var fileContents = System.IO.File.ReadAllBytes($"{wwwroot}/files/Sample.pdf");
+            var fileContents = System.IO.File.ReadAllBytes($"{wwwroot}/Files/Sample.pdf");
             return fileContents;
         }
 
         private byte[] GetFileByteWithEtag(out string wwwroot, out DateTimeOffset lastModified, out EntityTagHeaderValue entityTag)
         {
             wwwroot = _environment.WebRootPath;
-            var fileContents = System.IO.File.ReadAllBytes($"{wwwroot}/files/Sample.pdf");
+            var fileContents = System.IO.File.ReadAllBytes($"{wwwroot}/Files/Sample.pdf");
             lastModified = DateTimeOffset.Parse("2020/02/07 14:21:13 PM");
             entityTag = new EntityTagHeaderValue("\"Etag\"");
             return fileContents;
@@ -218,14 +218,14 @@ namespace ControllerBaseHelpDemo.Controllers
         private FileStream GetFileStream()
         {
             var wwwroot = _environment.WebRootPath;
-            var fileStream = new FileStream($"{wwwroot}/files/Sample.pdf", FileMode.Open);
+            var fileStream = new FileStream($"{wwwroot}/Files/Sample.pdf", FileMode.Open);
             return fileStream;
         }
 
         private FileStream GetFileStreamWithEtag(out DateTimeOffset lastModified, out EntityTagHeaderValue entityTag)
         {
             var wwwroot = _environment.WebRootPath;
-            var fileStream = new FileStream($"{wwwroot}/files/Sample.pdf", FileMode.Open);
+            var fileStream = new FileStream($"{wwwroot}/Files/Sample.pdf", FileMode.Open);
             lastModified = DateTimeOffset.Parse("2020/02/07 14:21:13 PM");
             entityTag = new EntityTagHeaderValue("\"Etag\"");
             return fileStream;
@@ -239,7 +239,7 @@ namespace ControllerBaseHelpDemo.Controllers
         public IActionResult DemoFile17()
         {
             // Don't need use IWebHostEnvironment Instance.
-            return File("files\\Sample.txt", "application/octet-stream");
+            return File("Files\\Sample.txt", "application/octet-stream");
         }
 
         /// <summary>
@@ -250,7 +250,7 @@ namespace ControllerBaseHelpDemo.Controllers
         public IActionResult DemoFile18()
         {
             // Don't need use IWebHostEnvironment Instance.
-            return File("files\\Sample.txt", "application/octet-stream", true);
+            return File("Files\\Sample.txt", "application/octet-stream", true);
         }
 
         /// <summary>
@@ -260,7 +260,7 @@ namespace ControllerBaseHelpDemo.Controllers
         /// <returns>VirtualFileResult</returns>
         public IActionResult DemoFile19()
         {
-            return File("files\\Sample.txt", "application/octet-stream", "SkilltreeNo1.txt");
+            return File("Files\\Sample.txt", "application/octet-stream", "SkilltreeNo1.txt");
         }
 
         /// <summary>
@@ -270,7 +270,7 @@ namespace ControllerBaseHelpDemo.Controllers
         /// <returns>VirtualFileResult</returns>
         public IActionResult DemoFile20()
         {
-            return File("files\\Sample.txt", "application/octet-stream", "SkilltreeNo1.txt", true);
+            return File("Files\\Sample.txt", "application/octet-stream", "SkilltreeNo1.txt", true);
         }
 
         /// <summary>
@@ -281,7 +281,7 @@ namespace ControllerBaseHelpDemo.Controllers
         public IActionResult DemoFile21()
         {
             GetEtagData(out var lastModified, out var entityTag);
-            return File("files\\Sample.txt", "application/octet-stream", lastModified, entityTag);
+            return File("Files\\Sample.txt", "application/octet-stream", lastModified, entityTag);
         }
 
         /// <summary>
@@ -293,7 +293,7 @@ namespace ControllerBaseHelpDemo.Controllers
         public IActionResult DemoFile22()
         {
             GetEtagData(out var lastModified, out var entityTag);
-            return File("files\\Sample.txt", "application/octet-stream", lastModified, entityTag, true);
+            return File("Files\\Sample.txt", "application/octet-stream", lastModified, entityTag, true);
         }
 
         /// <summary>
@@ -303,7 +303,7 @@ namespace ControllerBaseHelpDemo.Controllers
         /// <returns>VirtualFileResult</returns>
         public IActionResult DemoFile23()
         {
-            return File("files\\Sample.txt", "application/octet-stream", "SkilltreeNo1.txt");
+            return File("Files\\Sample.txt", "application/octet-stream", "SkilltreeNo1.txt");
         }
 
         /// <summary>
@@ -313,7 +313,7 @@ namespace ControllerBaseHelpDemo.Controllers
         /// <returns>VirtualFileResult</returns>
         public IActionResult DemoFile24()
         {
-            return File("files\\Sample.txt", "application/octet-stream", "SkilltreeNo1.txt", true);
+            return File("Files\\Sample.txt", "application/octet-stream", "SkilltreeNo1.txt", true);
         }
 
         private void GetEtagData(out DateTimeOffset lastModified, out EntityTagHeaderValue entityTag)
