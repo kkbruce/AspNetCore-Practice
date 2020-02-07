@@ -171,10 +171,63 @@ namespace ControllerBaseHelpDemo.Controllers
             return File(fileStream, "application/pdf", "ASPNetCoreNo1.pdf", true);
         }
 
+        /// <summary>
+        /// Return Stream data and set "Last-Modified" and "ETag" header information.
+        /// 回傳 Stream 型別資料，並設定 "Last-Modified" 和 "ETag" 標頭資訊。
+        /// </summary>
+        /// <returns>FileStreamResult</returns>
+        public IActionResult DemoFile13()
+        {
+            var fileStream = GetFileStreamWithEtag(out var lastModified, out var entityTag);
+            return File(fileStream, "application/pdf", lastModified, entityTag);
+        }
+
+        /// <summary>
+        /// Return Stream data and set "Last-Modified" and "ETag" header information and enable range processing.
+        /// 回傳 Stream 型別資料，並設定 "Last-Modified" 和 "ETag" 標頭資訊，與啟用部份請求的處理(partial requests)。
+        /// </summary>
+        /// <returns>FileStreamResult</returns>
+        public IActionResult DemoFile14()
+        {
+            var fileStream = GetFileStreamWithEtag(out var lastModified, out var entityTag);
+            return File(fileStream, "application/pdf", lastModified, entityTag, true);
+        }
+
+        /// <summary>
+        /// Return Stream data and set "Last-Modified" and "ETag" header information and set download name.
+        /// 回傳 Stream 型別資料，並設定 "Last-Modified" 和 "ETag" 標頭資訊，設定下載檔案名稱。
+        /// </summary>
+        /// <returns>FileStreamResult</returns>
+        public IActionResult DemoFile15()
+        {
+            var fileStream = GetFileStreamWithEtag(out var lastModified, out var entityTag);
+            return File(fileStream, "application/pdf", "ASPNetCoreNo1.pdf", lastModified, entityTag);
+        }
+
+        /// <summary>
+        /// Return Stream data and set "Last-Modified" and "ETag" header information and set download name and enable range processing.
+        /// 回傳 Stream 型別資料，並設定 "Last-Modified" 和 "ETag" 標頭資訊，設定下載檔案名稱，與啟用部份請求的處理(partial requests)。
+        /// </summary>
+        /// <returns>FileStreamResult</returns>
+        public IActionResult DemoFile16()
+        {
+            var fileStream = GetFileStreamWithEtag(out var lastModified, out var entityTag);
+            return File(fileStream, "application/pdf", "ASPNetCoreNo1.pdf", lastModified, entityTag, true);
+        }
+
         private FileStream GetFileStream()
         {
             var wwwroot = _environment.WebRootPath;
             var fileStream = new FileStream($"{wwwroot}/files/Sample.pdf", FileMode.Open);
+            return fileStream;
+        }
+
+        private FileStream GetFileStreamWithEtag(out DateTimeOffset lastModified, out EntityTagHeaderValue entityTag)
+        {
+            var wwwroot = _environment.WebRootPath;
+            var fileStream = new FileStream($"{wwwroot}/files/Sample.pdf", FileMode.Open);
+            lastModified = DateTimeOffset.Parse("2020/02/07 14:21:13 PM");
+            entityTag = new EntityTagHeaderValue("\"Etag\"");
             return fileStream;
         }
 
