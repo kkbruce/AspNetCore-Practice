@@ -10,15 +10,15 @@ namespace ControllerBaseHelpDemo.Controllers
     [ApiController]
     public class FileController : ControllerBase
     {
-        private readonly IWebHostEnvironment _environment;
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
         /// <summary>
         /// Provide IWebHostEnvironment Instance.
         /// </summary>
-        /// <param name="environment"></param>
-        public FileController(IWebHostEnvironment environment)
+        /// <param name="hostingEnvironment">IWebHostEnvironment instance</param>
+        public FileController(IWebHostEnvironment hostingEnvironment)
         {
-            _environment = environment;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         /// <summary>
@@ -111,14 +111,14 @@ namespace ControllerBaseHelpDemo.Controllers
 
         private byte[] GetFileByte()
         {
-            var wwwroot = _environment.WebRootPath;
+            var wwwroot = _hostingEnvironment.WebRootPath;
             var fileContents = System.IO.File.ReadAllBytes($"{wwwroot}/Files/Sample.pdf");
             return fileContents;
         }
 
         private byte[] GetFileByteWithEtag(out string wwwroot, out DateTimeOffset lastModified, out EntityTagHeaderValue entityTag)
         {
-            wwwroot = _environment.WebRootPath;
+            wwwroot = _hostingEnvironment.WebRootPath;
             var fileContents = System.IO.File.ReadAllBytes($"{wwwroot}/Files/Sample.pdf");
             lastModified = DateTimeOffset.Parse("2020/02/07 14:21:13 PM");
             entityTag = new EntityTagHeaderValue("\"Etag\"");
@@ -217,14 +217,14 @@ namespace ControllerBaseHelpDemo.Controllers
 
         private FileStream GetFileStream()
         {
-            var wwwroot = _environment.WebRootPath;
+            var wwwroot = _hostingEnvironment.WebRootPath;
             var fileStream = new FileStream($"{wwwroot}/Files/Sample.pdf", FileMode.Open);
             return fileStream;
         }
 
         private FileStream GetFileStreamWithEtag(out DateTimeOffset lastModified, out EntityTagHeaderValue entityTag)
         {
-            var wwwroot = _environment.WebRootPath;
+            var wwwroot = _hostingEnvironment.WebRootPath;
             var fileStream = new FileStream($"{wwwroot}/Files/Sample.pdf", FileMode.Open);
             lastModified = DateTimeOffset.Parse("2020/02/07 14:21:13 PM");
             entityTag = new EntityTagHeaderValue("\"Etag\"");
