@@ -9,6 +9,7 @@ namespace IActionResultSample.Controllers
     {
         /// <summary>
         /// Return HTTP 422
+        /// 回傳 HTTP 422
         /// </summary>
         /// <returns>UnprocessableEntityResult</returns>
         public IActionResult Demo1()
@@ -18,6 +19,7 @@ namespace IActionResultSample.Controllers
 
         /// <summary>
         /// Return HTTP 422 and custom message object.
+        /// 回傳 HTTP 422 與自訂訊息物件。
         /// </summary>
         /// <returns>UnprocessableEntityObjectResult</returns>
         public IActionResult Demo2()
@@ -31,7 +33,8 @@ namespace IActionResultSample.Controllers
         }
 
         /// <summary>
-        /// Return HTTP 422 and ModelState (with MVC)
+        /// Return HTTP 422 and ModelState (MVC).
+        /// 回傳 HTTP 422 和 ModelState 物件。
         /// </summary>
         /// <returns>UnprocessableEntityObjectResult</returns>
         public IActionResult Demo3()

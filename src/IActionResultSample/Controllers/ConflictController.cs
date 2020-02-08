@@ -38,8 +38,8 @@ namespace IActionResultSample.Controllers
         }
 
         /// <summary>
-        /// Return HTTP 409 and ModelState(MVC)
-        /// 回傳 HTTP 409
+        /// Return HTTP 409 and ModelState(MVC).
+        /// 回傳 HTTP 409 和 ModelState 物件。
         /// </summary>
         /// <returns>ConflictObjectResult</returns>
         public IActionResult Demo3()

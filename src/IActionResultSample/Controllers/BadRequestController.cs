@@ -19,6 +19,7 @@ namespace IActionResultSample.Controllers
 
         /// <summary>
         /// Return HTTP 400 and custom message object.
+        /// 回傳 HTTP 400 與自訂訊息物件。
         /// </summary>
         /// <returns>BadRequestObjectResult</returns>
         public IActionResult Demo2()
@@ -31,7 +32,8 @@ namespace IActionResultSample.Controllers
         }
 
         /// <summary>
-        /// Return HTTP 400 and ModelState( with MVC)
+        /// Return HTTP 400 and ModelState(MVC)
+        /// 回傳 HTTP 400 和 ModelState 物件。
         /// </summary>
         /// <returns>BadRequestObjectResult</returns>
         public IActionResult Demo3()
