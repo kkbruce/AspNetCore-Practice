@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Text;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
-using System;
-using System.Text;
 
-namespace ControllerBaseHelpDemo.Controllers
+namespace IActionResultSample.Controllers
 {
     [Route("Content/[action]")]
     [ApiController]

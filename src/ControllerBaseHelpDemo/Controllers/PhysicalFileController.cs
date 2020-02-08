@@ -1,10 +1,10 @@
 ﻿using System;
+using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using System.IO;
 using Microsoft.Net.Http.Headers;
 
-namespace ControllerBaseHelpDemo.Controllers
+namespace IActionResultSample.Controllers
 {
     [Route("PhysicalFile/[action]")]
     [ApiController]

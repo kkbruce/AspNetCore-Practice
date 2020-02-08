@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 
-namespace ControllerBaseHelpDemo.Controllers
+namespace IActionResultSample.Controllers
 {
     [Route("Ok/[action]")]
     [ApiController]

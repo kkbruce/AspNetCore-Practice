@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace ControllerBaseHelpDemo.Controllers
+namespace IActionResultSample.Controllers
 {
     [Route("NotFound/[action]")]
     [ApiController]

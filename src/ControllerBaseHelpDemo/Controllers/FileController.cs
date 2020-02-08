@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
 
-namespace ControllerBaseHelpDemo.Controllers
+namespace IActionResultSample.Controllers
 {
     [Route("File/[action]")]
     [ApiController]
