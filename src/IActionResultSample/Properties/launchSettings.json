@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "ControllerBaseHelpDemo": {
+    "IActionResultSample": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "Content/DemoUnicode",
