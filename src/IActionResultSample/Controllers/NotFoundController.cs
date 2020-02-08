@@ -11,7 +11,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 HTTP 404
         /// </summary>
         /// <returns>NotFoundResult</returns>
-        public IActionResult DemoNotFound1()
+        public IActionResult Demo1()
         {
             return NotFound();
         }
@@ -21,11 +21,11 @@ namespace IActionResultSample.Controllers
         /// 回傳 HTTP 404 與自訂訊息物件。
         /// </summary>
         /// <returns>NotFoundObjectResult</returns>
-        public IActionResult DemoNotFound2()
+        public IActionResult Demo2()
         {
             var obj = new
             {
-                Error = "You are unauthorized."
+                Error = "Not Found."
             };
             return NotFound(obj);
         }

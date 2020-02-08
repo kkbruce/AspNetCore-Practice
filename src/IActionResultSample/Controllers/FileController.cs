@@ -26,7 +26,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 byte[] 資料。
         /// </summary>
         /// <returns>FileContentResult</returns>
-        public IActionResult DemoFile1()
+        public IActionResult Demo1()
         {
             var fileContents = GetFileByte();
             return File(fileContents, "application/pdf");
@@ -37,7 +37,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 byte[] 資料與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>FileContentResult</returns>
-        public IActionResult DemoFile2()
+        public IActionResult Demo2()
         {
             var fileContents = GetFileByte();
             return File(fileContents, "application/pdf", true);
@@ -48,7 +48,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 byte[] 資料並設定下載檔案名稱。
         /// </summary>
         /// <returns>FileContentResult</returns>
-        public IActionResult DemoFile3()
+        public IActionResult Demo3()
         {
             var fileContents = GetFileByte();
             return File(fileContents, "application/pdf", "ASPNetCoreNo1.pdf");
@@ -59,7 +59,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 byte[] 資料並設定下載檔案名稱與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>FileContentResult</returns>
-        public IActionResult DemoFile4()
+        public IActionResult Demo4()
         {
             var fileContents = GetFileByte();
             return File(fileContents, "application/pdf", "ASPNetCoreNo1.pdf", true);
@@ -70,7 +70,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 byte[] 資料並設定 "Last-Modified" 和 "ETag" 標頭資訊。
         /// </summary>
         /// <returns>FileContentResult</returns>
-        public IActionResult DemoFile5()
+        public IActionResult Demo5()
         {
             var fileContents = GetFileByteWithEtag(out var wwwroot, out var lastModified, out var entityTag);
             return File(fileContents, "application/pdf", lastModified, entityTag);
@@ -81,7 +81,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 byte[] 資料並設定 "Last-Modified" 和 "ETag" 標頭資訊與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>FileContentResult</returns>
-        public IActionResult DemoFile6()
+        public IActionResult Demo6()
         {
             var fileContents = GetFileByteWithEtag(out var wwwroot, out var lastModified, out var entityTag);
             return File(fileContents, "application/pdf", lastModified, entityTag, true);
@@ -92,7 +92,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 byte[] 資料並設定 "Last-Modified" 和 "ETag" 標頭資訊，並設定下載檔案名稱。
         /// </summary>
         /// <returns>FileContentResult</returns>
-        public IActionResult DemoFile7()
+        public IActionResult Demo7()
         {
             var fileContents = GetFileByteWithEtag(out var wwwroot, out var lastModified, out var entityTag);
             return File(fileContents, "application/pdf", "ASPNetCoreNo1.pdf", lastModified, entityTag);
@@ -103,7 +103,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 byte[] 資料並設定 "Last-Modified" 和 "ETag" 標頭資訊，並設定下載檔案名稱與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>FileContentResult</returns>
-        public IActionResult DemoFile8()
+        public IActionResult Demo8()
         {
             var fileContents = GetFileByteWithEtag(out var wwwroot, out var lastModified, out var entityTag);
             return File(fileContents, "application/pdf", "ASPNetCoreNo1.pdf", lastModified, entityTag, true);
@@ -130,7 +130,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 Stream 型別資料。
         /// </summary>
         /// <returns>FileStreamResult</returns>
-        public IActionResult DemoFile9()
+        public IActionResult Demo9()
         {
             var fileStream = GetFileStream();
 
@@ -142,7 +142,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 Stream 型別資料與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>FileStreamResult</returns>
-        public IActionResult DemoFile10()
+        public IActionResult Demo10()
         {
             var fileStream = GetFileStream();
 
@@ -154,7 +154,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 Stream 型別資料並設定下載檔案名稱。
         /// </summary>
         /// <returns>FileStreamResult</returns>
-        public IActionResult DemoFile11()
+        public IActionResult Demo11()
         {
             var fileStream = GetFileStream();
             return File(fileStream, "application/pdf", "ASPNetCoreNo1.pdf");
@@ -165,7 +165,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 Stream 型別資料並設定下載檔案名稱與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>FileStreamResult</returns>
-        public IActionResult DemoFile12()
+        public IActionResult Demo12()
         {
             var fileStream = GetFileStream();
             return File(fileStream, "application/pdf", "ASPNetCoreNo1.pdf", true);
@@ -176,7 +176,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 Stream 型別資料並設定 "Last-Modified" 和 "ETag" 標頭資訊。
         /// </summary>
         /// <returns>FileStreamResult</returns>
-        public IActionResult DemoFile13()
+        public IActionResult Demo13()
         {
             var fileStream = GetFileStreamWithEtag(out var lastModified, out var entityTag);
             return File(fileStream, "application/pdf", lastModified, entityTag);
@@ -187,7 +187,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 Stream 型別資料並設定 "Last-Modified" 和 "ETag" 標頭資訊與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>FileStreamResult</returns>
-        public IActionResult DemoFile14()
+        public IActionResult Demo14()
         {
             var fileStream = GetFileStreamWithEtag(out var lastModified, out var entityTag);
             return File(fileStream, "application/pdf", lastModified, entityTag, true);
@@ -198,7 +198,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 Stream 型別資料並設定 "Last-Modified" 和 "ETag" 標頭資訊，設定下載檔案名稱。
         /// </summary>
         /// <returns>FileStreamResult</returns>
-        public IActionResult DemoFile15()
+        public IActionResult Demo15()
         {
             var fileStream = GetFileStreamWithEtag(out var lastModified, out var entityTag);
             return File(fileStream, "application/pdf", "ASPNetCoreNo1.pdf", lastModified, entityTag);
@@ -209,7 +209,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 Stream 型別資料並設定 "Last-Modified" 和 "ETag" 標頭資訊，設定下載檔案名稱與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>FileStreamResult</returns>
-        public IActionResult DemoFile16()
+        public IActionResult Demo16()
         {
             var fileStream = GetFileStreamWithEtag(out var lastModified, out var entityTag);
             return File(fileStream, "application/pdf", "ASPNetCoreNo1.pdf", lastModified, entityTag, true);
@@ -236,7 +236,7 @@ namespace IActionResultSample.Controllers
         /// VirtualFileResult 會到 wwwroot 目錄尋找檔案。
         /// </summary>
         /// <returns>VirtualFileResult</returns>
-        public IActionResult DemoFile17()
+        public IActionResult Demo17()
         {
             // Don't need use IWebHostEnvironment Instance.
             return File("Files\\Sample.txt", "application/octet-stream");
@@ -247,7 +247,7 @@ namespace IActionResultSample.Controllers
         /// VirtualFileResult 會到 wwwroot 目錄尋找檔案與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>VirtualFileResult</returns>
-        public IActionResult DemoFile18()
+        public IActionResult Demo18()
         {
             // Don't need use IWebHostEnvironment Instance.
             return File("Files\\Sample.txt", "application/octet-stream", true);
@@ -258,7 +258,7 @@ namespace IActionResultSample.Controllers
         /// VirtualFileResult 會到 wwwroot 目錄尋找檔案並設定下載檔案名稱。
         /// </summary>
         /// <returns>VirtualFileResult</returns>
-        public IActionResult DemoFile19()
+        public IActionResult Demo19()
         {
             return File("Files\\Sample.txt", "application/octet-stream", "SkilltreeNo1.txt");
         }
@@ -268,7 +268,7 @@ namespace IActionResultSample.Controllers
         /// VirtualFileResult 會到 wwwroot 目錄尋找檔案並設定下載檔案名稱與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>VirtualFileResult</returns>
-        public IActionResult DemoFile20()
+        public IActionResult Demo20()
         {
             return File("Files\\Sample.txt", "application/octet-stream", "SkilltreeNo1.txt", true);
         }
@@ -278,7 +278,7 @@ namespace IActionResultSample.Controllers
         /// VirtualFileResult 會到 wwwroot 目錄尋找檔案並設定 "Last-Modified" 和 "ETag" 標頭資訊。
         /// </summary>
         /// <returns>VirtualFileResult</returns>
-        public IActionResult DemoFile21()
+        public IActionResult Demo21()
         {
             GetEtagData(out var lastModified, out var entityTag);
             return File("Files\\Sample.txt", "application/octet-stream", lastModified, entityTag);
@@ -290,7 +290,7 @@ namespace IActionResultSample.Controllers
         /// VirtualFileResult 會到 wwwroot 目錄尋找檔案並設定 "Last-Modified" 和 "ETag" 標頭資訊與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>VirtualFileResult</returns>
-        public IActionResult DemoFile22()
+        public IActionResult Demo22()
         {
             GetEtagData(out var lastModified, out var entityTag);
             return File("Files\\Sample.txt", "application/octet-stream", lastModified, entityTag, true);
@@ -301,7 +301,7 @@ namespace IActionResultSample.Controllers
         /// VirtualFileResult 會到 wwwroot 目錄尋找檔案並設定下載檔案名稱。
         /// </summary>
         /// <returns>VirtualFileResult</returns>
-        public IActionResult DemoFile23()
+        public IActionResult Demo23()
         {
             return File("Files\\Sample.txt", "application/octet-stream", "SkilltreeNo1.txt");
         }
@@ -311,7 +311,7 @@ namespace IActionResultSample.Controllers
         /// VirtualFileResult 會到 wwwroot 目錄尋找檔案並設定下載檔案名稱與啟用部份請求的處理(partial requests)。
         /// </summary>
         /// <returns>VirtualFileResult</returns>
-        public IActionResult DemoFile24()
+        public IActionResult Demo24()
         {
             return File("Files\\Sample.txt", "application/octet-stream", "SkilltreeNo1.txt", true);
         }

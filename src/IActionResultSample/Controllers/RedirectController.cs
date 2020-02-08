@@ -11,7 +11,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 HTTP 302 和重導向 URL
         /// </summary>
         /// <returns>RedirectResult</returns>
-        public IActionResult DemoRedirect1()
+        public IActionResult Demo1()
         {
             return Redirect("http://skilltree.my");
         }
@@ -21,7 +21,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 HTTP 301 和重導向 URL
         /// </summary>
         /// <returns>RedirectResult</returns>
-        public IActionResult DemoRedirect2()
+        public IActionResult Demo2()
         {
             return RedirectPermanent("http://skilltree.my");
         }
@@ -31,7 +31,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 HTTP 307 和重導向 URL
         /// </summary>
         /// <returns>RedirectResult</returns>
-        public IActionResult DemoRedirect3()
+        public IActionResult Demo3()
         {
             return RedirectPreserveMethod("http://skilltree.my");
         }
@@ -41,7 +41,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 HTTP 308 和重導向 URL
         /// </summary>
         /// <returns>RedirectResult</returns>
-        public IActionResult DemoRedirect4()
+        public IActionResult Demo4()
         {
             return RedirectPermanentPreserveMethod("http://skilltree.my");
         }
@@ -55,7 +55,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 HTTP 302 和重導向 URL，非本機 URL 會擲回例外狀況。
         /// </summary>
         /// <returns>LocalRedirectResult</returns>
-        public IActionResult DemoRedirect5()
+        public IActionResult Demo5()
         {
             return LocalRedirect("http://skilltree.my");
         }
@@ -65,7 +65,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 HTTP 302 和重導向 URL。
         /// </summary>
         /// <returns>LocalRedirectResult</returns>
-        public IActionResult DemoRedirect6()
+        public IActionResult Demo6()
         {
             return LocalRedirect("~/Content/DemoUnicode");
         }
@@ -75,7 +75,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 HTTP 301 和重導向 URL。
         /// </summary>
         /// <returns>LocalRedirectResult</returns>
-        public IActionResult DemoRedirect7()
+        public IActionResult Demo7()
         {
             return LocalRedirectPermanent("~/Content/DemoUnicode");
         }
@@ -85,7 +85,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 HTTP 307 和重導向 URL。
         /// </summary>
         /// <returns>LocalRedirectResult</returns>
-        public IActionResult DemoRedirect8()
+        public IActionResult Demo8()
         {
             return LocalRedirectPreserveMethod("~/Content/DemoUnicode");
         }
@@ -95,18 +95,18 @@ namespace IActionResultSample.Controllers
         /// 回傳 HTTP 308 和重導向 URL。
         /// </summary>
         /// <returns>LocalRedirectResult</returns>
-        public IActionResult DemoRedirect9()
+        public IActionResult Demo9()
         {
             return LocalRedirectPermanentPreserveMethod("~/Content/DemoUnicode");
         }
 
-        // ToDo: MVC?
+        // ToDo: For MVC
         //RedirectToAction()
         //RedirectToAction(string actionName)
         //RedirectToAction(string actionName, object routeValues)
         //RedirectToAction(string actionName, string controllerName)
 
-        // ToDo: MVC?
+        // ToDo: For MVC
         //RedirectToActionPermanent(string actionName)
         //RedirectToActionPermanent(string actionName, object routeValues)
         //RedirectToActionPermanent(string actionName, string controllerName)
@@ -114,14 +114,14 @@ namespace IActionResultSample.Controllers
         //RedirectToActionPermanent(string actionName, string controllerName, object routeValues)
         //RedirectToActionPermanent(string actionName, string controllerName, object routeValues, string fragment)
 
-        // ToDo: MVC?
+        // ToDo: For MVC
         //RedirectToRoute(string routeName)
         //RedirectToRoute(object routeValues)
         //RedirectToRoute(string routeName, object routeValues)
         //RedirectToRoute(string routeName, string fragment)
 
 
-        // ToDo: MVC?
+        // ToDo: ForMVC
         //RedirectToRoutePermanent(string routeName)
         //RedirectToRoutePermanent(object routeValues)
         //RedirectToRoutePermanent(string routeName, object routeValues)

@@ -12,7 +12,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 HTTP 200
         /// </summary>
         /// <returns>OkResult</returns>
-        public IActionResult DemoOk1()
+        public IActionResult Demo1()
         {
             return Ok();
         }
@@ -21,7 +21,7 @@ namespace IActionResultSample.Controllers
         /// Reuth HTTP 200 with Object
         /// </summary>
         /// <returns>OkObjectResult</returns>
-        public IActionResult DemoOk2()
+        public IActionResult Demo2()
         {
             return Ok(new
             {

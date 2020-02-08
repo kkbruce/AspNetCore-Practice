@@ -22,7 +22,7 @@ namespace IActionResultSample.Controllers
         /// 路徑必須是絕對路徑。
         /// </summary>
         /// <returns>PhysicalFileResult</returns>
-        public IActionResult DemoPhysicalFile1()
+        public IActionResult Demo1()
         {
             var path = Path.Combine(_hostingEnvironment.ContentRootPath, "Files\\Sample.txt");
             return PhysicalFile(path, "text/plain");
@@ -33,7 +33,7 @@ namespace IActionResultSample.Controllers
         /// 路徑必須是絕對路徑與啟用部份請求的處理。
         /// </summary>
         /// <returns>PhysicalFileResult</returns>
-        public IActionResult DemoPhysicalFile2()
+        public IActionResult Demo2()
         {
             var path = Path.Combine(_hostingEnvironment.ContentRootPath, "Files\\Sample.txt");
             return PhysicalFile(path, "text/plain", true);
@@ -44,7 +44,7 @@ namespace IActionResultSample.Controllers
         /// 路徑必須是絕對路徑並設定下載檔案名稱。
         /// </summary>
         /// <returns>PhysicalFileResult</returns>
-        public IActionResult DemoPhysicalFile3()
+        public IActionResult Demo3()
         {
             var path = Path.Combine(_hostingEnvironment.ContentRootPath, "Files\\Sample.txt");
             return PhysicalFile(path, "text/plain", "SkilltreeNo1.txt");
@@ -55,7 +55,7 @@ namespace IActionResultSample.Controllers
         /// 路徑必須是絕對路徑並設定下載檔案名稱與啟用部份請求的處理。
         /// </summary>
         /// <returns>PhysicalFileResult</returns>
-        public IActionResult DemoPhysicalFile4()
+        public IActionResult Demo4()
         {
             var path = Path.Combine(_hostingEnvironment.ContentRootPath, "Files\\Sample.txt");
             return PhysicalFile(path, "text/plain", "SkilltreeNo1.txt", true);
@@ -66,7 +66,7 @@ namespace IActionResultSample.Controllers
         /// 路徑必須是絕對路徑並設定 "Last-Modified" 和 "ETag" 標頭資訊。
         /// </summary>
         /// <returns>PhysicalFileResult</returns>
-        public IActionResult DemoPhysicalFile5()
+        public IActionResult Demo5()
         {
             var path = GetPathAndEtag(out var lastModified, out var entityTag);
             return PhysicalFile(path, "text/plain", lastModified, entityTag);
@@ -78,7 +78,7 @@ namespace IActionResultSample.Controllers
         /// 路徑必須是絕對路徑並設定 "Last-Modified" 和 "ETag" 標頭資訊與啟用部份請求的處理。
         /// </summary>
         /// <returns>PhysicalFileResult</returns>
-        public IActionResult DemoPhysicalFile6()
+        public IActionResult Demo6()
         {
             var path = GetPathAndEtag(out var lastModified, out var entityTag);
             return PhysicalFile(path, "text/plain", lastModified, entityTag, true);
@@ -89,7 +89,7 @@ namespace IActionResultSample.Controllers
         /// 路徑必須是絕對路徑並設定下載檔案名稱與設定 "Last-Modified" 和 "ETag" 標頭資訊。
         /// </summary>
         /// <returns>PhysicalFileResult</returns>
-        public IActionResult DemoPhysicalFile7()
+        public IActionResult Demo7()
         {
             var path = GetPathAndEtag(out var lastModified, out var entityTag);
             return PhysicalFile(path, "text/plain", "SkilltreeNo1.txt", lastModified, entityTag);
@@ -100,7 +100,7 @@ namespace IActionResultSample.Controllers
         /// 路徑必須是絕對路徑並設定下載檔案名稱與設定 "Last-Modified" 和 "ETag" 標頭資訊。
         /// </summary>
         /// <returns>PhysicalFileResult</returns>
-        public IActionResult DemoPhysicalFile8()
+        public IActionResult Demo8()
         {
             var path = GetPathAndEtag(out var lastModified, out var entityTag);
             return PhysicalFile(path, "text/plain", "SkilltreeNo1.txt", lastModified, entityTag, true);

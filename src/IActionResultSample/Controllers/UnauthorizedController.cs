@@ -11,7 +11,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 HTTP 401
         /// </summary>
         /// <returns>UnauthorizedResult</returns>
-        public IActionResult DemoUnauthorized1()
+        public IActionResult Demo1()
         {
             return Unauthorized();
         }
@@ -21,7 +21,7 @@ namespace IActionResultSample.Controllers
         /// 回傳 HTTP 401 與自訂訊息物件。
         /// </summary>
         /// <returns>UnauthorizedObjectResult</returns>
-        public IActionResult DemoUnauthorized2()
+        public IActionResult Demo2()
         {
             var obj = new
             {
