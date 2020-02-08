@@ -25,7 +25,7 @@ namespace IActionResultSample.Controllers
         {
             var obj = new
             {
-                Error = "You are unauthorized."
+                Error = "Unauthorized."
             };
             return Unauthorized(obj);
         }
