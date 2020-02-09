@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace IActionResultSample.Controllers
 {
@@ -25,7 +22,7 @@ namespace IActionResultSample.Controllers
         /// Return HTTP 400 and ValidationProblemDetails object.
         /// 回傳 HTTP 400 和 ValidationProblemDetails 物件。
         /// </summary>
-        /// <returns></returns>
+        /// <returns>ActionResult</returns>
         public IActionResult Demo2()
         {
             var problemDetails = new ValidationProblemDetails
@@ -40,7 +37,16 @@ namespace IActionResultSample.Controllers
             return ValidationProblem(problemDetails);
         }
 
-        // Todo: for MVC
-        //ValidationProblem([ActionResultObjectValue] ModelStateDictionary modelStateDictionary)
+
+        /// <summary>
+        /// Return HTTP 400 and ModelState(MVC).
+        /// 回傳 HTTP 400 和 ModelState 物件。
+        /// </summary>
+        /// <returns>ActionResult</returns>
+        public IActionResult Demo3()
+        {
+            var msd = new ModelStateDictionary();
+            return ValidationProblem(msd);
+        }
     }
 }

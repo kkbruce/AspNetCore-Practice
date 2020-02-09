@@ -44,7 +44,7 @@ namespace IActionResultSample.Controllers
         /// <returns>ConflictObjectResult</returns>
         public IActionResult Demo3()
         {
-           var msd = new ModelStateDictionary();
+            var msd = new ModelStateDictionary();
             return Conflict(msd);
         }
     }
