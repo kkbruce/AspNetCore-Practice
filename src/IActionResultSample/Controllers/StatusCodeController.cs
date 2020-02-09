@@ -27,8 +27,8 @@ namespace IActionResultSample.Controllers
         }
 
         /// <summary>
-        /// Return HTTP 204
-        /// 回傳 HTTP 204
+        /// Return HTTP 204 and set message value
+        /// 回傳 HTTP 204 與訊息值
         /// </summary>
         /// <returns>ObjectResult</returns>
         public IActionResult Demo3()
