@@ -9,8 +9,8 @@ namespace IActionResultSample.Controllers
     public class CreatedController : ControllerBase
     {
         /// <summary>
-        /// Return HTTP 201 and Location header.
-        /// 回傳 HTTP 201 and Location 標頭。
+        /// Return HTTP 201 and Location header value.
+        /// 回傳 HTTP 201 and Location 標頭與值。
         /// </summary>
         /// <returns>CreatedResult</returns>
         public IActionResult Demo1()
@@ -20,8 +20,8 @@ namespace IActionResultSample.Controllers
         }
 
         /// <summary>
-        /// Return HTTP 201 and Location header.
-        /// 回傳 HTTP 201 and Location 標頭。
+        /// Return HTTP 201 and Location header value.
+        /// 回傳 HTTP 201 and Location 標頭與值。
         /// </summary>
         /// <returns>CreatedResult</returns>
         public IActionResult Demo2()
@@ -31,8 +31,8 @@ namespace IActionResultSample.Controllers
         }
 
         /// <summary>
-        /// Return HTTP 201 and Location header and custom message object.
-        /// 回傳 HTTP 201 and Location 標頭自訂訊息物件。
+        /// Return HTTP 201 and Location header value and custom message object.
+        /// 回傳 HTTP 201 and Location 標頭與值和自訂訊息物件。
         /// </summary>
         /// <returns>CreatedResult</returns>
         public IActionResult Demo3()
@@ -46,7 +46,7 @@ namespace IActionResultSample.Controllers
         }
 
         /// Return HTTP 201 and include Location header value.
-        /// 回傳 HTTP 201 and Location 標頭的 URI 值。
+        /// 回傳 HTTP 201 and Location 標頭與值。
         /// </summary>
         /// <returns>CreatedAtActionResult</returns>
         public IActionResult Demo4()
@@ -55,8 +55,8 @@ namespace IActionResultSample.Controllers
         }
 
         /// <summary>
-        /// Return HTTP 201 and include Location header value and object value to format in the entity body
-        /// 回傳 HTTP 201 and Location 標頭自訂物件。
+        /// Return HTTP 201 and include Location header value and custom message object.
+        /// 回傳 HTTP 201 and Location 標頭與值和自訂訊息物件。
         /// </summary>
         /// <returns>CreatedAtActionResult</returns>
         public IActionResult Demo5()
@@ -71,13 +71,104 @@ namespace IActionResultSample.Controllers
         }
 
         /// <summary>
-        /// Get Location header RUI data.
+        /// Return HTTP 201 and include Location header value and custom message object.
+        /// 回傳 HTTP 201 and Location 標頭與值和自訂訊息物件。。
         /// </summary>
-        /// <param name="Id"></param>
+        /// <returns>CreatedAtActionResult</returns>
+        public IActionResult Demo6()
+        {
+            // Create other controller/action RUI for Location header.
+            return CreatedAtAction("DemoUnicode", "Content", new { Id = 1 }, null);
+        }
+
+        /// <summary>
+        /// Return HTTP 201 and include Location header value and custom message object.
+        /// 回傳 HTTP 201 and Location 標頭與自訂訊息物件。
+        /// </summary>
+        /// <returns>CreatedAtActionResult</returns>
+        public IActionResult Demo7()
+        {
+            var obj = new
+            {
+                Message = "Created."
+            };
+            // Create other controller/action RUI for Location header.
+            return CreatedAtAction("DemoUnicode", "Content", new { Id = 1 }, obj);
+        }
+
+        /// <summary>
+        /// Return HTTP 201 and include Location header value.
+        /// 回傳 HTTP 201 and Location 標頭與值。
+        /// </summary>
+        /// <returns>CreatedAtRouteResult</returns>
+        public IActionResult Demo8()
+        {
+            return CreatedAtRoute("SampleRoute", null);
+        }
+
+        /// <summary>
+        /// Return HTTP 201 and include Location header value.
+        /// 回傳 HTTP 201 and Location 標頭與值。
+        /// </summary>
+        /// <returns>CreatedAtRouteResult</returns>
+        public IActionResult Demo9()
+        {
+            var obj = new
+            {
+                Message = "Created."
+            };
+            return CreatedAtRoute("SampleRoute", obj);
+        }
+
+        /// <summary>
+        /// Return HTTP 201 and include Location header value.
+        /// 回傳 HTTP 201 and Location 標頭與值。
+        /// </summary>
+        /// <returns>CreatedAtRouteResult</returns>
+        public IActionResult Demo10()
+        {
+            var obj = new
+            {
+                Message = "Created."
+            };
+            return CreatedAtRoute(new { Id = 1 }, obj);
+        }
+
+        /// <summary>
+        /// Return HTTP 201 and include Location header value.
+        /// 回傳 HTTP 201 and Location 標頭與值。
+        /// </summary>
+        /// <returns>CreatedAtRouteResult</returns>
+        public IActionResult Demo11()
+        {
+            var obj = new
+            {
+                Message = "Created."
+            };
+            return CreatedAtRoute("SampleRoute", new { Id = 1 }, obj);
+        }
+
+        /// <summary>
+        /// For test generate new URI.
+        /// 可測試新產生的 URI。
+        /// </summary>
+        /// <param name="Id">Id</param>
         /// <returns>ContentResult</returns>
         public IActionResult DemoAction(int Id)
         {
             return Content($"取得Id={Id}", "text/plain", Encoding.Unicode);
         }
-}
+
+        /// <summary>
+        /// For test generate new URI.
+        /// 可測試新產生的 URI。
+        /// </summary>
+        /// <param name="Id">Id</param>
+        /// <returns>ContentResult</returns>
+        [Route("/DemoRoute", Name = "SampleRoute")]
+        public IActionResult DemoRoute(int? Id)
+        {
+            return Content($"取得Id={Id}", "text/plain", Encoding.Unicode);
+        }
+    }
 }
