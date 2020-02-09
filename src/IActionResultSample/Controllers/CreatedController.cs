@@ -45,13 +45,14 @@ namespace IActionResultSample.Controllers
             return Created(uri, obj);
         }
 
+        /// <summary>
         /// Return HTTP 201 and include Location header value.
         /// 回傳 HTTP 201 and Location 標頭與值。
         /// </summary>
         /// <returns>CreatedAtActionResult</returns>
         public IActionResult Demo4()
         {
-            return CreatedAtAction("DemoAction", new { Id = 1 }, null);
+            return CreatedAtAction("DemoAction", new { id = 1 }, null);
         }
 
         /// <summary>
@@ -67,7 +68,7 @@ namespace IActionResultSample.Controllers
                 Event = "ASP.NET Core Web API",
                 URL = new Uri("https://skilltree.my")
             };
-            return CreatedAtAction("DemoAction", new { Id = 1 }, obj);
+            return CreatedAtAction("DemoAction", new { id = 1 }, obj);
         }
 
         /// <summary>
@@ -78,7 +79,7 @@ namespace IActionResultSample.Controllers
         public IActionResult Demo6()
         {
             // Create other controller/action RUI for Location header.
-            return CreatedAtAction("DemoUnicode", "Content", new { Id = 1 }, null);
+            return CreatedAtAction("DemoUnicode", "Content", new { id = 1 }, null);
         }
 
         /// <summary>
@@ -93,7 +94,7 @@ namespace IActionResultSample.Controllers
                 Message = "Created."
             };
             // Create other controller/action RUI for Location header.
-            return CreatedAtAction("DemoUnicode", "Content", new { Id = 1 }, obj);
+            return CreatedAtAction("DemoUnicode", "Content", new { id = 1 }, obj);
         }
 
         /// <summary>
@@ -131,7 +132,7 @@ namespace IActionResultSample.Controllers
             {
                 Message = "Created."
             };
-            return CreatedAtRoute(new { Id = 1 }, obj);
+            return CreatedAtRoute(new { id = 1 }, obj);
         }
 
         /// <summary>
@@ -145,30 +146,30 @@ namespace IActionResultSample.Controllers
             {
                 Message = "Created."
             };
-            return CreatedAtRoute("SampleRoute", new { Id = 1 }, obj);
+            return CreatedAtRoute("SampleRoute", new { id = 1 }, obj);
         }
 
         /// <summary>
         /// For test generate new URI.
         /// 可測試新產生的 URI。
         /// </summary>
-        /// <param name="Id">Id</param>
+        /// <param name="id">Id</param>
         /// <returns>ContentResult</returns>
-        public IActionResult DemoAction(int Id)
+        public IActionResult DemoAction(int id)
         {
-            return Content($"取得Id={Id}", "text/plain", Encoding.Unicode);
+            return Content($"取得Id={id}", "text/plain", Encoding.Unicode);
         }
 
         /// <summary>
         /// For test generate new URI.
         /// 可測試新產生的 URI。
         /// </summary>
-        /// <param name="Id">Id</param>
+        /// <param name="id">Id</param>
         /// <returns>ContentResult</returns>
         [Route("/DemoRoute", Name = "SampleRoute")]
-        public IActionResult DemoRoute(int? Id)
+        public IActionResult DemoRoute(int? id)
         {
-            return Content($"取得Id={Id}", "text/plain", Encoding.Unicode);
+            return Content($"取得Id={id}", "text/plain", Encoding.Unicode);
         }
     }
 }
