@@ -31,9 +31,9 @@ namespace IActionResultSample.Controllers
             var problemDetails = new ValidationProblemDetails
             {
                 Status = StatusCodes.Status400BadRequest,
-                Type = "https://skilltree.my",
-                Title = "Level up your ASP.NET Core Web API",
-                Detail = "You need skilltree.my to level up your ASP.NET Core skill.",
+                Type = "https://tools.ietf.org/html/rfc7807",
+                Title = "Validation Problem.",
+                Detail = "One or more validation problem.",
                 Instance = HttpContext.Request.Path
             };
 

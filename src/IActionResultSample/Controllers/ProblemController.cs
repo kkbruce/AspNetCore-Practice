@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace IActionResultSample.Controllers
 {
@@ -21,10 +21,10 @@ namespace IActionResultSample.Controllers
         /// Return HTTP 500 and custom message information.
         /// 回傳 HTTP 500 和與自訂訊息物件。
         /// </summary>
-        /// <returns></returns>
+        /// <returns>ObjectResult</returns>
         public IActionResult Demo2()
         {
-            var title = "The website is down.";
+            var title = "The website is down";
             var detail = "Try again in a few minutes.";
 
             return Problem(detail: detail, title: title);
@@ -34,12 +34,27 @@ namespace IActionResultSample.Controllers
         /// Return custom HTTP 422 and custom message information.
         /// 回傳自訂狀態碼 HTTP 422 與自訂訊息物件。
         /// </summary>
-        /// <returns></returns>
+        /// <returns>ObjectResult</returns>
         public IActionResult Demo3()
         {
-            var title = "Unprocessable entity.";
+            var title = "Unprocessable entity";
             var detail = "Try again in a few minutes.";
             return Problem(detail:detail, title: title, statusCode:422);
+        }
+
+        /// <summary>
+        /// Return custom HTTP 429 and custom message information.
+        /// </summary>
+        /// <returns>ObjectResult</returns>
+        public IActionResult Demo4()
+        {
+            var detail = "Try again in a few minutes.";
+            var instance = HttpContext.Request.Path;
+            var title = "Too Many Requests";
+            var type = "https://tools.ietf.org/html/rfc7807";
+            var statusCode = StatusCodes.Status429TooManyRequests;
+
+            return Problem(detail, instance, statusCode, title, type);
         }
     }
 }
