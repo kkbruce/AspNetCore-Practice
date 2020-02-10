@@ -1,7 +1,7 @@
 # Asp.Net Core Web API IActionResult Sample
 
-* Demo ASP.NET Core `ControllerBase` IActionResult Helper
-* 展示 ASP.NET Core `ControllerBase` IActionResult 輔助方法
+* Demo ASP.NET Core `ControllerBase` `IActionResult` Helper
+* 展示 ASP.NET Core `ControllerBase` `IActionResult` 輔助方法
 
 > Default route `[Route("ControllerName/[action]")]`.<br>
 > 預設路由 `[Route("ControllerName/[action]")]`。
