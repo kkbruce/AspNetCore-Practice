@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using Microsoft.Extensions.Configuration;
 
 namespace AppsettingConfiguration
@@ -12,21 +11,28 @@ namespace AppsettingConfiguration
             GetKeyValue(config);
             GetConnectionString(config);
             GetHierarchicalData(config);
+            BindToAClass(config);
 
-            Console.Read();
+                 Console.Read();
+        }
+
+        private static void BindToAClass(IConfigurationRoot config)
+        {
+            var app = config.GetSection("AppInfo").Get<AppInfo>();
+            Print(nameof(BindToAClass), $"AppName: {app.AppName}, Maintainer: {app.Maintainer}");
         }
 
         private static void GetHierarchicalData(IConfigurationRoot config)
         {
             var appName = config.GetSection("AppInfo.AppName").Value;
             var maintainer = config.GetSection("AppInfo:Maintainer").Value;
-            Print($"AppName: {appName}, Maintainer: {maintainer}");
+            Print(nameof(GetHierarchicalData), $"AppName: {appName}, Maintainer: {maintainer}");
         }
 
         private static void GetConnectionString(IConfigurationRoot config)
         {
             var conn = config.GetConnectionString("DefaultConnection");
-            Print($"ConnectionString: {conn}");
+            Print(nameof(GetConnectionString), $"ConnectionString: {conn}");
         }
 
         private static void GetKeyValue(IConfigurationRoot config)
@@ -34,12 +40,12 @@ namespace AppsettingConfiguration
             var server = config.GetSection("Server").Value;
             var user = config.GetSection("User").Value;
             var pwd = config.GetSection("Pwd").Value;
-            Print($"Server: {server}, User: {user}, Pwd: {pwd}");
+            Print(nameof(GetKeyValue), $"Server: {server}, User: {user}, Pwd: {pwd}");
         }
 
-        private static void Print(string configString)
+        private static void Print(string title, string result)
         {
-            Console.WriteLine(configString);
+            Console.WriteLine($"{title} result --> {result}");
             Console.WriteLine("------------------------------------------------------------");
         }
     }
