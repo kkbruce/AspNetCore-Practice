@@ -10,10 +10,10 @@
 
 ## ReadMe
 
-[README](src/3.1/README.md)
-[README.zh-Hant](src/3.1/README.zh-Hant.md)
+* [README](src/3.1/README.md)
+* [README.zh-Hant](src/3.1/README.zh-Hant.md)
 
-## Practice project
+## 練習專案
 
-* IActionResultSample
-* AppsettingConfiguration
+* [IActionResultSample](src/3.1/IActionResultSample/)
+* [AppsettingConfiguration](src/3.1/AppsettingConfiguration/)

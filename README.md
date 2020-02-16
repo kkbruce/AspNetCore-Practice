@@ -10,10 +10,10 @@ If you like or are using this project to learn, please give it a star. Thanks!
 
 ## ReadMe
 
-[README](src/3.1/README.md)
-[README.zh-Hant](src/3.1/README.zh-Hant.md)
+* [README](src/3.1/README.md)
+* [README.zh-Hant](src/3.1/README.zh-Hant.md)
 
 ## Practice project
 
-* IActionResultSample
-* AppsettingConfiguration
+* [IActionResultSample](src/3.1/IActionResultSample/)
+* [AppsettingConfiguration](src/3.1/AppsettingConfiguration/)
