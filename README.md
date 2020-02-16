@@ -8,7 +8,7 @@ This is a test project when learning of ASP.NET Core. The XML comments have simp
 
 If you like or are using this project to learn, please give it a star. Thanks!
 
-## ReadMe
+## Project ReadMe
 
 * [README](src/3.1/README.md)
 * [README.zh-Hant](src/3.1/README.zh-Hant.md)
