@@ -57,7 +57,7 @@
 * `GetKeyValue()`
 * `GetConnectionString()`
 * `GetHierarchicalData()`
-* `BindToAClass()``
+* `BindToAClass()`
 * `GetEnvModeConfig()`
 * `GetOSEnvironment()`
 * `GetMemoryConfig()`
