@@ -11,7 +11,7 @@
 ## 開發環境
 
 * .NET Core 3.1 SDK
-* ASP.NET Core 3.0 Web API
+* ASP.NET Core 3.1
 * Visual Studio 2019 16.4.x
 * Visual Studio Code
 

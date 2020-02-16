@@ -11,7 +11,7 @@ If you like or are using this project to learn, please give it a star. Thanks!
 ## Environment
 
 * .NET Core 3.1 SDK
-* ASP.NET Core 3.0 Web API
+* ASP.NET Core 3.1
 * Visual Studio 2019 16.4.x
 * Visual Studio Code
 
