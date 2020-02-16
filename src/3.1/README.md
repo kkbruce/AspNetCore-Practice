@@ -2,7 +2,7 @@
 
 ## Disclaimer
 
-This is a test project when learning the `ControllerBase` of ASP.NET Core Web API. The XML comments have simple description. If you have any questions about the content, then implementing the project and using Postman or Fiddler to understand the test results will help you learn. (A few examples make the browser a better choice.)
+This is a test project when learning of ASP.NET Core. The XML comments have simple description. If you have any questions about the content, then implementing the project and using Postman or Fiddler to understand the test results will help you learn. A few examples make the browser a better choice.
 
 ## Give a Star! :star:
 

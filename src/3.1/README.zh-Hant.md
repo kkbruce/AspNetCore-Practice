@@ -1,12 +1,8 @@
-﻿# Asp.Net Core Web API IActionResult Sample
-
-展示 ASP.NET Core `ControllerBase` `IActionResult` 輔助方法
-
-> 預設路由 `[Route("ControllerName/[action]")]`。
+﻿# ASP.NET Core Practics
 
 ## 免責聲明
 
-此為在對 ASP.NET Core Web API 的 `ControllerBase` 進行學習時的測試專案，註解都有簡易的說明。如果您對內容有疑惑時，那麼把專案執行起來，使用 Postman 或 Fiddler 瞭解測試的結果，將有助於學習。(其中少數範例，使瀏覽器會是比較好的選擇。)
+此為在對 ASP.NET Core 進行學習時的測試專案，註解都有簡易的說明。如果您對內容有疑惑時，那麼把專案執行起來，使用 Postman 或 Fiddler 瞭解測試的結果，將有助於學習。其中一些範例，使用瀏覽器會是比較好的選擇。
 
 ## 請給一顆星星！ :star:
 
@@ -19,13 +15,17 @@
 * Visual Studio 2019 16.4.x
 * Visual Studio Code
 
-## 執行 IActionResultSample
+## 運行 IActionResultSample
+
+展示 ASP.NET Core `ControllerBase` `IActionResult` 輔助方法
+
+> 預設路由 `[Route("ControllerName/[action]")]`。
 
 1. 點擊 IActionResultSample.sln 啟動 Visual Studio 2019
 2. 在 .csproj 所在目錄執行 `dotnet run`
 3. 在 .csproj 所在目錄以 F5 啟動 Visual Studio Code 偵錯
 
-## ControllerBase 輔助方法 101 範例展示
+### ControllerBase 輔助方法 101 範例展示
 
 * `AcceptedController` 有 17 範例.
 * `BadRequestController` 有 5 範例.
@@ -45,3 +45,26 @@
 * `UnauthorizedController` 有 2 範例.
 * `UnprocessableEntityController` 有 3 範例.
 * `ValidationProblemController` 有 3 範例.
+
+## 運行 AppsettingConfiguration
+
+1. 點擊 AppsettingConfiguration.sln 啟動 Visual Studio 2019
+2. 在 .csproj 所在目錄執行 `dotnet run`
+3. 在 .csproj 所在目錄以 F5 啟動 Visual Studio Code 偵錯
+
+### ConfigurationBuilder 14 範例
+
+* `GetKeyValue()`
+* `GetConnectionString()`
+* `GetHierarchicalData()`
+* `BindToAClass()``
+* `GetEnvModeConfig()`
+* `GetOSEnvironment()`
+* `GetMemoryConfig()`
+* `GetCommandLineConfig()`
+* `GetValueSample()`
+* `GetSectionSample()`
+* `GetChildrenSample()`
+* `ExistsSample()`
+* `GetIniSample()`
+* `GetXMLSample()`
