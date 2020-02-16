@@ -9,6 +9,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="3.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Ini" Version="3.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.1" />
   </ItemGroup>
 
@@ -16,6 +17,9 @@
     <None Update="appsettings.Debug.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>appsettings.json</DependentUpon>
+    </None>
+    <None Update="appsettings.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="appsettings.Release.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

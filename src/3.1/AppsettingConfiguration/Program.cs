@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.Extensions.Configuration;
 
 namespace AppsettingConfiguration
@@ -20,8 +21,19 @@ namespace AppsettingConfiguration
             GetSectionSample(config);
             GetChildrenSample(config);
             ExistsSample(config);
+            GetIniSample(config);
 
             Console.Read();
+        }
+
+        private static void GetIniSample(IConfigurationRoot config)
+        {
+            var twmvc = config.GetSection("mvcgroup");
+            Print(nameof(GetIniSample), $"Title: {twmvc["title"]}, Url: {twmvc["url"]}");
+            var skilltree = config.GetSection("skilltreegroup");
+            Print(nameof(GetIniSample), $"Title: {skilltree["skilltree:title"]}, Url: {skilltree["skilltree:url"]}");
+            var study4 = config.GetSection("study4:website");
+            Print(nameof(GetIniSample), $"Title: {study4["title"]}, Url: {study4["url"]}");
         }
 
         private static void ExistsSample(IConfigurationRoot config)
