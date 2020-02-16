@@ -14,8 +14,16 @@ namespace AppsettingConfiguration
             BindToAClass(config);
             GetEnvModeConfig(config);
             GetOSEnvironment(config);
+            GetMemoryConfig(config);
 
             Console.Read();
+        }
+
+        private static void GetMemoryConfig(IConfigurationRoot config)
+        {
+            var blogName = config.GetSection("Blog:Name").Value;
+            var blogURL = config.GetSection("Blog:URL").Value;
+            Print(nameof(GetMemoryConfig), $"Blog: {blogName}, URL: {blogURL}");
         }
 
         private static void GetOSEnvironment(IConfigurationRoot config)
