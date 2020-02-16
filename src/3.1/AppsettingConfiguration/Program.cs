@@ -115,7 +115,7 @@ namespace AppsettingConfiguration
 
         private static void Print(string title, string result)
         {
-            Console.WriteLine($"{title} result --> {result}");
+            Console.WriteLine($"Call {title} --> {result}");
             Console.WriteLine("------------------------------------------------------------");
         }
     }
