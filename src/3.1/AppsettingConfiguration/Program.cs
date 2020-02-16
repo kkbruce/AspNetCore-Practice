@@ -7,7 +7,7 @@ namespace AppsettingConfiguration
     {
         static void Main(string[] args)
         {
-            var config = Startup.Configuration();
+            var config = Startup.Configuration(args);
             GetKeyValue(config);
             GetConnectionString(config);
             GetHierarchicalData(config);
@@ -15,8 +15,15 @@ namespace AppsettingConfiguration
             GetEnvModeConfig(config);
             GetOSEnvironment(config);
             GetMemoryConfig(config);
+            GetCommandLineConfig(config);
 
             Console.Read();
+        }
+
+        private static void GetCommandLineConfig(IConfigurationRoot config)
+        {
+            var argMode = config.GetSection("Mode").Value;
+            Print(nameof(GetCommandLineConfig), $"CommandLine Mode: {argMode}");
         }
 
         private static void GetMemoryConfig(IConfigurationRoot config)

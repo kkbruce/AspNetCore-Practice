@@ -2,6 +2,7 @@
   "profiles": {
     "AppsettingConfiguration": {
       "commandName": "Project",
+      "commandLineArgs": "Mode=ShowTime",
       "environmentVariables": {
         "CONSOLE_ENVIRONMENT": "Debug"
       }

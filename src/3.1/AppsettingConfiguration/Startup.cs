@@ -7,7 +7,7 @@ namespace AppsettingConfiguration
 {
     public static class Startup
     {
-        public static IConfigurationRoot Configuration()
+        public static IConfigurationRoot Configuration(string[] args)
         {
             // Default
             //return new ConfigurationBuilder()
@@ -44,6 +44,7 @@ namespace AppsettingConfiguration
                     { "Blog:Name", "KingKong Bruce記事" },
                     { "Blog:URL", "https://blog.kkbruce.net" }
                 })
+                .AddCommandLine(args)
                 .Build();
         }
     }
