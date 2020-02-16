@@ -13,9 +13,16 @@ namespace AppsettingConfiguration
             GetHierarchicalData(config);
             BindToAClass(config);
             GetEnvModeConfig(config);
-
+            GetOSEnvironment(config);
 
             Console.Read();
+        }
+
+        private static void GetOSEnvironment(IConfigurationRoot config)
+        {
+            var os = config.GetSection("OS").Value;
+            var hostname = config.GetSection("COMPUTERNAME").Value;
+            Print(nameof(GetOSEnvironment), $"OS: {os}, HostName: {hostname}");
         }
 
         private static void GetEnvModeConfig(IConfigurationRoot config)
