@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AppsettingConfiguration": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "CONSOLE_ENVIRONMENT": "Debug"
+      }
+    }
+  }
+}

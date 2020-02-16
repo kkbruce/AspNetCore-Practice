@@ -12,8 +12,18 @@ namespace AppsettingConfiguration
             GetConnectionString(config);
             GetHierarchicalData(config);
             BindToAClass(config);
+            GetEnvModeConfig(config);
 
-                 Console.Read();
+
+            Console.Read();
+        }
+
+        private static void GetEnvModeConfig(IConfigurationRoot config)
+        {
+            // From ConsoleEnv
+            var server = config.GetSection("Server").Value;
+            var user = config.GetSection("User").Value;
+            Print(nameof(GetEnvModeConfig), $"Server(EnvMode):{server}, User: {user}");
         }
 
         private static void BindToAClass(IConfigurationRoot config)
