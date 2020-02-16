@@ -16,8 +16,46 @@ namespace AppsettingConfiguration
             GetOSEnvironment(config);
             GetMemoryConfig(config);
             GetCommandLineConfig(config);
+            GetValueSample(config);
+            GetSectionSample(config);
+            GetChildrenSample(config);
+            ExistsSample(config);
 
             Console.Read();
+        }
+
+        private static void ExistsSample(IConfigurationRoot config)
+        {
+            var sectionExists = config.GetSection("section10:key10").Exists();
+            Print(nameof(ExistsSample), $"Section Exists: {sectionExists}");
+        }
+
+        private static void GetChildrenSample(IConfigurationRoot config)
+        {
+            var sectionList = config.GetSection("section1").GetChildren();
+            foreach (var section in sectionList)
+            {
+                Print(nameof(GetChildrenSample), $"Key: {section.Key}");
+                Print(nameof(GetChildrenSample), $"Value: {section.Value}");
+                Print(nameof(GetChildrenSample), $"Path: {section.Path}");
+
+                Print(nameof(GetChildrenSample), $"Key0: {section["key0"]}");
+                Print(nameof(GetChildrenSample), $"Key1: {section["key1"]}");
+            }
+        }
+
+        private static void GetSectionSample(IConfigurationRoot config)
+        {
+            var appInfo = config.GetSection("AppInfo");
+            var Name = appInfo["Name"];
+            var Maintainer = appInfo["Maintainer"];
+            Print(nameof(GetSectionSample), $"AppName: {Name}, Maintainer: {Maintainer}");
+        }
+
+        private static void GetValueSample(IConfigurationRoot config)
+        {
+            var argMode = config.GetValue<string>("Mode");
+            Print(nameof(GetValueSample), $"CommandLine Mode: {argMode}");
         }
 
         private static void GetCommandLineConfig(IConfigurationRoot config)
