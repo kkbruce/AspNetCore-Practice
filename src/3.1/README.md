@@ -1,8 +1,4 @@
-# Asp.Net Core Web API IActionResult Sample
-
-Demo ASP.NET Core `ControllerBase` `IActionResult` Helper
-
-> Default route `[Route("ControllerName/[action]")]`.<br>
+# ASP.NET Core Practics
 
 ## Disclaimer
 
@@ -21,11 +17,15 @@ If you like or are using this project to learn, please give it a star. Thanks!
 
 ## Run IActionResultSample
 
+Demo ASP.NET Core `ControllerBase` `IActionResult` Helper
+
+> Default route `[Route("ControllerName/[action]")]`.<br>
+
 1. Click IActionResultSample.sln with Visual Studio 2019.
 2. In .csproj folder run `dotnet run` 
-3. In .csproj click F5 run Visual Studio Code debug
+3. In .csproj folder click F5 start Visual Studio Code debug
 
-## ControllerBase Helper 101 Demo
+### ControllerBase Helper 101 Demo
 
 * `AcceptedController` have 17 demo.
 * `BadRequestController` have 5 demo.
@@ -45,3 +45,26 @@ If you like or are using this project to learn, please give it a star. Thanks!
 * `UnauthorizedController` have 2 demo.
 * `UnprocessableEntityController` have 3 demo.
 * `ValidationProblemController` have 3 demo.
+
+## Run AppsettingConfiguration
+
+1. Click AppsettingConfiguration.sln with Visual Studio 2019.
+2. In .csproj folder run `dotnet run` 
+3. In .csproj folder click F5 start Visual Studio Code debug
+
+### ConfigurationBuilder 14 Demo
+
+* `GetKeyValue()`
+* `GetConnectionString()`
+* `GetHierarchicalData()`
+* `BindToAClass()``
+* `GetEnvModeConfig()`
+* `GetOSEnvironment()`
+* `GetMemoryConfig()`
+* `GetCommandLineConfig()`
+* `GetValueSample()`
+* `GetSectionSample()`
+* `GetChildrenSample()`
+* `ExistsSample()`
+* `GetIniSample()`
+* `GetXMLSample()`
