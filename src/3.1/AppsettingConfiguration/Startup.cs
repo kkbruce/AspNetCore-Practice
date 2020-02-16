@@ -48,6 +48,22 @@ namespace AppsettingConfiguration
             //    .Build();
 
             // Add .AddIniFile()
+            //var consoleEnv = Environment.GetEnvironmentVariable("CONSOLE_ENVIRONMENT");
+            //return new ConfigurationBuilder()
+            //    .SetBasePath(Directory.GetCurrentDirectory())
+            //    .AddJsonFile("appsettings.json", false, true)
+            //    .AddJsonFile($"appsettings.{consoleEnv}.json", optional: true, true)
+            //    .AddEnvironmentVariables()
+            //    .AddInMemoryCollection(new Dictionary<string, string>
+            //    {
+            //        { "Blog:Name", "KingKong Bruce記事" },
+            //        { "Blog:URL", "https://blog.kkbruce.net" }
+            //    })
+            //    .AddCommandLine(args)
+            //    .AddIniFile("appsettings.ini")
+            //    .Build();
+
+            // Add AddXmlFile()
             var consoleEnv = Environment.GetEnvironmentVariable("CONSOLE_ENVIRONMENT");
             return new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -61,8 +77,8 @@ namespace AppsettingConfiguration
                 })
                 .AddCommandLine(args)
                 .AddIniFile("appsettings.ini")
+                .AddXmlFile("appsettings.xml")
                 .Build();
-
         }
     }
 }

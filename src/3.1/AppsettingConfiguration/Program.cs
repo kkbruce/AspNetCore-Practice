@@ -22,8 +22,16 @@ namespace AppsettingConfiguration
             GetChildrenSample(config);
             ExistsSample(config);
             GetIniSample(config);
+            GetXMLSample(config);
 
             Console.Read();
+        }
+
+        private static void GetXMLSample(IConfigurationRoot config)
+        {
+            var key = config.GetSection("Auth:Key").Value;
+            var token = config.GetSection("Auth:Token").Value;
+            Print(nameof(GetXMLSample), $"Key: {key}, Token: {token}");
         }
 
         private static void GetIniSample(IConfigurationRoot config)

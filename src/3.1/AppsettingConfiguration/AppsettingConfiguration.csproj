@@ -11,6 +11,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="3.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Ini" Version="3.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Xml" Version="3.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +27,9 @@
       <DependentUpon>appsettings.json</DependentUpon>
     </None>
     <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
