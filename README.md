@@ -17,3 +17,7 @@ If you like or are using this project to learn, please give it a star. Thanks!
 
 * [IActionResultSample](src/3.1/IActionResultSample/)
 * [AppsettingConfiguration](src/3.1/AppsettingConfiguration/)
+
+---
+
+* [RouteAsyncSuffix](src/3.1/Issue/RouteAsyncSuffix/)
