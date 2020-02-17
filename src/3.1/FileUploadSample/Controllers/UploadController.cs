@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using FileUploadSample.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -57,7 +58,7 @@ namespace FileUploadSample.Controllers
         /// 上傳一個檔案並儲存至Upload資料夾下。
         /// </summary>
         /// <param name="file">upload key name.</param>
-        /// <returns>HTTP 200</returns>
+        /// <returns>HTTP 200、HTTP 400</returns>
         [HttpPost]
         public async Task<IActionResult> SingleFileSaveDisk([FromForm]IFormFile file)
         {
@@ -157,6 +158,22 @@ namespace FileUploadSample.Controllers
                 }
             }
             return Ok($"Uploaded: {fileInfo}");
+        }
+
+        /// <summary>
+        /// Use Model receive file.
+        /// 利用 Model 來接收檔案。
+        /// </summary>
+        /// <param name="user">UserProfile</param>
+        /// <returns>HTTP 200, HTTP 400</returns>
+        public IActionResult UploadWithModel([FromForm] UserProfile user)
+        {
+            if (user.Avator.ContentType == "image/jpeg")
+            {
+                return Ok($"Name: {user.Name}, Email: {user.Email}, Content Type: {user.Avator.ContentType}");
+            }
+
+            return BadRequest("Not JPEG format file.");
         }
     }
 }
