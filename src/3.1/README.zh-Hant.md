@@ -46,7 +46,7 @@
 * `UnprocessableEntityController` 有 3 範例.
 * `ValidationProblemController` 有 3 範例.
 
-## AppsettingConfiguration 14 Demo
+## AppsettingConfiguration 14 範例展示
 
 * `GetKeyValue();`
 * `GetConnectionString();`
@@ -63,7 +63,7 @@
 * `GetIniSample();`
 * `GetXMLSample();`
 
-### ConfigurationBuilder 14 Demo
+### ConfigurationBuilder 14 範例展示
 
 * `GetKeyValue()`
 * `GetConnectionString()`
@@ -80,7 +80,7 @@
 * `GetIniSample()`
 * `GetXMLSample()`
 
-### FileUploadSample 8 Demo
+### FileUploadSample 8 範例展示
 
 * `SingleFile()`
 * `SingleFileForm()`
