@@ -15,9 +15,11 @@
 
 ## 練習專案
 
-* [IActionResultSample](src/3.1/IActionResultSample/)
 * [AppsettingConfiguration](src/3.1/AppsettingConfiguration/)
+* [FileUploadSample](src/3.1/FileUploadSample/)
+* [IActionResultSample](src/3.1/IActionResultSample/)
+* [QueryMaskSample](src/3.1/QueryMaskSample/)
 
----
+### Issue 測試
 
 * [RouteAsyncSuffix](src/3.1/Issue/RouteAsyncSuffix/)
