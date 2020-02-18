@@ -46,13 +46,24 @@
 * `UnprocessableEntityController` 有 3 範例.
 * `ValidationProblemController` 有 3 範例.
 
-## 運行 AppsettingConfiguration
+## AppsettingConfiguration 14 Demo
 
-1. 點擊 AppsettingConfiguration.sln 啟動 Visual Studio 2019
-2. 在 .csproj 所在目錄執行 `dotnet run`
-3. 在 .csproj 所在目錄以 F5 啟動 Visual Studio Code 偵錯
+* `GetKeyValue();`
+* `GetConnectionString();`
+* `GetHierarchicalData();`
+* `BindToAClass();`
+* `GetEnvModeConfig();`
+* `GetOSEnvironment();`
+* `GetMemoryConfig();`
+* `GetCommandLineConfig();`
+* `GetValueSample();`
+* `GetSectionSample();`
+* `GetChildrenSample();`
+* `ExistsSample();`
+* `GetIniSample();`
+* `GetXMLSample();`
 
-### ConfigurationBuilder 14 範例
+### ConfigurationBuilder 14 Demo
 
 * `GetKeyValue()`
 * `GetConnectionString()`
@@ -68,3 +79,22 @@
 * `ExistsSample()`
 * `GetIniSample()`
 * `GetXMLSample()`
+
+### FileUploadSample 8 Demo
+
+* `SingleFile()`
+* `SingleFileForm()`
+* `SingleFileSaveDisk()`
+* `MultiFilesUseCollection()`
+* `MultiFilesUseIEnum()`
+* `MultiFilesUseList()`
+* `MultiFilesSaveDisk()`
+* `UploadWithModel()`
+
+### QueryMaskSample
+
+Detail: [簡單四步驟：使用ASP.NET CORE提供口罩剩餘數量查詢API](https://blog.kkbruce.net/2020/02/aspnet-core-provider-mask-api.html)
+
+### RouteAsyncSuffix
+
+Detail: [小心ASP.NET CORE裡ASYNC結尾ACTION方法！](https://blog.kkbruce.net/2020/02/aspnetcore-async-action-name.html)

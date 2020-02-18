@@ -46,18 +46,29 @@ Demo ASP.NET Core `ControllerBase` `IActionResult` Helper
 * `UnprocessableEntityController` have 3 demo.
 * `ValidationProblemController` have 3 demo.
 
-## Run AppsettingConfiguration
+## AppsettingConfiguration 14 Demo
 
-1. Click AppsettingConfiguration.sln with Visual Studio 2019.
-2. In .csproj folder run `dotnet run` 
-3. In .csproj folder click F5 start Visual Studio Code debug
+* `GetKeyValue();`
+* `GetConnectionString();`
+* `GetHierarchicalData();`
+* `BindToAClass();`
+* `GetEnvModeConfig();`
+* `GetOSEnvironment();`
+* `GetMemoryConfig();`
+* `GetCommandLineConfig();`
+* `GetValueSample();`
+* `GetSectionSample();`
+* `GetChildrenSample();`
+* `ExistsSample();`
+* `GetIniSample();`
+* `GetXMLSample();`
 
 ### ConfigurationBuilder 14 Demo
 
 * `GetKeyValue()`
 * `GetConnectionString()`
 * `GetHierarchicalData()`
-* `BindToAClass()``
+* `BindToAClass()`
 * `GetEnvModeConfig()`
 * `GetOSEnvironment()`
 * `GetMemoryConfig()`
@@ -68,3 +79,22 @@ Demo ASP.NET Core `ControllerBase` `IActionResult` Helper
 * `ExistsSample()`
 * `GetIniSample()`
 * `GetXMLSample()`
+
+### FileUploadSample 8 Demo
+
+* `SingleFile()`
+* `SingleFileForm()`
+* `SingleFileSaveDisk()`
+* `MultiFilesUseCollection()`
+* `MultiFilesUseIEnum()`
+* `MultiFilesUseList()`
+* `MultiFilesSaveDisk()`
+* `UploadWithModel()`
+
+### QueryMaskSample
+
+Detail: [簡單四步驟：使用ASP.NET CORE提供口罩剩餘數量查詢API](https://blog.kkbruce.net/2020/02/aspnet-core-provider-mask-api.html)
+
+### RouteAsyncSuffix
+
+Detail: [小心ASP.NET CORE裡ASYNC結尾ACTION方法！](https://blog.kkbruce.net/2020/02/aspnetcore-async-action-name.html)
