@@ -91,10 +91,10 @@ Demo ASP.NET Core `ControllerBase` `IActionResult` Helper
 * `MultiFilesSaveDisk()`
 * `UploadWithModel()`
 
-### QueryMaskSample
+### IHttpClientFactory/QueryMaskSample
 
 Detail: [簡單四步驟：使用ASP.NET CORE提供口罩剩餘數量查詢API](https://blog.kkbruce.net/2020/02/aspnet-core-provider-mask-api.html)
 
-### RouteAsyncSuffix
+### Issue/RouteAsyncSuffix
 
 Detail: [小心ASP.NET CORE裡ASYNC結尾ACTION方法！](https://blog.kkbruce.net/2020/02/aspnetcore-async-action-name.html)

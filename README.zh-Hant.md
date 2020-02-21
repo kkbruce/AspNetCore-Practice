@@ -18,7 +18,7 @@
 * [AppsettingConfiguration](src/3.1/AppsettingConfiguration/)
 * [FileUploadSample](src/3.1/FileUploadSample/)
 * [IActionResultSample](src/3.1/IActionResultSample/)
-* [QueryMaskSample](src/3.1/QueryMaskSample/)
+* [QueryMaskSample](src/3.1/IHttpClientFactory/QueryMaskSample/)
 
 ### Issue 測試
 

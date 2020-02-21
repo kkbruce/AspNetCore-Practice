@@ -18,7 +18,7 @@ If you like or are using this project to learn, please give it a star. Thanks!
 * [AppsettingConfiguration](src/3.1/AppsettingConfiguration/)
 * [FileUploadSample](src/3.1/FileUploadSample/)
 * [IActionResultSample](src/3.1/IActionResultSample/)
-* [QueryMaskSample](src/3.1/QueryMaskSample/)
+* [QueryMaskSample](src/3.1/IHttpClientFactory/QueryMaskSample/)
 
 ### Issue test
 
