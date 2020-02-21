@@ -13,6 +13,8 @@ namespace QueryMaskSample.Services
 
         public MaskService(HttpClient client)
         {
+            // 另一個資料來源。
+            // 健康保險資料開放服務：https://data.nhi.gov.tw
             client.BaseAddress = new Uri("https://quality.data.gov.tw/");
             client.DefaultRequestHeaders.Add("Accept", "application/json");
             client.DefaultRequestHeaders.Add("User-Agent", "QueryMask Sample");
