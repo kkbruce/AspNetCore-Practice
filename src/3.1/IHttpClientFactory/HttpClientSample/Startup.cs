@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Polly;
 
 namespace HttpClientSample
 {
@@ -39,13 +40,25 @@ namespace HttpClientSample
             //    b.DefaultRequestHeaders.Add("User-Agent", "kkbruce labs");
             //});
 
+            // Add Polly re-try
             services.AddHttpClient("github", g =>
             {
                 g.BaseAddress = new Uri("https://api.github.com/");
                 // Two headers required
                 g.DefaultRequestHeaders.Add("Accept", "application/vnd.github.v3+json");
                 g.DefaultRequestHeaders.Add("User-Agent", "kkbruce labs");
-            });
+            }).AddTransientHttpErrorPolicy(p =>
+                p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(500))
+            );
+
+            // No Polly
+            //services.AddHttpClient("github", g =>
+            //{
+            //    g.BaseAddress = new Uri("https://api.github.com/");
+            //    // Two headers required
+            //    g.DefaultRequestHeaders.Add("Accept", "application/vnd.github.v3+json");
+            //    g.DefaultRequestHeaders.Add("User-Agent", "kkbruce labs");
+            //});
 
             services.AddHttpClient("blogApi", c =>
                 {
