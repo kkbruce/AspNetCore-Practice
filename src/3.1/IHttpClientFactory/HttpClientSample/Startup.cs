@@ -1,4 +1,5 @@
 using System;
+using HttpClientSample.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -20,11 +21,13 @@ namespace HttpClientSample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpClient();
+
             services.AddHttpClient("blog", b =>
             {
                 b.BaseAddress = new Uri("https://blog.kkbruce.net/");
                 b.DefaultRequestHeaders.Add("User-Agent", "kkbruce labs");
             });
+
             services.AddHttpClient("github", g =>
             {
                 g.BaseAddress = new Uri("https://api.github.com/");
@@ -32,6 +35,12 @@ namespace HttpClientSample
                 g.DefaultRequestHeaders.Add("Accept", "application/vnd.github.v3+json");
                 g.DefaultRequestHeaders.Add("User-Agent", "kkbruce labs");
             });
+
+            services.AddHttpClient("blogApi", c =>
+            {
+                c.BaseAddress = new Uri("https://blog.kkbruce.net");
+            }).AddTypedClient(c => Refit.RestService.For<IBlogApi>(c));
+
             services.AddControllers();
         }
 
