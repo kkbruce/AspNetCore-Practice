@@ -66,6 +66,9 @@ namespace HttpClientSample
                 })
                 .AddTypedClient(c => Refit.RestService.For<IBlogApi>(c));
 
+            services.AddHttpClient("longtime")
+                    .SetHandlerLifetime(TimeSpan.FromMinutes(10));
+
             services.AddControllers();
         }
 
