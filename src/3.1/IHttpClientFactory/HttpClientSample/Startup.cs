@@ -1,4 +1,5 @@
 using System;
+using System.Net.Http;
 using HttpClientSample.Handlers;
 using HttpClientSample.Services;
 using Microsoft.AspNetCore.Builder;
@@ -68,6 +69,15 @@ namespace HttpClientSample
 
             services.AddHttpClient("longtime")
                     .SetHandlerLifetime(TimeSpan.FromMinutes(10));
+
+            services.AddHttpClient("disable-cookies")
+                .ConfigurePrimaryHttpMessageHandler(() =>
+                {
+                    return new SocketsHttpHandler()
+                    {
+                        UseCookies = false,
+                    };
+                });
 
             services.AddControllers();
         }
