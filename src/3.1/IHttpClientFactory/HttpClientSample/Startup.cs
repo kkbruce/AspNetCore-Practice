@@ -67,7 +67,7 @@ namespace HttpClientSample
                 })
                 .AddTypedClient(c => Refit.RestService.For<IBlogApi>(c));
 
-            services.AddHttpClient("longtime")
+            services.AddHttpClient("long-time")
                     .SetHandlerLifetime(TimeSpan.FromMinutes(10));
 
             services.AddHttpClient("disable-cookies")
@@ -76,6 +76,16 @@ namespace HttpClientSample
                     return new SocketsHttpHandler()
                     {
                         UseCookies = false,
+                    };
+                });
+
+            services.AddHttpClient("configured-handler")
+                .ConfigurePrimaryHttpMessageHandler(() =>
+                {
+                    return new HttpClientHandler()
+                    {
+                        AllowAutoRedirect = false,
+                        UseDefaultCredentials = true
                     };
                 });
 
