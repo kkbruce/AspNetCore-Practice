@@ -95,6 +95,15 @@
 
 Detail: [簡單四步驟：使用ASP.NET CORE提供口罩剩餘數量查詢API](https://blog.kkbruce.net/2020/02/aspnet-core-provider-mask-api.html)
 
+### IHttpClientFactory/HttpClientSample 8 範例展示
+
+* `HttpBasicController()` 有 3 個範例。
+* `RefitController()` 有 1 個範例。
+* `RefitDIController()` 有 1 個範例。
+* `SocketHttpController()` 有 3 個範例。
+
+其中一部份重點在 `Startup.ConfigureServices()` 的組態上。
+
 ### Issue/RouteAsyncSuffix
 
 Detail: [小心ASP.NET CORE裡ASYNC結尾ACTION方法！](https://blog.kkbruce.net/2020/02/aspnetcore-async-action-name.html)

@@ -95,6 +95,15 @@ Demo ASP.NET Core `ControllerBase` `IActionResult` Helper
 
 Detail: [簡單四步驟：使用ASP.NET CORE提供口罩剩餘數量查詢API](https://blog.kkbruce.net/2020/02/aspnet-core-provider-mask-api.html)
 
+### IHttpClientFactory/HttpClientSample 8 Demo
+
+* `HttpBasicController()` have 3 demo.
+* `RefitController()` have 1 demo.
+* `RefitDIController()` have 1 demo.
+* `SocketHttpController()` have 3 demo.
+
+Part of it focuses on the configuration of `Startup.ConfigureServices()`.
+
 ### Issue/RouteAsyncSuffix
 
 Detail: [小心ASP.NET CORE裡ASYNC結尾ACTION方法！](https://blog.kkbruce.net/2020/02/aspnetcore-async-action-name.html)

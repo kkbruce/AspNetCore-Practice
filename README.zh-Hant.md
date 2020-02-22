@@ -15,10 +15,13 @@
 
 ## 練習專案
 
+dotnet 版本 [3.1](src/3.1/)
+
 * [AppsettingConfiguration](src/3.1/AppsettingConfiguration/)
 * [FileUploadSample](src/3.1/FileUploadSample/)
 * [IActionResultSample](src/3.1/IActionResultSample/)
 * [QueryMaskSample](src/3.1/IHttpClientFactory/QueryMaskSample/)
+* [HttpClientSample](src/3.1/IHttpClientFactory/HttpClientSample/)
 
 ### Issue 測試
 
