@@ -7,7 +7,7 @@ namespace HttpClientSample.Handlers
 {
     public class ValidateAccessTokenHeaderHandler : DelegatingHandler
     {
-        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        protected async override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             if (!request.Headers.Contains("X-Access-Token"))
             {
@@ -17,7 +17,7 @@ namespace HttpClientSample.Handlers
                 };
             }
 
-            return base.SendAsync(request, cancellationToken);
+            return await base.SendAsync(request, cancellationToken);
         }
     }
 }

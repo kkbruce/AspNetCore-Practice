@@ -1,4 +1,5 @@
 using System;
+using HttpClientSample.Handlers;
 using HttpClientSample.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,13 +21,23 @@ namespace HttpClientSample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<ValidateAccessTokenHeaderHandler>();
+
             services.AddHttpClient();
 
+            // AddHttpMessageHandler
             services.AddHttpClient("blog", b =>
             {
                 b.BaseAddress = new Uri("https://blog.kkbruce.net/");
                 b.DefaultRequestHeaders.Add("User-Agent", "kkbruce labs");
-            });
+            }).AddHttpMessageHandler<ValidateAccessTokenHeaderHandler>();
+
+            // No HttpMessageHandler
+            //services.AddHttpClient("blog", b =>
+            //{
+            //    b.BaseAddress = new Uri("https://blog.kkbruce.net/");
+            //    b.DefaultRequestHeaders.Add("User-Agent", "kkbruce labs");
+            //});
 
             services.AddHttpClient("github", g =>
             {
@@ -37,9 +48,10 @@ namespace HttpClientSample
             });
 
             services.AddHttpClient("blogApi", c =>
-            {
-                c.BaseAddress = new Uri("https://blog.kkbruce.net");
-            }).AddTypedClient(c => Refit.RestService.For<IBlogApi>(c));
+                {
+                    c.BaseAddress = new Uri("https://blog.kkbruce.net");
+                })
+                .AddTypedClient(c => Refit.RestService.For<IBlogApi>(c));
 
             services.AddControllers();
         }
