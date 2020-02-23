@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace HttpClientConsoleSample
 {
@@ -7,7 +9,14 @@ namespace HttpClientConsoleSample
     {
         static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var builder = new HostBuilder()
+                .ConfigureServices((hostContext, services) =>
+                {
+                    services.AddHttpClient();
+                    services.AddTransient<IBlog, Blog>();
+                }).UseConsoleLifetime();
+
+            var host = builder.Build();
         }
     }
 }
