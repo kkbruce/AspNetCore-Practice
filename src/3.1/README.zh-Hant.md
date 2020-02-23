@@ -104,6 +104,10 @@ Detail: [簡單四步驟：使用ASP.NET CORE提供口罩剩餘數量查詢API](
 
 其中一部份重點在 `Startup.ConfigureServices()` 的組態上。
 
+### IHttpClientFactory/HttpClientConsoleSample
+
+如何使用 `IHttpClientFactory` 在主控台應用程式。
+
 ### Issue/RouteAsyncSuffix
 
 Detail: [小心ASP.NET CORE裡ASYNC結尾ACTION方法！](https://blog.kkbruce.net/2020/02/aspnetcore-async-action-name.html)

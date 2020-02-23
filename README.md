@@ -22,6 +22,7 @@ dotnet ver [3.1](src/3.1/)
 * [IActionResultSample](src/3.1/IActionResultSample/)
 * [QueryMaskSample](src/3.1/IHttpClientFactory/QueryMaskSample/)
 * [HttpClientSample](src/3.1/IHttpClientFactory/HttpClientSample/)
+* [HttpClientConsoleSample](src/3.1/IHttpClientFactory/HttpClientConsoleSample/)
 
 ### Issue test
 
