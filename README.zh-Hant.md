@@ -24,6 +24,8 @@
 * [HttpClientSample](src/3.1/IHttpClientFactory/HttpClientSample/)
 * [HttpClientConsoleSample](src/3.1/IHttpClientFactory/HttpClientConsoleSample/)
 
+JsonPatch 3.1 完整範例我已經發 PR 到 <a href="https://github.com/dotnet/AspNetCore.Docs/pull/16824" target="_blank">AspNetCore.Docs</a>  等待審查與合併。您能暫時在<a href="https://github.com/kkbruce/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/3.1" target="_blank">這裡</a>查我實作版本的 JsonPatch WebAPI 與 MVC 的原始碼。
+
 ### Issue 測試
 
 * [RouteAsyncSuffix](src/3.1/Issue/RouteAsyncSuffix/)

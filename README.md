@@ -24,6 +24,8 @@ Current version [3.1](src/3.1/)
 * [HttpClientSample](src/3.1/IHttpClientFactory/HttpClientSample/)
 * [HttpClientConsoleSample](src/3.1/IHttpClientFactory/HttpClientConsoleSample/)
 
+JsonPatch for 3.1 sample is PR to <a href="https://github.com/dotnet/AspNetCore.Docs/pull/16824" target="_blank">AspNetCore.Docs</a> waiting review and merge. You can temporarily view the jsonpatch for webapi and mvc source code of my implementation <a href="https://github.com/kkbruce/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/3.1" target="_blank">here</a>.
+
 ### Issue test
 
 * [RouteAsyncSuffix](src/3.1/Issue/RouteAsyncSuffix/)
