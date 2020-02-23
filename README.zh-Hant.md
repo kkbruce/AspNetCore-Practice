@@ -2,7 +2,7 @@
 
 ## 免責聲明
 
-此為在對 ASP.NET Core 進行學習時的測試專案，註解都有簡易的說明。如果您對內容有疑惑時，那麼把專案執行起來，使用 Postman 或 Fiddler 瞭解測試的結果，將有助於學習。其中少數範例，使瀏覽器會是比較好的選擇。
+此為在對 ASP.NET Core 進行學習時的測試專案，註解都有簡易的說明。如果您對內容有疑惑時，那麼把專案執行起來，使用 <a href="https://www.postman.com" target="_blank">Postman</a> 或 <a href="https://www.telerik.com/fiddler" target="_blank">Fiddler</a> 瞭解測試的結果，將有助於學習。其中少數範例，使瀏覽器會是比較好的選擇。
 
 ## 請給一顆星星！ :star:
 
@@ -15,7 +15,7 @@
 
 ## 練習專案
 
-dotnet 版本 [3.1](src/3.1/)
+現在版本 [3.1](src/3.1/)
 
 * [AppsettingConfiguration](src/3.1/AppsettingConfiguration/)
 * [FileUploadSample](src/3.1/FileUploadSample/)

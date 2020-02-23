@@ -2,7 +2,7 @@
 
 ## Disclaimer
 
-This is a test project when learning of ASP.NET Core. The XML comments have simple description. If you have any questions about the content, then implementing the project and using Postman or Fiddler to understand the test results will help you learn. A few examples make the browser a better choice.
+This is a test project when learning of ASP.NET Core. The XML comments have simple description. If you have any questions about the content, then implementing the project and using <a href="https://www.postman.com" target="_blank">Postman</a> or <a href="https://www.telerik.com/fiddler" target="_blank">Fiddler</a> to understand the test results will help you learn. A few examples make the browser a better choice.
 
 ## Give a Star! :star:
 
@@ -15,7 +15,7 @@ If you like or are using this project to learn, please give it a star. Thanks!
 
 ## Practice project
 
-dotnet ver [3.1](src/3.1/)
+Current version [3.1](src/3.1/)
 
 * [AppsettingConfiguration](src/3.1/AppsettingConfiguration/)
 * [FileUploadSample](src/3.1/FileUploadSample/)
