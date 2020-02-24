@@ -88,8 +88,10 @@ If you like or are using this project to learn, please give it a star. Thanks!
 * `UploadWithModel()`
 
 ### IHttpClientFactory/QueryMaskSample
+### IHttpClientFactory/QueryMaskSqliteSample
 
-Detail: [簡單四步驟：使用ASP.NET CORE提供口罩剩餘數量查詢API](https://blog.kkbruce.net/2020/02/aspnet-core-provider-mask-api.html)
+* Article 1: [簡單四步驟：使用ASP.NET CORE提供口罩剩餘數量查詢API](https://blog.kkbruce.net/2020/02/aspnet-core-provider-mask-api.html)
+* Article 2: [簡單五步驟：以EF Core整合SQLite儲存口罩剩餘數量資訊](https://blog.kkbruce.net/2020/02/ef-core-sqlite.html)
 
 ### IHttpClientFactory/HttpClientSample 8 Demo
 
@@ -106,4 +108,4 @@ How to use `IHttpClientFactory` in Console application.
 
 ### Issue/RouteAsyncSuffix
 
-Detail: [小心ASP.NET CORE裡ASYNC結尾ACTION方法！](https://blog.kkbruce.net/2020/02/aspnetcore-async-action-name.html)
+Article: [小心ASP.NET CORE裡ASYNC結尾ACTION方法！](https://blog.kkbruce.net/2020/02/aspnetcore-async-action-name.html)
