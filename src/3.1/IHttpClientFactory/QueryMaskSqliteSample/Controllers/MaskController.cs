@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using QueryMaskSample.Models;
+using QueryMaskSample.Services;
+using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using QueryMaskSample.Models;
-using QueryMaskSample.Services;
 
 namespace QueryMaskSample.Controllers
 {
