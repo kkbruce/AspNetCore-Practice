@@ -96,6 +96,9 @@ If you like or are using this project to learn, please give it a star. Thanks!
 ### IHttpClientFactory/HttpClientSample 8 Demo
 
 * `HttpBasicController()` have 3 demo.
+    * Basic
+    * Named
+    * Polly
 * `RefitController()` have 1 demo.
 * `RefitDIController()` have 1 demo.
 * `SocketHttpController()` have 3 demo.

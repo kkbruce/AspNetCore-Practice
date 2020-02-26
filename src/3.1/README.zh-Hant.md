@@ -96,6 +96,9 @@
 ### IHttpClientFactory/HttpClientSample 8 範例展示
 
 * `HttpBasicController()` 有 3 個範例。
+    * Basic
+    * Named
+    * Polly
 * `RefitController()` 有 1 個範例。
 * `RefitDIController()` 有 1 個範例。
 * `SocketHttpController()` 有 3 個範例。
