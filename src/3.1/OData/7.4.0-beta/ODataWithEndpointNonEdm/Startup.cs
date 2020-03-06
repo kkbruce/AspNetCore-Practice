@@ -1,11 +1,9 @@
-using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OData.Edm;
 using System.Linq;
 
 namespace ODataWithEndpoint
@@ -22,7 +20,7 @@ namespace ODataWithEndpoint
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddOData();
         }
 
@@ -43,17 +41,17 @@ namespace ODataWithEndpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.EnableDependencyInjection();
                 endpoints.Select().Filter().OrderBy().Count().MaxTop(10);
-                endpoints.MapODataRoute("odata", "odata", GetEdmModel());
+                //endpoints.MapODataRoute("odata", "odata", GetEdmModel());
             });
         }
 
-        private IEdmModel GetEdmModel()
-        {
-            var odataBuilder = new ODataConventionModelBuilder();
-            odataBuilder.EntitySet<WeatherForecast>("WeatherForecast");
-            return odataBuilder.GetEdmModel();
-
-        }
+        //private IEdmModel GetEdmModel()
+        //{
+        //    var odataBuilder = new ODataConventionModelBuilder();
+        //    odataBuilder.EntitySet<WeatherForecast>("WeatherForecast");
+        //    return odataBuilder.GetEdmModel();
+        //}
     }
 }

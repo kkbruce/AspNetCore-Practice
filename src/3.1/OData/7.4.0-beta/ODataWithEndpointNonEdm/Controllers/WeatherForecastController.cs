@@ -6,6 +6,8 @@ using System.Linq;
 
 namespace ODataWithEndpoint.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -13,6 +15,7 @@ namespace ODataWithEndpoint.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
+        [HttpGet]
         [EnableQuery]
         public IEnumerable<WeatherForecast> Get()
         {
