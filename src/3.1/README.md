@@ -100,7 +100,7 @@
 * `HttpBasicController()` 有 3 個範例。
   * Basic
   * Named
-  * Polly
+  * ![Polly](https://github.com/App-vNext/Polly)
 * `RefitController()` 有 1 個範例。
 * `RefitDIController()` 有 1 個範例。
 * `SocketHttpController()` 有 3 個範例。
