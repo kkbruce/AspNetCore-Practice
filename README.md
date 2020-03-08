@@ -1,21 +1,21 @@
-# ASP.NET Core Practice
+# Asp.Net Core Web API IActionResult Sample
 
-## Disclaimer
+## 免責聲明
 
-This is a test project when learning of ASP.NET Core. The XML comments have simple description. If you have any questions about the content, then implementing the project and using <a href="https://www.postman.com" target="_blank">Postman</a> or <a href="https://www.telerik.com/fiddler" target="_blank">Fiddler</a> to understand the test results will help you learn. A few examples make the browser a better choice.
+此為在對 ASP.NET Core 進行學習時的測試專案，註解都有簡易的說明。如果您對內容有疑惑時，那麼把專案執行起來，使用 <a href="https://www.postman.com" target="_blank">Postman</a> 或 <a href="https://www.telerik.com/fiddler" target="_blank">Fiddler</a> 瞭解測試的結果，將有助於學習。其中少數範例，使瀏覽器會是比較好的選擇。
 
-## Give a Star! :star:
+## 請給一顆星星！ :star:
 
-If you like or are using this project to learn, please give it a star. Thanks!
+如果您喜歡或使用此專案進行學習，請給它一顆星星，謝謝。
 
-## Project ReadMe
+## 專案 ReadMe
 
 * [README](src/3.1/README.md)
-* [README.zh-Hant](src/3.1/README.zh-Hant.md)
+* [README.en-US](src/3.1/README.en-US.md)
 
-## Practice project
+## 練習專案
 
-Current version [3.1](src/3.1/)
+現在版本 [3.1](src/3.1/)
 
 * [AppsettingConfiguration](src/3.1/AppsettingConfiguration/)
 * [FileUploadSample](src/3.1/FileUploadSample/)
@@ -25,8 +25,8 @@ Current version [3.1](src/3.1/)
 * [HttpClientSample](src/3.1/IHttpClientFactory/HttpClientSample/)
 * [HttpClientConsoleSample](src/3.1/IHttpClientFactory/HttpClientConsoleSample/)
 
-JsonPatch for 3.1 sample is PR to <a href="https://github.com/dotnet/AspNetCore.Docs/pull/16824" target="_blank">AspNetCore.Docs</a> waiting review and merge. You can temporarily view the jsonpatch for webapi and mvc source code of my implementation <a href="https://github.com/kkbruce/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/3.1" target="_blank">here</a>.
+JsonPatch 3.1 完整範例我已經發 PR 到 <a href="https://github.com/dotnet/AspNetCore.Docs/pull/16824" target="_blank">AspNetCore.Docs</a>  等待審查與合併。您能暫時在<a href="https://github.com/kkbruce/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/3.1" target="_blank">這裡</a>查看我實作的 JsonPatch WebAPI 與 MVC 版本原始碼。
 
-### Issue test
+### Issue 測試
 
 * [RouteAsyncSuffix](src/3.1/Issue/RouteAsyncSuffix/)
