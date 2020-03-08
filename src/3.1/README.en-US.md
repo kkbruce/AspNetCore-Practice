@@ -1,4 +1,4 @@
-# ASP.NET Core Practics
+# ASP.NET Core Practice
 
 ## Disclaimer
 
@@ -18,7 +18,7 @@ If you like or are using this project to learn, please give it a star. Thanks!
 ## How to run Project
 
 1. In project folder click **.sln** open Visual Studio 2019.
-2. In **.csproj** folder run `dotnet run` 
+2. In **.csproj** folder run `dotnet run`
 3. Open Visual Studio Code in **.csproj** folder and F5 run debug
 
 ### ControllerBase Helper 101 Demo
@@ -100,7 +100,7 @@ If you like or are using this project to learn, please give it a star. Thanks!
 * `HttpBasicController()` have 3 demo.
   * Basic
   * Named
-  * Polly
+  * [Polly](https://github.com/App-vNext/Polly)
 * `RefitController()` have 1 demo.
 * `RefitDIController()` have 1 demo.
 * `SocketHttpController()` have 3 demo.
