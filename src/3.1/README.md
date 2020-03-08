@@ -15,7 +15,7 @@
 * Visual Studio 2019 16.4.x
 * Visual Studio Code
 
-## 如果執行專案
+## 如何執行專案
 
 1. 在專案目錄下點擊 **.sln** 啟動 Visual Studio 2019
 2. 在 .csproj 所在目錄執行 `dotnet run`

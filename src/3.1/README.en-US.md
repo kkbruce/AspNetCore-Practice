@@ -15,7 +15,7 @@ If you like or are using this project to learn, please give it a star. Thanks!
 * Visual Studio 2019 16.4.x
 * Visual Studio Code
 
-## How to run
+## How to run Project
 
 1. In project folder click **.sln** open Visual Studio 2019.
 2. In **.csproj** folder run `dotnet run` 
