@@ -6,7 +6,7 @@ This is a test project when learning of ASP.NET Core. The XML comments have simp
 
 ## Give a Star! :star:
 
-If you like or are using this project to learn, please give it a star. Thanks!
+If you like or are using this project to learn, please give it a star. Thanks! I will maintain this project for a long time, and I also recommend joining watch.
 
 ## Project ReadMe
 
