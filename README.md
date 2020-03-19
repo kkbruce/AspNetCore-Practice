@@ -1,4 +1,4 @@
-# Asp.Net Core Web API IActionResult Sample
+# Asp.Net Core 專案練習集
 
 ## 免責聲明
 
