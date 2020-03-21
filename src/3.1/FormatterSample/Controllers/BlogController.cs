@@ -10,6 +10,7 @@ namespace FormatterSample.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Produces("application/xml")]
     public class BlogController : ControllerBase
     {
         public IActionResult Get()
