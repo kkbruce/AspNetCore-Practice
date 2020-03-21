@@ -1,3 +1,4 @@
+using FormatterSample.Formatters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,9 +23,11 @@ namespace FormatterSample
             //    .AddJsonOptions(option => { option.JsonSerializerOptions.IgnoreNullValues = true; })
             //    .AddXmlSerializerFormatters();
 
-            services.AddControllers()
-                    .AddNewtonsoftJson()
-                    .AddXmlSerializerFormatters();
+            services.AddControllers(config =>
+                {
+                    config.OutputFormatters.Add(new CsvOutputFormatter());
+                }).AddNewtonsoftJson()
+                  .AddXmlSerializerFormatters();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
