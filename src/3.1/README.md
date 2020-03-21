@@ -12,7 +12,7 @@
 
 * .NET Core 3.1.x SDK
 * ASP.NET Core 3.1
-* Visual Studio 2019 16.4.x
+* Visual Studio 2019 16.x.x
 * Visual Studio Code
 
 ## 如何執行專案

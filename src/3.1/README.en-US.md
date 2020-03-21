@@ -12,7 +12,7 @@ If you like or are using this project to learn, please give it a star. Thanks!
 
 * .NET Core 3.1.x SDK
 * ASP.NET Core 3.1
-* Visual Studio 2019 16.4.x
+* Visual Studio 2019 16.x.x
 * Visual Studio Code
 
 ## How to run Project
