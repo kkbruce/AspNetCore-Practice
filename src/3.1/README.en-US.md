@@ -114,3 +114,12 @@ How to use `IHttpClientFactory` in Console application.
 ### Issue/RouteAsyncSuffix
 
 Article: [小心ASP.NET CORE裡ASYNC結尾ACTION方法！](https://blog.kkbruce.net/2020/02/aspnetcore-async-action-name.html)
+
+### OData 7.4.0-Beta
+
+Practice source: <https://devblogs.microsoft.com/odata/enabling-endpoint-routing-in-odata/> ODataWithEndpointNonEdm not yet working.
+
+### FormatterSample
+
+* Study content negotiation and configuration.
+* Study custom CsvOutputFormatter.

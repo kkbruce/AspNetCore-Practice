@@ -15,7 +15,7 @@ If you like or are using this project to learn, please give it a star. Thanks! I
 
 ## Practice project
 
-Current version [3.1](src/3.1/)
+[3.1 Projects help](src/3.1/)
 
 * [AppsettingConfiguration](src/3.1/AppsettingConfiguration/)
 * [FileUploadSample](src/3.1/FileUploadSample/)
@@ -26,6 +26,9 @@ Current version [3.1](src/3.1/)
 * [HttpClientConsoleSample](src/3.1/IHttpClientFactory/HttpClientConsoleSample/)
 
 JsonPatch for 3.1 sample is PR to <a href="https://github.com/dotnet/AspNetCore.Docs/pull/16824" target="_blank">AspNetCore.Docs</a> waiting review and merge. You can temporarily view the jsonpatch for webapi and mvc source code of my implementation <a href="https://github.com/kkbruce/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/3.1" target="_blank">here</a>.
+
+* [OData 7.4.0-Beta](src/3.1/OData/7.4.0-beta)
+* [FormatterSample](src/3.1/FormatterSample)
 
 ### Issue test
 

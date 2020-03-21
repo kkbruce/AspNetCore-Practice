@@ -114,3 +114,12 @@
 ### Issue/RouteAsyncSuffix
 
 文章: [小心ASP.NET CORE裡ASYNC結尾ACTION方法！](https://blog.kkbruce.net/2020/02/aspnetcore-async-action-name.html)
+
+### OData 7.4.0-Beta
+
+測試來源: <https://devblogs.microsoft.com/odata/enabling-endpoint-routing-in-odata/>，ODataWithEndpointNonEdm 還無法運作。
+
+### FormatterSample
+
+* 學習內容協商與相關組態。
+* 學習自訂 CsvOutputFormatter 組態。

@@ -15,7 +15,7 @@
 
 ## 練習專案
 
-現在版本 [3.1](src/3.1/)
+[3.1 專案說明](src/3.1/)
 
 * [AppsettingConfiguration](src/3.1/AppsettingConfiguration/)
 * [FileUploadSample](src/3.1/FileUploadSample/)
@@ -26,6 +26,9 @@
 * [HttpClientConsoleSample](src/3.1/IHttpClientFactory/HttpClientConsoleSample/)
 
 JsonPatch 3.1 完整範例我已經發 PR 到 <a href="https://github.com/dotnet/AspNetCore.Docs/pull/16824" target="_blank">AspNetCore.Docs</a>  等待審查與合併。您能暫時在<a href="https://github.com/kkbruce/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/3.1" target="_blank">這裡</a>查看我實作的 JsonPatch WebAPI 與 MVC 版本原始碼。
+
+* [OData 7.4.0-Beta](src/3.1/OData/7.4.0-beta)
+* [FormatterSample](src/3.1/FormatterSample)
 
 ### Issue 測試
 
