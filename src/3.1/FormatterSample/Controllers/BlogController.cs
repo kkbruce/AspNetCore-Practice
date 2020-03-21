@@ -10,9 +10,11 @@ namespace FormatterSample.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Produces("application/xml")]
+    //[Produces("application/xml")]
+    [FormatFilter]
     public class BlogController : ControllerBase
     {
+        [HttpGet("{format?}")]
         public IActionResult Get()
         {
             var Posts = new List<Post>
