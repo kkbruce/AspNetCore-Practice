@@ -18,9 +18,13 @@ namespace FormatterSample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddControllers()
+            //    .AddJsonOptions(option => { option.JsonSerializerOptions.IgnoreNullValues = true; })
+            //    .AddXmlSerializerFormatters();
+
             services.AddControllers()
-                .AddJsonOptions(option => { option.JsonSerializerOptions.IgnoreNullValues = true; })
-                .AddXmlSerializerFormatters();
+                    .AddNewtonsoftJson()
+                    .AddXmlSerializerFormatters();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
