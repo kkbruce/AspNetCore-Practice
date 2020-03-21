@@ -19,7 +19,8 @@ namespace FormatterSample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
-                    .AddXmlSerializerFormatters();
+                .AddJsonOptions(option => { option.JsonSerializerOptions.IgnoreNullValues = true; })
+                .AddXmlSerializerFormatters();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
