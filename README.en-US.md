@@ -28,7 +28,7 @@ If you like or are using this project to learn, please give it a star. Thanks! I
 * [OData 7.4.0-Beta](src/3.1/OData/7.4.0-beta)
 * [FormatterSample](src/3.1/FormatterSample)
 
- The complete <a href="https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/3.1/api"  target="_blank">JsonPatch 3.1 example</a> I provided has been accepted and merged by the AspNetCore.Docs team. Please obtain it directly from AspNetCore.Docs.
+ The complete <a href="https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/3.1/api"  target="_blank">JsonPatch 3.1 example</a> I provided has been accepted and merged by the AspNetCore.Docs team. Please obtain it directly from AspNetCore.Docs repos.
 
 ### Issue test
 
