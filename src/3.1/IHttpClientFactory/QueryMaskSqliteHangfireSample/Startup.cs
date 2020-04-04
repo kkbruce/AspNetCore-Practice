@@ -55,6 +55,10 @@ namespace QueryMaskSample
 
             app.UseEndpoints(endpoints =>
             {
+                // for /hangfire dashboard access
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllers();
             });
         }
