@@ -1,3 +1,5 @@
+using Hangfire;
+using Hangfire.Storage.SQLite;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,11 +24,16 @@ namespace QueryMaskSample
         {
             services.AddScoped<MaskContext>();
             services.AddHttpClient<MaskService>();
+            services.AddHangfire(configuration => configuration
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseSQLiteStorage());
+            services.AddHangfireServer();
             services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IBackgroundJobClient backgroundJobs, IRecurringJobManager recurringJob)
         {
             if (env.IsDevelopment())
             {
@@ -38,6 +45,13 @@ namespace QueryMaskSample
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseHangfireDashboard();
+            // For Hangfire test.
+            //BackgroundJob.Enqueue(() => Console.WriteLine("Hello backgroundjobs."));
+            //RecurringJob.AddOrUpdate("Hello", () => Console.WriteLine("Hello, recurringJob."), Cron.Minutely);
+            backgroundJobs.Enqueue(() => MaskSchedule.InitialDb());
+            recurringJob.AddOrUpdate("MaskDataUpdate", () => MaskSchedule.MaskDataUpdate(), "1/10 * * * *");
 
             app.UseEndpoints(endpoints =>
             {
