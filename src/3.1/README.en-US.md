@@ -95,6 +95,10 @@ If you like or are using this project to learn, please give it a star. Thanks!
 
 * Article 2: [簡單五步驟：以EF Core整合SQLite儲存口罩剩餘數量資訊](https://blog.kkbruce.net/2020/02/ef-core-sqlite.html)
 
+### IHttpClientFactory/QueryMaskSqliteHangfireSample
+
+* Article 3: [簡單五步驟：ASP.NET Core整合Hangfire來排程更新口罩剩餘數量資料](https://blog.kkbruce.net/2020/04/aspnet-core-hangfire-sqlite.html)
+
 ### IHttpClientFactory/HttpClientSample 8 Demo
 
 * `HttpBasicController()` have 3 demo.

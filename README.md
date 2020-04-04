@@ -24,11 +24,11 @@
 * [QueryMaskSqliteSample](src/3.1/IHttpClientFactory/QueryMaskSqliteSample/)
 * [HttpClientSample](src/3.1/IHttpClientFactory/HttpClientSample/)
 * [HttpClientConsoleSample](src/3.1/IHttpClientFactory/HttpClientConsoleSample/)
-
-JsonPatch 3.1 完整範例我已經發 PR 到 <a href="https://github.com/dotnet/AspNetCore.Docs/pull/16824" target="_blank">AspNetCore.Docs</a>  等待審查與合併。您能暫時在<a href="https://github.com/kkbruce/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/3.1" target="_blank">這裡</a>查看我實作的 JsonPatch WebAPI 與 MVC 版本原始碼。
-
+* [QueryMaskSqliteHangfireSample](src/3.1/IHttpClientFactory/QueryMaskSqliteHangfireSample/)
 * [OData 7.4.0-Beta](src/3.1/OData/7.4.0-beta)
 * [FormatterSample](src/3.1/FormatterSample)
+
+我提供的<a href="https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/3.1/api"  target="_blank">JsonPatch 3.1 完整範例</a>已經被 AspNetCore.Docs 團隊接受與合併，請直接 AspNetCore.Docs 取得。
 
 ### Issue 測試
 

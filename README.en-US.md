@@ -24,11 +24,11 @@ If you like or are using this project to learn, please give it a star. Thanks! I
 * [QueryMaskSqliteSample](src/3.1/IHttpClientFactory/QueryMaskSqliteSample/)
 * [HttpClientSample](src/3.1/IHttpClientFactory/HttpClientSample/)
 * [HttpClientConsoleSample](src/3.1/IHttpClientFactory/HttpClientConsoleSample/)
-
-JsonPatch for 3.1 sample is PR to <a href="https://github.com/dotnet/AspNetCore.Docs/pull/16824" target="_blank">AspNetCore.Docs</a> waiting review and merge. You can temporarily view the jsonpatch for webapi and mvc source code of my implementation <a href="https://github.com/kkbruce/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/3.1" target="_blank">here</a>.
-
+* [QueryMaskSqliteHangfireSample](src/3.1/IHttpClientFactory/QueryMaskSqliteHangfireSample/)
 * [OData 7.4.0-Beta](src/3.1/OData/7.4.0-beta)
 * [FormatterSample](src/3.1/FormatterSample)
+
+ The complete <a href="https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/3.1/api"  target="_blank">JsonPatch 3.1 example</a> I provided has been accepted and merged by the AspNetCore.Docs team. Please obtain it directly from AspNetCore.Docs.
 
 ### Issue test
 

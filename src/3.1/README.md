@@ -89,11 +89,15 @@
 
 ### IHttpClientFactory/QueryMaskSample
 
-* 文章 1: [簡單四步驟：使用ASP.NET CORE提供口罩剩餘數量查詢API](https://blog.kkbruce.net/2020/02/aspnet-core-provider-mask-api.html)
+* 口罩系列1: [簡單四步驟：使用ASP.NET CORE提供口罩剩餘數量查詢API](https://blog.kkbruce.net/2020/02/aspnet-core-provider-mask-api.html)
 
 ### IHttpClientFactory/QueryMaskSqliteSample
 
-* 文章 2: [簡單五步驟：以EF Core整合SQLite儲存口罩剩餘數量資訊](https://blog.kkbruce.net/2020/02/ef-core-sqlite.html)
+* 口罩系列2: [簡單五步驟：以EF Core整合SQLite儲存口罩剩餘數量資訊](https://blog.kkbruce.net/2020/02/ef-core-sqlite.html)
+
+### IHttpClientFactory/QueryMaskSqliteHangfireSample
+
+* 口罩系列3: [簡單五步驟：ASP.NET Core整合Hangfire來排程更新口罩剩餘數量資料](https://blog.kkbruce.net/2020/04/aspnet-core-hangfire-sqlite.html)
 
 ### IHttpClientFactory/HttpClientSample 8 範例展示
 
