@@ -12,7 +12,7 @@
 
 * .NET Core 3.1.x SDK
 * ASP.NET Core 3.1
-* Visual Studio 2019 16.x.x
+* Visual Studio 2019 16.4.x 以上
 * Visual Studio Code
 
 ## 如何執行專案
@@ -127,3 +127,7 @@
 
 * 學習內容協商與相關組態。
 * 學習自訂 CsvOutputFormatter 組態。
+
+### DapperSample
+
+學習如何透過 Dapper 進行資料庫 CURD 操作。
