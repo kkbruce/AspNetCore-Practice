@@ -27,6 +27,7 @@
 * [QueryMaskSqliteHangfireSample](src/3.1/IHttpClientFactory/QueryMaskSqliteHangfireSample/)
 * [OData 7.4.0-Beta](src/3.1/OData/7.4.0-beta)
 * [FormatterSample](src/3.1/FormatterSample)
+* [DapperSample](src/3.1/DapperSample)
 
 我提供的<a href="https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/3.1/api"  target="_blank">JsonPatch 3.1 完整範例</a>已經被 AspNetCore.Docs 團隊接受與合併，請直接到 AspNetCore.Docs Repos 取得。
 
