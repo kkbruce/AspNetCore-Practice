@@ -14,7 +14,23 @@ namespace DapperSample
             var config = Startup.Configuration(args);
             var connString = config.GetConnectionString("NorthwindDatabase");
             DapperQuery(connString);
+            DapperStoredProcedure(connString);
             Console.Read();
+        }
+
+        private static void DapperStoredProcedure(string connString)
+        {
+            string uspName = "CustOrdersDetail";
+
+            using (var connection = new SqlConnection(connString))
+            {
+                var result = connection.Query<CustOrdersDetail>(
+                    uspName, new { OrderId = 10248 }, commandType: CommandType.StoredProcedure).ToList();
+
+                Console.WriteLine(result.Count);
+                result.ForEach(c =>
+                    Console.WriteLine($"{c.ProductName},{c.UnitPrice},{c.Quantity},{c.Discount},{c.ExtendedPrice}"));
+            }
         }
 
         /// <summary>
@@ -55,6 +71,16 @@ namespace DapperSample
                 Console.WriteLine(orderDetail2.Count());
             }
         }
+    }
+
+    internal class CustOrdersDetail
+    {
+        public string ProductName { get; set; }
+        public decimal UnitPrice { get; set; }
+        public short Quantity { get; set; }
+        public float Discount { get; set; }
+        public decimal ExtendedPrice { get; set; }
+
     }
 
     internal class OrderDetail
