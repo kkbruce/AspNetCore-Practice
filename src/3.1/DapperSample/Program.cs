@@ -14,8 +14,19 @@ namespace DapperSample
             var config = Startup.Configuration(args);
             var connString = config.GetConnectionString("NorthwindDatabase");
             DapperQueryAndExecute(connString);
+            DapperQueryAnonymous(connString);
             DapperStoredProcedure(connString);
             Console.Read();
+        }
+
+        private static void DapperQueryAnonymous(string connString)
+        {
+            string sqlProducts = "SELECT * FROM Products;";
+            using (var connection = new SqlConnection(connString))
+            {
+                var products = connection.Query(sqlProducts).FirstOrDefault();
+                Console.WriteLine(products);
+            }
         }
 
         private static void DapperStoredProcedure(string connString)
