@@ -19,6 +19,10 @@ namespace DapperSample
             Console.Read();
         }
 
+        /// <summary>
+        /// Query Anonymous(dynamic type)
+        /// </summary>
+        /// <param name="connString">Connection String</param>
         private static void DapperQueryAnonymous(string connString)
         {
             string sqlProducts = "SELECT * FROM Products;";
@@ -29,6 +33,10 @@ namespace DapperSample
             }
         }
 
+        /// <summary>
+        /// Query by Stored Procedure
+        /// </summary>
+        /// <param name="connString">Connection String</param>
         private static void DapperStoredProcedure(string connString)
         {
             string uspName = "CustOrdersDetail";
