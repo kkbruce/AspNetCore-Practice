@@ -15,8 +15,24 @@ namespace DapperSample
             var connString = config.GetConnectionString("NorthwindDatabase");
             DapperQueryAndExecute(connString);
             DapperQueryAnonymous(connString);
+            DapperQueryStronglyTyped(connString);
             DapperStoredProcedure(connString);
             Console.Read();
+        }
+
+        /// <summary>
+        /// Query by Strongly Typed
+        /// </summary>
+        /// <param name="connString">Connection String</param>
+        private static void DapperQueryStronglyTyped(string connString)
+        {
+            string sqlProducts = "SELECT * FROM Products;";
+            using (var connection = new SqlConnection(connString))
+            {
+                var products = connection.Query<Products>(sqlProducts).ToList();
+                Console.WriteLine(products.Count);
+            }
+
         }
 
         /// <summary>
