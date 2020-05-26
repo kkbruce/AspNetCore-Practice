@@ -13,7 +13,7 @@ namespace DapperSample
         {
             var config = Startup.Configuration(args);
             var connString = config.GetConnectionString("NorthwindDatabase");
-            DapperQuery(connString);
+            DapperQueryAndExecute(connString);
             DapperStoredProcedure(connString);
             Console.Read();
         }
@@ -39,7 +39,7 @@ namespace DapperSample
         /// Execute for "UPDATE", "INSERT", "DELETE" T-SQL.
         /// </summary>
         /// <param name="connString">Connection String</param>
-        private static void DapperQuery(string connString)
+        private static void DapperQueryAndExecute(string connString)
         {
             string sqlProducts = "SELECT * FROM Products;";
             string sqlOrderDetail = "SELECT * FROM [Order Details] WHERE OrderId = @OrderId;";
