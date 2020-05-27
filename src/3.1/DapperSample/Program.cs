@@ -13,7 +13,7 @@ namespace DapperSample
         {
             var config = Startup.Configuration(args);
             var connString = config.GetConnectionString("NorthwindDatabase");
-            DapperQueryAndExecute(connString);
+            //DapperQueryAndExecute(connString);
             DapperQueryAnonymous(connString);
             DapperQueryStronglyTyped(connString);
             DapperQueryFirst(connString);
@@ -32,20 +32,20 @@ namespace DapperSample
             {
                 // Query Anonymous
                 var productAnonymous = connection.QueryFirst(sqlProducts, new { ProductId = 1 });
-                Console.WriteLine(productAnonymous);
+                Console.WriteLine($"{nameof(DapperQueryFirst)} Anonymous: {productAnonymous}");
 
                 // Strongly Typed
                 var productFirst = connection.QueryFirst<Products>(sqlProducts, new { ProductId = 1 });
-                Console.WriteLine($"QueryFirst Id: {productFirst.ProductId}, Name: {productFirst.ProductName}");
+                Console.WriteLine($"{nameof(DapperQueryFirst)} QueryFirst Id: {productFirst.ProductId}, Name: {productFirst.ProductName}");
 
                 var productSingle = connection.QuerySingle<Products>(sqlProducts, new { ProductId = 1 });
-                Console.WriteLine($"QuerySingle Id: {productSingle.ProductId}, Name: {productSingle.ProductName}");
+                Console.WriteLine($"{nameof(DapperQueryFirst)} QuerySingle Id: {productSingle.ProductId}, Name: {productSingle.ProductName}");
 
                 var productFirstOrDefault = connection.QueryFirstOrDefault<Products>(sqlProducts, new { ProductId = 1 });
-                Console.WriteLine($"QueryFirstOrDefault Id: {productFirstOrDefault.ProductId}, Name: {productFirstOrDefault.ProductName}");
+                Console.WriteLine($"{nameof(DapperQueryFirst)} QueryFirstOrDefault Id: {productFirstOrDefault.ProductId}, Name: {productFirstOrDefault.ProductName}");
 
                 var productSingleOrDefault = connection.QuerySingleOrDefault<Products>(sqlProducts, new { ProductId = 1 });
-                Console.WriteLine($"SingleOrDefault Id: {productSingleOrDefault.ProductId}, Name: {productSingleOrDefault.ProductName}");
+                Console.WriteLine($"{nameof(DapperQueryFirst)} SingleOrDefault Id: {productSingleOrDefault.ProductId}, Name: {productSingleOrDefault.ProductName}");
             }
         }
 
@@ -59,7 +59,7 @@ namespace DapperSample
             using (var connection = new SqlConnection(connString))
             {
                 var products = connection.Query<Products>(sqlProducts).ToList();
-                Console.WriteLine(products.Count);
+                Console.WriteLine($"{nameof(DapperQueryStronglyTyped)}: {products.Count}");
             }
         }
 
@@ -73,7 +73,7 @@ namespace DapperSample
             using (var connection = new SqlConnection(connString))
             {
                 var products = connection.Query(sqlProducts).FirstOrDefault();
-                Console.WriteLine(products);
+                Console.WriteLine($"{nameof(DapperQueryAnonymous)}: {products}");
             }
         }
 
@@ -90,9 +90,9 @@ namespace DapperSample
                 var result = connection.Query<CustOrdersDetail>(
                     uspName, new { OrderId = 10248 }, commandType: CommandType.StoredProcedure).ToList();
 
-                Console.WriteLine(result.Count);
+                Console.WriteLine($"{nameof(DapperStoredProcedure)}: {result.Count}");
                 result.ForEach(c =>
-                    Console.WriteLine($"{c.ProductName},{c.UnitPrice},{c.Quantity},{c.Discount},{c.ExtendedPrice}"));
+                    Console.WriteLine($"\t{nameof(DapperStoredProcedure)}: {c.ProductName},{c.UnitPrice},{c.Quantity},{c.Discount},{c.ExtendedPrice}"));
             }
         }
 
@@ -126,20 +126,20 @@ namespace DapperSample
                 var orderDetail2 = connection.Query<OrderDetail>(sqlOrderDetail, new { OrderId = 10248 });
 
                 // count 77
-                Console.WriteLine(products.Count);
+                Console.WriteLine($"{nameof(DapperQueryAndExecute)} sqlProducts: {products.Count}");
                 // count 3
-                Console.WriteLine(orderDetail.Count());
+                Console.WriteLine($"{nameof(DapperQueryAndExecute)} sqlOrderDetail: {orderDetail.Count()}");
                 // affectedRows 1
-                Console.WriteLine(affectedRows);
+                Console.WriteLine($"{nameof(DapperQueryAndExecute)} sqlOrderDetailInsert: {affectedRows}");
                 // count 3+1
-                Console.WriteLine(orderDetail2.Count());
+                Console.WriteLine($"{nameof(DapperQueryAndExecute)} sqlOrderDetail: {orderDetail2.Count()}");
 
                 affectedRows = connection.Execute(sqlOrderDetailDelete, new { OrderId = 10248, ProductId = 1 });
                 var orderDetail3 = connection.Query<OrderDetail>(sqlOrderDetail, new { OrderId = 10248 });
                 // affectedRows 1
-                Console.WriteLine(affectedRows);
+                Console.WriteLine($"{nameof(DapperQueryAndExecute)} sqlOrderDetailDelete: {affectedRows}");
                 // count 3+1-1
-                Console.WriteLine(orderDetail3.Count());
+                Console.WriteLine($"{nameof(DapperQueryAndExecute)} sqlOrderDetail: {orderDetail3.Count()}");
             }
         }
 
