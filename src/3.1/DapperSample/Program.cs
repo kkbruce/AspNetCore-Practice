@@ -16,8 +16,37 @@ namespace DapperSample
             DapperQueryAndExecute(connString);
             DapperQueryAnonymous(connString);
             DapperQueryStronglyTyped(connString);
+            DapperQueryFirst(connString);
             DapperStoredProcedure(connString);
             Console.Read();
+        }
+
+        /// <summary>
+        /// QueryFirst, QuerySingle, QueryFirstOrDefault, QuerySingleOrDefault
+        /// </summary>
+        /// <param name="connString">Connection String</param>
+        private static void DapperQueryFirst(string connString)
+        {
+            string sqlProducts = "SELECT * FROM Products WHERE ProductID = @ProductId;;";
+            using (var connection = new SqlConnection(connString))
+            {
+                // Query Anonymous
+                var productAnonymous = connection.QueryFirst(sqlProducts, new { ProductId = 1 });
+                Console.WriteLine(productAnonymous);
+
+                // Strongly Typed
+                var productFirst = connection.QueryFirst<Products>(sqlProducts, new { ProductId = 1 });
+                Console.WriteLine($"QueryFirst Id: {productFirst.ProductId}, Name: {productFirst.ProductName}");
+
+                var productSingle = connection.QuerySingle<Products>(sqlProducts, new { ProductId = 1 });
+                Console.WriteLine($"QuerySingle Id: {productSingle.ProductId}, Name: {productSingle.ProductName}");
+
+                var productFirstOrDefault = connection.QueryFirstOrDefault<Products>(sqlProducts, new { ProductId = 1 });
+                Console.WriteLine($"QueryFirstOrDefault Id: {productFirstOrDefault.ProductId}, Name: {productFirstOrDefault.ProductName}");
+
+                var productSingleOrDefault = connection.QuerySingleOrDefault<Products>(sqlProducts, new { ProductId = 1 });
+                Console.WriteLine($"SingleOrDefault Id: {productSingleOrDefault.ProductId}, Name: {productSingleOrDefault.ProductName}");
+            }
         }
 
         /// <summary>
@@ -32,7 +61,6 @@ namespace DapperSample
                 var products = connection.Query<Products>(sqlProducts).ToList();
                 Console.WriteLine(products.Count);
             }
-
         }
 
         /// <summary>
@@ -60,7 +88,7 @@ namespace DapperSample
             using (var connection = new SqlConnection(connString))
             {
                 var result = connection.Query<CustOrdersDetail>(
-                    uspName, new {OrderId = 10248}, commandType: CommandType.StoredProcedure).ToList();
+                    uspName, new { OrderId = 10248 }, commandType: CommandType.StoredProcedure).ToList();
 
                 Console.WriteLine(result.Count);
                 result.ForEach(c =>
@@ -86,7 +114,7 @@ namespace DapperSample
             using (var connection = new SqlConnection(connString))
             {
                 var products = connection.Query<Products>(sqlProducts).ToList();
-                var orderDetail = connection.Query<OrderDetail>(sqlOrderDetail, new {OrderId = 10248});
+                var orderDetail = connection.Query<OrderDetail>(sqlOrderDetail, new { OrderId = 10248 });
                 var affectedRows = connection.Execute(sqlOrderDetailInsert, new
                 {
                     OrderId = 10248,
@@ -95,7 +123,7 @@ namespace DapperSample
                     Quantity = 1,
                     Discount = 0
                 });
-                var orderDetail2 = connection.Query<OrderDetail>(sqlOrderDetail, new {OrderId = 10248});
+                var orderDetail2 = connection.Query<OrderDetail>(sqlOrderDetail, new { OrderId = 10248 });
 
                 // count 77
                 Console.WriteLine(products.Count);
@@ -106,8 +134,8 @@ namespace DapperSample
                 // count 3+1
                 Console.WriteLine(orderDetail2.Count());
 
-                affectedRows = connection.Execute(sqlOrderDetailDelete, new {OrderId = 10248, ProductId = 1});
-                var orderDetail3 = connection.Query<OrderDetail>(sqlOrderDetail, new {OrderId = 10248});
+                affectedRows = connection.Execute(sqlOrderDetailDelete, new { OrderId = 10248, ProductId = 1 });
+                var orderDetail3 = connection.Query<OrderDetail>(sqlOrderDetail, new { OrderId = 10248 });
                 // affectedRows 1
                 Console.WriteLine(affectedRows);
                 // count 3+1-1
