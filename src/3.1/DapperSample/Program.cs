@@ -17,8 +17,33 @@ namespace DapperSample
             DapperQueryAnonymous(connString);
             DapperQueryStronglyTyped(connString);
             DapperQueryFirst(connString);
+            DapperQueryMultiple(connString);
             DapperStoredProcedure(connString);
             Console.Read();
+        }
+
+        /// <summary>
+        /// Execute multiple queries
+        /// </summary>
+        /// <param name="connString">Connection String</param>
+        private static void DapperQueryMultiple(string connString)
+        {
+            string sqlMultiple = "SELECT * FROM Products WHERE ProductID = @ProductId; SELECT * FROM [Order Details] WHERE ProductID = @ProductId;";
+            using (var connection =  new SqlConnection(connString))
+            {
+                connection.Open();
+
+                using (var queryMultiple = connection.QueryMultiple(sqlMultiple, new {ProductId = 1}))
+                {
+                    // Execute first SELECT
+                    var products = queryMultiple.Read<Products>().First();
+                    // Execute second SELECT
+                    var orderDetails = queryMultiple.Read<OrderDetail>().ToList();
+
+                    Console.WriteLine($"{nameof(DapperQueryMultiple)} first: {products.ProductName}");
+                    Console.WriteLine($"{nameof(DapperQueryMultiple)} second: {orderDetails.Count}");
+                }
+            }
         }
 
         /// <summary>
@@ -27,7 +52,7 @@ namespace DapperSample
         /// <param name="connString">Connection String</param>
         private static void DapperQueryFirst(string connString)
         {
-            string sqlProducts = "SELECT * FROM Products WHERE ProductID = @ProductId;;";
+            string sqlProducts = "SELECT * FROM Products WHERE ProductID = @ProductId;";
             using (var connection = new SqlConnection(connString))
             {
                 // Query Anonymous
