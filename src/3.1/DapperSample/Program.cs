@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 
 namespace DapperSample
@@ -11,15 +12,63 @@ namespace DapperSample
     {
         static void Main(string[] args)
         {
-            var config = Startup.Configuration(args);
-            var connString = config.GetConnectionString("NorthwindDatabase");
-            //DapperQueryAndExecute(connString);
-            DapperQueryAnonymous(connString);
-            DapperQueryStronglyTyped(connString);
-            DapperQueryFirst(connString);
-            DapperQueryMultiple(connString);
-            DapperStoredProcedure(connString);
-            Console.Read();
+            ConsoleKeyInfo cki;
+            // Prevent example from ending if CTL+C is pressed.
+            Console.TreatControlCAsInput = true;
+            Console.WriteLine("Press 0 show Dapper demo menu and input key number to run demo.");
+            Console.WriteLine("Press the Escape (Esc) key to quit. \n");
+
+            do
+            {
+                PrintMenu();
+                cki = Console.ReadKey();
+                Console.WriteLine();
+                //Console.Write($"You pressed {cki.KeyChar.ToString()}");
+
+                int value;
+                if (int.TryParse(cki.KeyChar.ToString(), out value))
+                {
+                    var config = Startup.Configuration(args);
+                    var connString = config.GetConnectionString("NorthwindDatabase");
+
+                    switch (value)
+                    {
+                        case 0:
+                            PrintMenu();
+                            break;
+                        case 1:
+                            DapperQueryAndExecute(connString);
+                            break;
+                        case 2:
+                            DapperStoredProcedure(connString);
+                            break;
+                        case 3:
+                            DapperQueryAnonymous(connString);
+                            break;
+                        case 4:
+                            DapperQueryStronglyTyped(connString);
+                            break;
+                        case 5:
+                            DapperQueryFirst(connString);
+                            break;
+                        case 6:
+                            DapperQueryMultiple(connString);
+                            break;
+                    }
+                }
+            } while (cki.Key != ConsoleKey.Escape);
+        }
+
+        private static void PrintMenu()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Dapper Demo List(Esc key to quit):");
+            Console.WriteLine("\t1. DapperQueryAndExecute");
+            Console.WriteLine("\t2. DapperStoredProcedure");
+            Console.WriteLine("\t3. DapperQueryAnonymous");
+            Console.WriteLine("\t4. DapperQueryStronglyTyped");
+            Console.WriteLine("\t5. DapperQueryFirst");
+            Console.WriteLine("\t6. DapperQueryMultiple");
         }
 
         /// <summary>
@@ -29,11 +78,11 @@ namespace DapperSample
         private static void DapperQueryMultiple(string connString)
         {
             string sqlMultiple = "SELECT * FROM Products WHERE ProductID = @ProductId; SELECT * FROM [Order Details] WHERE ProductID = @ProductId;";
-            using (var connection =  new SqlConnection(connString))
+            using (var connection = new SqlConnection(connString))
             {
                 connection.Open();
 
-                using (var queryMultiple = connection.QueryMultiple(sqlMultiple, new {ProductId = 1}))
+                using (var queryMultiple = connection.QueryMultiple(sqlMultiple, new { ProductId = 1 }))
                 {
                     // Execute first SELECT
                     var products = queryMultiple.Read<Products>().First();
