@@ -90,7 +90,7 @@ namespace DapperSample
             using (var connection = new SqlConnection(connString))
             {
                 var customerses = connection.Query<Customers>(sql,new { City = new[] {"Berlin", "London"}}).ToList();
-                Console.WriteLine($"Customer counter: {customerses.Count}");
+                Console.WriteLine($"{nameof(DapperParameterList)} Customer counter: {customerses.Count}");
             }
         }
 
@@ -118,7 +118,7 @@ namespace DapperSample
                 connection.Execute(uspName, parameter, commandType: CommandType.StoredProcedure);
 
                 int returnValue = parameter.Get<int>("@ReturnValue");
-                Console.WriteLine($"\tReturnValue: {returnValue} (0 is success.)");
+                Console.WriteLine($"\t{nameof(DapperParameterDynamic)} ReturnValue: {returnValue} (0 is success.)");
 
                 Console.WriteLine("Insert Many data:");
                 var parameters = new List<DynamicParameters>();
@@ -133,7 +133,7 @@ namespace DapperSample
 
                 connection.Execute(uspName, parameters, commandType: CommandType.StoredProcedure);
                 int returnValues = parameters.Sum(x => x.Get<int>("@ReturnValue"));
-                Console.WriteLine($"\tReturnValues: {returnValues} (0 is success.)");
+                Console.WriteLine($"\t{nameof(DapperParameterDynamic)} ReturnValues: {returnValues} (0 is success.)");
 
             }
         }
