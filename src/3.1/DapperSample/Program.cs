@@ -54,6 +54,9 @@ namespace DapperSample
                         case 6:
                             DapperQueryMultiple(connString);
                             break;
+                        case 7:
+                            DapperParameterDynamic(connString);
+                            break;
                     }
                 }
             } while (cki.Key != ConsoleKey.Escape);
@@ -62,14 +65,42 @@ namespace DapperSample
         private static void PrintMenu()
         {
             Console.WriteLine();
-            Console.WriteLine("Dapper Demo List(Esc key to quit):");
+            Console.WriteLine("Dapper Demo List(\"Esc\" key to quit):");
             Console.WriteLine("\t1. DapperQueryAndExecute");
             Console.WriteLine("\t2. DapperStoredProcedure");
             Console.WriteLine("\t3. DapperQueryAnonymous");
             Console.WriteLine("\t4. DapperQueryStronglyTyped");
             Console.WriteLine("\t5. DapperQueryFirst");
             Console.WriteLine("\t6. DapperQueryMultiple");
+            Console.WriteLine("\t7. DapperParameterDynamic");
         }
+
+        /// <summary>
+        /// Use DynamicParameters add single or many parameter(s)
+        /// </summary>
+        /// <param name="connString">Connection String</param>
+        private static void DapperParameterDynamic(string connString)
+        {
+            // First, you need run Usp_Insert_Products.sql in Northwind
+            // Because Northwind no any CUD Stored Procedure
+            string uspName = "Usp_Insert_Products";
+
+            using (var connection = new SqlConnection(connString))
+            {
+                connection.Open();
+
+                DynamicParameters parameter = new DynamicParameters();
+                parameter.Add("@ProductName", "DapperParameterDynamicTest", DbType.String, ParameterDirection.Input);
+                parameter.Add("@Discontinued", 0, DbType.Int32, ParameterDirection.Input);
+                parameter.Add("@ReturnValue", dbType: DbType.Int32, direction: ParameterDirection.ReturnValue);
+
+                connection.Execute(uspName, parameter, commandType: CommandType.StoredProcedure);
+
+                int returnValue = parameter.Get<int>("@ReturnValue");
+                Console.WriteLine($"ReturnValue: {returnValue} (0 is success.)");
+            }
+        }
+
 
         /// <summary>
         /// Execute multiple queries
