@@ -11,14 +11,14 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchUrl": "products",
+      "launchUrl": "Products",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "NorthwindExample": {
       "commandName": "Project",
-      "launchUrl": "products",
+      "launchUrl": "Products",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
