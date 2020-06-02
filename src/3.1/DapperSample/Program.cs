@@ -1,10 +1,9 @@
 ﻿using Dapper;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
-using System.Globalization;
 using System.Linq;
 
 namespace DapperSample
