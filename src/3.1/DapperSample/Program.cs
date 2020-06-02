@@ -58,6 +58,9 @@ namespace DapperSample
                         case 7:
                             DapperParameterDynamic(connString);
                             break;
+                        case 8:
+                            DapperParameterList(connString);
+                            break;
                     }
                 }
             } while (cki.Key != ConsoleKey.Escape);
@@ -74,6 +77,21 @@ namespace DapperSample
             Console.WriteLine("\t5. DapperQueryFirst");
             Console.WriteLine("\t6. DapperQueryMultiple");
             Console.WriteLine("\t7. DapperParameterDynamic");
+            Console.WriteLine("\t8. DapperParameterList");
+        }
+
+        /// <summary>
+        ///  Specify multiple parameter on t-sql IN
+        /// </summary>
+        /// <param name="connString">Connection String</param>
+        private static void DapperParameterList(string connString)
+        {
+            var sql = "SELECT * FROM [Customers] WHERE City IN @City;";
+            using (var connection = new SqlConnection(connString))
+            {
+                var customerses = connection.Query<Customers>(sql,new { City = new[] {"Berlin", "London"}}).ToList();
+                Console.WriteLine($"Customer counter: {customerses.Count}");
+            }
         }
 
         /// <summary>
@@ -265,6 +283,21 @@ namespace DapperSample
                 // count 3+1-1
                 Console.WriteLine($"{nameof(DapperQueryAndExecute)} sqlOrderDetail: {orderDetail3.Count()}");
             }
+        }
+
+        internal class Customers
+        {
+            public string CustomerId { get; set; }
+            public string CompanyName { get; set; }
+            public string ContactName { get; set; }
+            public string ContactTitle { get; set; }
+            public string Address { get; set; }
+            public string City { get; set; }
+            public string Region { get; set; }
+            public string PostalCode { get; set; }
+            public string Country { get; set; }
+            public string Phone { get; set; }
+            public string Fax { get; set; }
         }
 
         internal class CustOrdersDetail
