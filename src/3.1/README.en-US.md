@@ -96,7 +96,7 @@ Part of it focuses on the configuration of `Startup.ConfigureServices()`.
 
 ### IHttpClientFactory/HttpClientConsoleSample
 
-How to use `IHttpClientFactory` in Console application.
+Practice "How to use `IHttpClientFactory` in Console application"
 
 ### Issue/RouteAsyncSuffix
 
@@ -108,12 +108,12 @@ Practice source: <https://devblogs.microsoft.com/odata/enabling-endpoint-routing
 
 ### FormatterSample
 
-* Study content negotiation and configuration.
-* Study custom CsvOutputFormatter.
+* Practice content negotiation and configuration.
+* Practice custom CsvOutputFormatter.
 
 ### DapperSample 8 Demo
 
-Study "How-to use Dapper access database".
+Practice "How-to use Dapper access database".
 
 * `DapperQueryAndExecute`
 * `DapperStoredProcedure`
