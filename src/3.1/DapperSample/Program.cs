@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
@@ -89,6 +90,8 @@ namespace DapperSample
             {
                 connection.Open();
 
+
+                Console.WriteLine("Insert single data:");
                 DynamicParameters parameter = new DynamicParameters();
                 parameter.Add("@ProductName", "DapperParameterDynamicTest", DbType.String, ParameterDirection.Input);
                 parameter.Add("@Discontinued", 0, DbType.Int32, ParameterDirection.Input);
@@ -97,7 +100,23 @@ namespace DapperSample
                 connection.Execute(uspName, parameter, commandType: CommandType.StoredProcedure);
 
                 int returnValue = parameter.Get<int>("@ReturnValue");
-                Console.WriteLine($"ReturnValue: {returnValue} (0 is success.)");
+                Console.WriteLine($"\tReturnValue: {returnValue} (0 is success.)");
+
+                Console.WriteLine("Insert Many data:");
+                var parameters = new List<DynamicParameters>();
+                for (var i = 0; i < 3; i++)
+                {
+                    var p = new DynamicParameters();
+                    p.Add("@ProductName", "DapperParameterDynamicTest"+(i+1), DbType.String, ParameterDirection.Input);
+                    p.Add("@Discontinued", i, DbType.Int32, ParameterDirection.Input);
+                    p.Add("@ReturnValue", dbType: DbType.Int32, direction: ParameterDirection.ReturnValue);
+                    parameters.Add(p);
+                }
+
+                connection.Execute(uspName, parameters, commandType: CommandType.StoredProcedure);
+                int returnValues = parameters.Sum(x => x.Get<int>("@ReturnValue"));
+                Console.WriteLine($"\tReturnValues: {returnValues} (0 is success.)");
+
             }
         }
 
