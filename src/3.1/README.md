@@ -59,23 +59,6 @@
 * `GetIniSample();`
 * `GetXMLSample();`
 
-### ConfigurationBuilder 14 範例展示
-
-* `GetKeyValue()`
-* `GetConnectionString()`
-* `GetHierarchicalData()`
-* `BindToAClass()`
-* `GetEnvModeConfig()`
-* `GetOSEnvironment()`
-* `GetMemoryConfig()`
-* `GetCommandLineConfig()`
-* `GetValueSample()`
-* `GetSectionSample()`
-* `GetChildrenSample()`
-* `ExistsSample()`
-* `GetIniSample()`
-* `GetXMLSample()`
-
 ### FileUploadSample 8 範例展示
 
 * `SingleFile()`
@@ -128,6 +111,15 @@
 * 學習內容協商與相關組態。
 * 學習自訂 CsvOutputFormatter 組態。
 
-### DapperSample
+### DapperSample 8 範例展示
 
 學習如何透過 Dapper 進行資料庫 CURD 操作。
+
+* `DapperQueryAndExecute`
+* `DapperStoredProcedure`
+* `DapperQueryAnonymous`
+* `DapperQueryStronglyTyped`
+* `DapperQueryFirst`
+* `DapperQueryMultiple`
+* `DapperParameterDynamic`
+* `DapperParameterList`

@@ -15,7 +15,7 @@ If you like or are using this project to learn, please give it a star. Thanks! I
 
 ## Practice project
 
-[3.1 Projects help](src/3.1/)
+[3.1 Practice Projects Help](src/3.1/)
 
 * [AppsettingConfiguration](src/3.1/AppsettingConfiguration/)
 * [FileUploadSample](src/3.1/FileUploadSample/)

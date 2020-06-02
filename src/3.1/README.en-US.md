@@ -59,23 +59,6 @@ If you like or are using this project to learn, please give it a star. Thanks!
 * `GetIniSample();`
 * `GetXMLSample();`
 
-### ConfigurationBuilder 14 Demo
-
-* `GetKeyValue()`
-* `GetConnectionString()`
-* `GetHierarchicalData()`
-* `BindToAClass()`
-* `GetEnvModeConfig()`
-* `GetOSEnvironment()`
-* `GetMemoryConfig()`
-* `GetCommandLineConfig()`
-* `GetValueSample()`
-* `GetSectionSample()`
-* `GetChildrenSample()`
-* `ExistsSample()`
-* `GetIniSample()`
-* `GetXMLSample()`
-
 ### FileUploadSample 8 Demo
 
 * `SingleFile()`
@@ -128,6 +111,15 @@ Practice source: <https://devblogs.microsoft.com/odata/enabling-endpoint-routing
 * Study content negotiation and configuration.
 * Study custom CsvOutputFormatter.
 
-### DapperSample
+### DapperSample 8 Demo
 
 Study "How-to use Dapper access database".
+
+* `DapperQueryAndExecute`
+* `DapperStoredProcedure`
+* `DapperQueryAnonymous`
+* `DapperQueryStronglyTyped`
+* `DapperQueryFirst`
+* `DapperQueryMultiple`
+* `DapperParameterDynamic`
+* `DapperParameterList`

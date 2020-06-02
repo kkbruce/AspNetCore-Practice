@@ -15,7 +15,7 @@
 
 ## 練習專案
 
-[3.1 專案說明](src/3.1/)
+[3.1 練習專案說明](src/3.1/)
 
 * [AppsettingConfiguration](src/3.1/AppsettingConfiguration/)
 * [FileUploadSample](src/3.1/FileUploadSample/)
