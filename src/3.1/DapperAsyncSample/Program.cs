@@ -48,6 +48,9 @@ namespace DapperAsyncSample
                         case 4:
                             await DapperQueryAsyncStronglyTyped(connString);
                             break;
+                        case 5:
+                            await DapperQueryFirstAsync(connString);
+                            break;
                     }
                 }
             } while (cki.Key != ConsoleKey.Escape);
@@ -61,6 +64,7 @@ namespace DapperAsyncSample
             Console.WriteLine("\t2. DapperQueryAsyncStoredProcedure");
             Console.WriteLine("\t3. DapperQueryAsyncAnonymous");
             Console.WriteLine("\t4. DapperQueryAsyncStronglyTyped");
+            Console.WriteLine("\t5. DapperQueryFirstAsync");
         }
 
         /// <summary>
@@ -128,6 +132,35 @@ namespace DapperAsyncSample
                 Console.WriteLine($"{nameof(DapperQueryAsyncStronglyTyped)}: {products.AsList().Count}");
                 var product = products.AsList().FirstOrDefault();
                 Console.WriteLine($"{nameof(DapperQueryAsyncStronglyTyped)}: First ProductName is {product.ProductName}");
+            }
+        }
+
+        /// <summary>
+        /// QueryFirstAsync, QuerySingleAsync, QueryFirstOrDefaultAsync, QuerySingleOrDefaultAsync
+        /// </summary>
+        /// <param name="connString">Connection String</param>
+        /// <returns></returns>
+        private static async Task DapperQueryFirstAsync(string connString)
+        {
+            string sqlProducts = "SELECT * FROM Products WHERE ProductID = @ProductId;";
+            using (var connection = new SqlConnection(connString))
+            {
+                // Query Anonymous
+                var productAnonymous = await connection.QueryFirstAsync(sqlProducts, new { ProductId = 1 }).ConfigureAwait(false);
+                Console.WriteLine($"{nameof(DapperQueryFirstAsync)} Anonymous: {productAnonymous}");
+
+                // Strongly Typed
+                var productFirst = await connection.QueryFirstAsync<Products>(sqlProducts, new { ProductId = 1 }).ConfigureAwait(false);
+                Console.WriteLine($"{nameof(DapperQueryFirstAsync)} QueryFirstAsync Id: {productFirst.ProductId}, Name: {productFirst.ProductName}");
+
+                var productSingle = await connection.QuerySingleAsync<Products>(sqlProducts, new { ProductId = 1 }).ConfigureAwait(false);
+                Console.WriteLine($"{nameof(DapperQueryFirstAsync)} QuerySingleAsync Id: {productSingle.ProductId}, Name: {productSingle.ProductName}");
+
+                var productFirstOrDefault = await connection.QueryFirstOrDefaultAsync<Products>(sqlProducts, new { ProductId = 1 }).ConfigureAwait(false);
+                Console.WriteLine($"{nameof(DapperQueryFirstAsync)} QueryFirstOrDefaultAsync Id: {productFirstOrDefault.ProductId}, Name: {productFirstOrDefault.ProductName}");
+
+                var productSingleOrDefault = await connection.QuerySingleOrDefaultAsync<Products>(sqlProducts, new { ProductId = 1 }).ConfigureAwait(false);
+                Console.WriteLine($"{nameof(DapperQueryFirstAsync)} QuerySingleOrDefaultAsync Id: {productSingleOrDefault.ProductId}, Name: {productSingleOrDefault.ProductName}");
             }
         }
 
