@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using Dapper;
@@ -37,6 +38,9 @@ namespace DapperAsyncSample
                         case 1:
                             await DapperQueryAsync(connString);
                             break;
+                        case 2:
+                            await DapperQueryAsyncStoredProcedure(connString);
+                            break;
                     }
                 }
             } while (cki.Key != ConsoleKey.Escape);
@@ -47,6 +51,7 @@ namespace DapperAsyncSample
             Console.WriteLine();
             Console.WriteLine("Dapper  Demo List(\"Esc\" key to quit):");
             Console.WriteLine("\t1. DapperQueryAsync");
+            Console.WriteLine("\t2. DapperQueryAsyncStoredProcedure");
 
         }
 
@@ -58,6 +63,31 @@ namespace DapperAsyncSample
                 var products = await connection.QueryAsync(sqlProducts).ConfigureAwait(false);
                 Console.WriteLine($"Product counter: {products.AsList().Count}");
             };
+        }
+
+        private static async Task DapperQueryAsyncStoredProcedure(string connString)
+        {
+            string uspName = "CustOrdersDetail";
+
+            using (var connection = new SqlConnection(connString))
+            {
+                var result = await connection.QueryAsync<CustOrdersDetail>(
+                    uspName, new { OrderId = 10248 }, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
+
+                Console.WriteLine($"{nameof(DapperQueryAsyncStoredProcedure)}: {result.AsList().Count}");
+                result.AsList().ForEach(c =>
+                    Console.WriteLine($"\t{nameof(DapperQueryAsyncStoredProcedure)}: {c.ProductName},{c.UnitPrice},{c.Quantity},{c.Discount},{c.ExtendedPrice}"));
+            }
+        }
+
+        internal class CustOrdersDetail
+        {
+            public string ProductName { get; set; }
+            public decimal UnitPrice { get; set; }
+            public short Quantity { get; set; }
+            public float Discount { get; set; }
+            public decimal ExtendedPrice { get; set; }
+
         }
 
         internal class Products
