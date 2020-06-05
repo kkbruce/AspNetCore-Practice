@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Extensions.Configuration;
@@ -41,6 +42,9 @@ namespace DapperAsyncSample
                         case 2:
                             await DapperQueryAsyncStoredProcedure(connString);
                             break;
+                        case 3:
+                            await DapperQueryAsyncAnonymous(connString);
+                            break;
                     }
                 }
             } while (cki.Key != ConsoleKey.Escape);
@@ -49,9 +53,10 @@ namespace DapperAsyncSample
         private static void PrintMenu()
         {
             Console.WriteLine();
-            Console.WriteLine("Dapper  Demo List(\"Esc\" key to quit):");
+            Console.WriteLine("Dapper Async Demo List(\"Esc\" key to quit):");
             Console.WriteLine("\t1. DapperQueryAsync");
             Console.WriteLine("\t2. DapperQueryAsyncStoredProcedure");
+            Console.WriteLine("\t3. DapperQueryAsyncAnonymous");
 
         }
 
@@ -77,6 +82,17 @@ namespace DapperAsyncSample
                 Console.WriteLine($"{nameof(DapperQueryAsyncStoredProcedure)}: {result.AsList().Count}");
                 result.AsList().ForEach(c =>
                     Console.WriteLine($"\t{nameof(DapperQueryAsyncStoredProcedure)}: {c.ProductName},{c.UnitPrice},{c.Quantity},{c.Discount},{c.ExtendedPrice}"));
+            }
+        }
+
+        private static async Task DapperQueryAsyncAnonymous(string connString)
+        {
+            string sqlProducts = "SELECT * FROM Products;";
+            using (var connection = new SqlConnection(connString))
+            {
+                var products = await connection.QueryAsync(sqlProducts).ConfigureAwait(false);
+                var product = products.AsList().FirstOrDefault();
+                Console.WriteLine($"{nameof(DapperQueryAsyncAnonymous)}: {product}");
             }
         }
 
