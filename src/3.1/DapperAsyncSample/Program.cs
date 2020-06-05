@@ -45,6 +45,9 @@ namespace DapperAsyncSample
                         case 3:
                             await DapperQueryAsyncAnonymous(connString);
                             break;
+                        case 4:
+                            await DapperQueryAsyncStronglyTyped(connString);
+                            break;
                     }
                 }
             } while (cki.Key != ConsoleKey.Escape);
@@ -57,9 +60,14 @@ namespace DapperAsyncSample
             Console.WriteLine("\t1. DapperQueryAsync");
             Console.WriteLine("\t2. DapperQueryAsyncStoredProcedure");
             Console.WriteLine("\t3. DapperQueryAsyncAnonymous");
-
+            Console.WriteLine("\t4. DapperQueryAsyncStronglyTyped");
         }
 
+        /// <summary>
+        /// Basic QueryAsync
+        /// </summary>
+        /// <param name="connString">Connection String</param>
+        /// <returns></returns>
         private static async Task DapperQueryAsync(string connString)
         {
             string sqlProducts = "SELECT * FROM Products;";
@@ -70,6 +78,11 @@ namespace DapperAsyncSample
             };
         }
 
+        /// <summary>
+        /// QueryAsync by Stored Procedure
+        /// </summary>
+        /// <param name="connString">Connection String</param>
+        /// <returns></returns>
         private static async Task DapperQueryAsyncStoredProcedure(string connString)
         {
             string uspName = "CustOrdersDetail";
@@ -85,6 +98,11 @@ namespace DapperAsyncSample
             }
         }
 
+        /// <summary>
+        /// QueryAsync Anonymous(dynamic type)
+        /// </summary>
+        /// <param name="connString">Connection String</param>
+        /// <returns></returns>
         private static async Task DapperQueryAsyncAnonymous(string connString)
         {
             string sqlProducts = "SELECT * FROM Products;";
@@ -93,6 +111,23 @@ namespace DapperAsyncSample
                 var products = await connection.QueryAsync(sqlProducts).ConfigureAwait(false);
                 var product = products.AsList().FirstOrDefault();
                 Console.WriteLine($"{nameof(DapperQueryAsyncAnonymous)}: {product}");
+            }
+        }
+
+        /// <summary>
+        /// QueryAsync by Strongly Typed
+        /// </summary>
+        /// <param name="connString">Connection String</param>
+        /// <returns></returns>
+        private static async Task DapperQueryAsyncStronglyTyped(string connString)
+        {
+            string sqlProducts = "SELECT * FROM Products;";
+            using (var connection = new SqlConnection(connString))
+            {
+                var products = await connection.QueryAsync<Products>(sqlProducts).ConfigureAwait(false);
+                Console.WriteLine($"{nameof(DapperQueryAsyncStronglyTyped)}: {products.AsList().Count}");
+                var product = products.AsList().FirstOrDefault();
+                Console.WriteLine($"{nameof(DapperQueryAsyncStronglyTyped)}: First ProductName is {product.ProductName}");
             }
         }
 
