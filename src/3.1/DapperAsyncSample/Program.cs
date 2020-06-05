@@ -51,6 +51,9 @@ namespace DapperAsyncSample
                         case 5:
                             await DapperQueryFirstAsync(connString);
                             break;
+                        case 6:
+                            DapperQueryMultipleAsync(connString);
+                            break;
                     }
                 }
             } while (cki.Key != ConsoleKey.Escape);
@@ -65,6 +68,7 @@ namespace DapperAsyncSample
             Console.WriteLine("\t3. DapperQueryAsyncAnonymous");
             Console.WriteLine("\t4. DapperQueryAsyncStronglyTyped");
             Console.WriteLine("\t5. DapperQueryFirstAsync");
+            Console.WriteLine("\t6. DapperQueryMultipleAsync");
         }
 
         /// <summary>
@@ -162,6 +166,39 @@ namespace DapperAsyncSample
                 var productSingleOrDefault = await connection.QuerySingleOrDefaultAsync<Products>(sqlProducts, new { ProductId = 1 }).ConfigureAwait(false);
                 Console.WriteLine($"{nameof(DapperQueryFirstAsync)} QuerySingleOrDefaultAsync Id: {productSingleOrDefault.ProductId}, Name: {productSingleOrDefault.ProductName}");
             }
+        }
+
+        /// <summary>
+        /// Execute QueryMultipleAsync
+        /// </summary>
+        /// <param name="connString"></param>
+        private static void DapperQueryMultipleAsync(string connString)
+        {
+            string sqlMultiple = "SELECT * FROM Products WHERE ProductID = @ProductId; SELECT * FROM [Order Details] WHERE ProductID = @ProductId;";
+            using (var connection = new SqlConnection(connString))
+            {
+                connection.Open();
+
+                using (var queryMultiple = connection.QueryMultipleAsync(sqlMultiple, new { ProductId = 1 }).Result)
+                {
+                    // Execute first SELECT
+                    var products = queryMultiple.Read<Products>().First();
+                    // Execute second SELECT
+                    var orderDetails = queryMultiple.Read<OrderDetail>().ToList();
+
+                    Console.WriteLine($"{nameof(DapperQueryMultipleAsync)} first: {products.ProductName}");
+                    Console.WriteLine($"{nameof(DapperQueryMultipleAsync)} second: {orderDetails.Count}");
+                }
+            }
+        }
+
+        internal class OrderDetail
+        {
+            public int OrderId { get; set; }
+            public int ProductId { get; set; }
+            public decimal UnitPrice { get; set; }
+            public short Quantity { get; set; }
+            public float Discount { get; set; }
         }
 
         internal class CustOrdersDetail
