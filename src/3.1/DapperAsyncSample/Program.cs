@@ -62,6 +62,9 @@ namespace DapperAsyncSample
                         case 8:
                             await DapperParameterDynamicAsync(connString);
                             break;
+                        case 9:
+                            await DapperParameterListAsync(connString);
+                            break;
                     }
                 }
             } while (cki.Key != ConsoleKey.Escape);
@@ -79,6 +82,7 @@ namespace DapperAsyncSample
             Console.WriteLine("\t6. DapperQueryMultipleAsync");
             Console.WriteLine("\t7. DapperExecuteAsync");
             Console.WriteLine("\t8. DapperParameterDynamicAsync");
+            Console.WriteLine("\t9. DapperParameterListAsync");
         }
 
         /// <summary>
@@ -291,6 +295,19 @@ namespace DapperAsyncSample
             }
         }
 
+        /// <summary>
+        /// Specify multiple parameter on t-sql IN
+        /// </summary>
+        /// <param name="connString">Connection String</param>
+        private static async Task DapperParameterListAsync(string connString)
+        {
+            var sql = "SELECT * FROM [Customers] WHERE City IN @City;";
+            using (var connection = new SqlConnection(connString))
+            {
+                var customerses = await connection.QueryAsync<Customers>(sql, new { City = new[] { "Berlin", "London" } }).ConfigureAwait(false);
+                Console.WriteLine($"{nameof(DapperParameterListAsync)} Customer counter: {customerses.AsList().Count}");
+            }
+        }
 
         internal class Customers
         {
