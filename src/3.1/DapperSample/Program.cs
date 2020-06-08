@@ -120,6 +120,7 @@ namespace DapperSample
             {
                 using (var connection = new SqlConnection(connString))
                 {
+                    connection.Open();
                     var parameters = new[]
                     {
                         new {ProductId = 1, ProductName = "TransactionScope Update Id1"},
