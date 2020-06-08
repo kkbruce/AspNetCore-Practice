@@ -87,7 +87,7 @@ namespace DapperSample
         /// Query for Non-buffered
         /// default buffered:true
         /// </summary>
-        /// <param name="connString"></param>
+        /// <param name="connString">Connection String</param>
         private static void DapperQueryBuffered(string connString)
         {
             string sqlProducts = "SELECT * FROM Products;";
