@@ -111,9 +111,9 @@ Practice source: <https://devblogs.microsoft.com/odata/enabling-endpoint-routing
 * Practice content negotiation and configuration.
 * Practice custom CsvOutputFormatter.
 
-### DapperSample 8 Demo
+### DapperSample 11 Demo
 
-Practice "How-to use Dapper access database".
+How-to use Dapper access database.
 
 * `DapperQueryAndExecute`
 * `DapperStoredProcedure`
@@ -123,3 +123,22 @@ Practice "How-to use Dapper access database".
 * `DapperQueryMultiple`
 * `DapperParameterDynamic`
 * `DapperParameterList`
+* `DapperQueryBuffered`
+* `DapperTransaction`
+* `DapperTransactionScope`
+
+### DapperAsyncSample 11 Demo
+
+How-to use Dapper (async,await) access database.
+
+* `DapperQueryAsync`
+* `DapperQueryAsyncStoredProcedure`
+* `DapperQueryAsyncAnonymous`
+* `DapperQueryAsyncStronglyTyped`
+* `DapperQueryFirstAsync`
+* `DapperQueryMultipleAsync`
+* `DapperExecuteAsync`
+* `DapperParameterDynamicAsync`
+* `DapperParameterListAsync`
+* `DapperTransactionAsync`
+* `DapperTransactionScopeAsync`

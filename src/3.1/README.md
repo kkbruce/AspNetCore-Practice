@@ -111,7 +111,7 @@
 * 學習內容協商與相關組態。
 * 學習自訂 CsvOutputFormatter 組態。
 
-### DapperSample 8 範例展示
+### DapperSample 11 範例展示
 
 學習如何透過 Dapper 進行資料庫 CURD 操作。
 
@@ -123,3 +123,20 @@
 * `DapperQueryMultiple`
 * `DapperParameterDynamic`
 * `DapperParameterList`
+* `DapperQueryBuffered`
+* `DapperTransaction`
+* `DapperTransactionScope`
+
+### DapperAsyncSample 11 範例展示
+
+* `DapperQueryAsync`
+* `DapperQueryAsyncStoredProcedure`
+* `DapperQueryAsyncAnonymous`
+* `DapperQueryAsyncStronglyTyped`
+* `DapperQueryFirstAsync`
+* `DapperQueryMultipleAsync`
+* `DapperExecuteAsync`
+* `DapperParameterDynamicAsync`
+* `DapperParameterListAsync`
+* `DapperTransactionAsync`
+* `DapperTransactionScopeAsync`
