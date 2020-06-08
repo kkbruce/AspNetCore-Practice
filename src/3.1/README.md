@@ -129,6 +129,8 @@
 
 ### DapperAsyncSample 11 範例展示
 
+學習如何透過 Dapper 的非同步語法(async, await)進行資料庫 CURD 操作。
+
 * `DapperQueryAsync`
 * `DapperQueryAsyncStoredProcedure`
 * `DapperQueryAsyncAnonymous`
