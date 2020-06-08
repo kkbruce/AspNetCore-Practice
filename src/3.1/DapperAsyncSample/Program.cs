@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Extensions.Configuration;
+using Microsoft.VisualBasic;
 
 namespace DapperAsyncSample
 {
@@ -56,7 +57,10 @@ namespace DapperAsyncSample
                             DapperQueryMultipleAsync(connString);
                             break;
                         case 7:
-                            DapperParameterDynamicAsync(connString);
+                            await DapperExecuteAsync(connString);
+                            break;
+                        case 8:
+                            await DapperParameterDynamicAsync(connString);
                             break;
                     }
                 }
@@ -73,7 +77,8 @@ namespace DapperAsyncSample
             Console.WriteLine("\t4. DapperQueryAsyncStronglyTyped");
             Console.WriteLine("\t5. DapperQueryFirstAsync");
             Console.WriteLine("\t6. DapperQueryMultipleAsync");
-            Console.WriteLine("\t7. DapperParameterDynamicAsync");
+            Console.WriteLine("\t7. DapperExecuteAsync");
+            Console.WriteLine("\t8. DapperParameterDynamicAsync");
         }
 
         /// <summary>
@@ -198,10 +203,55 @@ namespace DapperAsyncSample
         }
 
         /// <summary>
+        /// Execute for "UPDATE", "INSERT", "DELETE" T-SQL.
+        /// </summary>
+        /// <param name="connString">Connection String</param>
+        private static async Task DapperExecuteAsync(string connString)
+        {
+            string sqlProducts = "SELECT * FROM Products;";
+            string sqlOrderDetail = "SELECT * FROM [Order Details] WHERE OrderId = @OrderId;";
+            string sqlOrderDetailInsert =
+                "INSERT INTO [Order Details] ([OrderID],[ProductID],[UnitPrice],[Quantity],[Discount]) VALUES (@OrderID,@ProductID,@UnitPrice,@Quantity,@Discount);";
+            string sqlOrderDetailDelete =
+                "DELETE FROM [Order Details] WHERE [OrderID] = @OrderId AND [ProductID] = @ProductId;";
+
+            using (var connection = new SqlConnection(connString))
+            {
+                var products = await connection.QueryAsync<Products>(sqlProducts).ConfigureAwait(false);
+                var orderDetail = await connection.QueryAsync<OrderDetail>(sqlOrderDetail, new { OrderId = 10248 }).ConfigureAwait(false);
+                var affectedRows = await connection.ExecuteAsync(sqlOrderDetailInsert, new
+                {
+                    OrderId = 10248,
+                    ProductID = 1,
+                    UnitPrice = 0.0,
+                    Quantity = 1,
+                    Discount = 0
+                }).ConfigureAwait(false);
+                var orderDetail2 = await connection.QueryAsync<OrderDetail>(sqlOrderDetail, new { OrderId = 10248 }).ConfigureAwait(false);
+
+                // count 77
+                Console.WriteLine($"{nameof(DapperExecuteAsync)} sqlProducts: {products.Count()}");
+                // count 3
+                Console.WriteLine($"{nameof(DapperExecuteAsync)} sqlOrderDetail: {orderDetail.Count()}");
+                // affectedRows 1
+                Console.WriteLine($"{nameof(DapperExecuteAsync)} sqlOrderDetailInsert: {affectedRows}");
+                // count 3+1
+                Console.WriteLine($"{nameof(DapperExecuteAsync)} sqlOrderDetail: {orderDetail2.Count()}");
+
+                affectedRows = await connection.ExecuteAsync(sqlOrderDetailDelete, new { OrderId = 10248, ProductId = 1 }).ConfigureAwait(false);
+                var orderDetail3 = await connection.QueryAsync<OrderDetail>(sqlOrderDetail, new { OrderId = 10248 }).ConfigureAwait(false);
+                // affectedRows 1
+                Console.WriteLine($"{nameof(DapperExecuteAsync)} sqlOrderDetailDelete: {affectedRows}");
+                // count 3+1-1
+                Console.WriteLine($"{nameof(DapperExecuteAsync)} sqlOrderDetail: {orderDetail3.Count()}");
+            }
+        }
+
+        /// <summary>
         /// Use DynamicParameters add single or many parameter(s)
         /// </summary>
         /// <param name="connString">Connection String</param>
-        private static async void DapperParameterDynamicAsync(string connString)
+        private static async Task DapperParameterDynamicAsync(string connString)
         {
             // First, you need run Usp_Insert_Products.sql in Northwind
             // Because Northwind no any CUD Stored Procedure
@@ -218,7 +268,7 @@ namespace DapperAsyncSample
                 parameter.Add("@Discontinued", 0, DbType.Int32, ParameterDirection.Input);
                 parameter.Add("@ReturnValue", dbType: DbType.Int32, direction: ParameterDirection.ReturnValue);
 
-                await connection.ExecuteAsync(uspName, parameter, commandType: CommandType.StoredProcedure);
+                await connection.ExecuteAsync(uspName, parameter, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
 
                 int returnValue = parameter.Get<int>("@ReturnValue");
                 Console.WriteLine($"\t{nameof(DapperParameterDynamicAsync)} ReturnValue: {returnValue} (0 is success.)");
@@ -228,17 +278,33 @@ namespace DapperAsyncSample
                 for (var i = 0; i < 3; i++)
                 {
                     var p = new DynamicParameters();
-                    p.Add("@ProductName", "DapperParameterDynamicTest"+(i+1), DbType.String, ParameterDirection.Input);
+                    p.Add("@ProductName", "DapperParameterDynamicTest" + (i + 1), DbType.String, ParameterDirection.Input);
                     p.Add("@Discontinued", i, DbType.Int32, ParameterDirection.Input);
                     p.Add("@ReturnValue", dbType: DbType.Int32, direction: ParameterDirection.ReturnValue);
                     parameters.Add(p);
                 }
 
-                await connection.ExecuteAsync(uspName, parameters, commandType: CommandType.StoredProcedure);
+                await connection.ExecuteAsync(uspName, parameters, commandType: CommandType.StoredProcedure).ConfigureAwait(false);
                 int returnValues = parameters.Sum(x => x.Get<int>("@ReturnValue"));
                 Console.WriteLine($"\t{nameof(DapperParameterDynamicAsync)} ReturnValues: {returnValues} (0 is success.)");
 
             }
+        }
+
+
+        internal class Customers
+        {
+            public string CustomerId { get; set; }
+            public string CompanyName { get; set; }
+            public string ContactName { get; set; }
+            public string ContactTitle { get; set; }
+            public string Address { get; set; }
+            public string City { get; set; }
+            public string Region { get; set; }
+            public string PostalCode { get; set; }
+            public string Country { get; set; }
+            public string Phone { get; set; }
+            public string Fax { get; set; }
         }
 
         internal class OrderDetail
