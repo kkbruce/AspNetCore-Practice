@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Transactions;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualBasic;
@@ -14,21 +15,16 @@ namespace DapperAsyncSample
     {
         static async Task Main(string[] args)
         {
-            ConsoleKeyInfo cki;
-            // Prevent example from ending if CTL+C is pressed.
-            Console.TreatControlCAsInput = true;
-            Console.WriteLine("Press 0 show Dapper Async demo menu and input key number to run demo.");
-            Console.WriteLine("Press the Escape (Esc) key to quit. \n");
+            Console.WriteLine("Press 0 show Dapper demo menu and input number to run demo.");
+            Console.WriteLine("Press the CTL+C key to quit. \n");
 
             do
             {
                 PrintMenu();
-                cki = Console.ReadKey();
+                string input = Console.ReadLine();
                 Console.WriteLine();
-                //Console.Write($"You pressed {cki.KeyChar.ToString()}");
 
-                int value;
-                if (int.TryParse(cki.KeyChar.ToString(), out value))
+                if (int.TryParse(input, out var value))
                 {
                     var config = Startup.Configuration(args);
                     var connString = config.GetConnectionString("NorthwindDatabase");
@@ -65,9 +61,12 @@ namespace DapperAsyncSample
                         case 9:
                             await DapperParameterListAsync(connString);
                             break;
+                        case 10:
+                            await DapperTransactionAsync(connString);
+                            break;
                     }
                 }
-            } while (cki.Key != ConsoleKey.Escape);
+            } while (true);
         }
 
         private static void PrintMenu()
@@ -83,6 +82,7 @@ namespace DapperAsyncSample
             Console.WriteLine("\t7. DapperExecuteAsync");
             Console.WriteLine("\t8. DapperParameterDynamicAsync");
             Console.WriteLine("\t9. DapperParameterListAsync");
+            Console.WriteLine("\t10. DapperTransactionAsync");
         }
 
         /// <summary>
@@ -306,6 +306,45 @@ namespace DapperAsyncSample
             {
                 var customerses = await connection.QueryAsync<Customers>(sql, new { City = new[] { "Berlin", "London" } }).ConfigureAwait(false);
                 Console.WriteLine($"{nameof(DapperParameterListAsync)} Customer counter: {customerses.AsList().Count}");
+            }
+        }
+
+        /// <summary>
+        /// ExecuteAsync by TransactionAsync
+        /// </summary>
+        /// <param name="connString">Connection String</param>
+        private static async Task DapperTransactionAsync(string connString)
+        {
+            string updateProducts = "UPDATE [Products] SET [ProductName] = @ProductName WHERE [ProductID] = @ProductId;";
+            string sqlProduct = "SELECT * FROM Products WHERE ProductID = @ProductId;";
+            using (var connection = new SqlConnection(connString))
+            {
+                await connection.OpenAsync();
+                await using (var transaction = await connection.BeginTransactionAsync())
+                {
+                    int affectedRows = await connection.ExecuteAsync(updateProducts, new { ProductId = 1, ProductName = "Transaction Update" }, transaction: transaction).ConfigureAwait(false);
+                    await transaction.CommitAsync();
+
+                    Console.WriteLine($"{nameof(DapperTransactionAsync)} Update affected rows: {affectedRows}");
+                }
+
+                var product = await connection.QueryFirstAsync<Products>(sqlProduct, new { ProductId = 1 }).ConfigureAwait(false);
+                Console.WriteLine($"{nameof(DapperTransactionAsync)} Update ProductName: {product.ProductName}");
+
+                var parameters = new[]
+                {
+                    new {ProductId = 1, ProductName = "Transaction Update Id1"},
+                    new {ProductId = 2, ProductName = "Transaction Update Id2"},
+                    new {ProductId = 3, ProductName = "Transaction Update id3"}
+                };
+
+                await using (var transaction = await connection.BeginTransactionAsync())
+                {
+                    int affectedRows = await connection.ExecuteAsync(updateProducts, parameters, transaction: transaction).ConfigureAwait(false);
+                    await transaction.CommitAsync();
+
+                    Console.WriteLine($"{nameof(DapperTransactionAsync)} Update affected rows: {affectedRows}");
+                }
             }
         }
 
