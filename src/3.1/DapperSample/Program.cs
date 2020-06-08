@@ -22,8 +22,7 @@ namespace DapperSample
                 string input = Console.ReadLine();
                 Console.WriteLine();
 
-                int value;
-                if (int.TryParse(input, out value))
+                if (int.TryParse(input, out var value))
                 {
                     var config = Startup.Configuration(args);
                     var connString = config.GetConnectionString("NorthwindDatabase");
