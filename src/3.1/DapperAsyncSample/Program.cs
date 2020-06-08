@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System.Transactions;
 using Dapper;
 using Microsoft.Extensions.Configuration;
-using Microsoft.VisualBasic;
 
 namespace DapperAsyncSample
 {
@@ -64,6 +63,9 @@ namespace DapperAsyncSample
                         case 10:
                             await DapperTransactionAsync(connString);
                             break;
+                        case 11:
+                            await DapperTransactionScopeAsync(connString);
+                            break;
                     }
                 }
             } while (true);
@@ -72,7 +74,7 @@ namespace DapperAsyncSample
         private static void PrintMenu()
         {
             Console.WriteLine();
-            Console.WriteLine("Dapper Async Demo List(\"Esc\" key to quit):");
+            Console.WriteLine("Dapper Demo List(\"CTL+C\" key to quit):");
             Console.WriteLine("\t1. DapperQueryAsync");
             Console.WriteLine("\t2. DapperQueryAsyncStoredProcedure");
             Console.WriteLine("\t3. DapperQueryAsyncAnonymous");
@@ -83,6 +85,7 @@ namespace DapperAsyncSample
             Console.WriteLine("\t8. DapperParameterDynamicAsync");
             Console.WriteLine("\t9. DapperParameterListAsync");
             Console.WriteLine("\t10. DapperTransactionAsync");
+            Console.WriteLine("\t11. DapperTransactionScopeAsync");
         }
 
         /// <summary>
@@ -344,6 +347,53 @@ namespace DapperAsyncSample
                     await transaction.CommitAsync();
 
                     Console.WriteLine($"{nameof(DapperTransactionAsync)} Update affected rows: {affectedRows}");
+                }
+            }
+        }
+
+        /// <summary>
+        /// ExecuteAsync by TransactionScope
+        /// </summary>
+        /// <param name="connString">Connection String</param>
+        /// <returns></returns>
+        private static async Task DapperTransactionScopeAsync(string connString)
+        {
+            string updateProducts = "UPDATE [Products] SET [ProductName] = @ProductName WHERE [ProductID] = @ProductId;";
+            string sqlProduct = "SELECT * FROM Products WHERE ProductID = @ProductId;";
+            using (var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                using (var connection = new SqlConnection(connString))
+                {
+                    await connection.OpenAsync();
+
+                    int affectedRows = await connection.ExecuteAsync(updateProducts,
+                        new { ProductId = 1, ProductName = "TransactionScope Update" });
+                    transaction.Complete();
+
+                    Console.WriteLine($"{nameof(DapperTransactionScopeAsync)} Update affected rows: {affectedRows}");
+
+
+                    var product = await connection.QueryFirstAsync<Products>(sqlProduct, new { ProductId = 1 });
+                    Console.WriteLine($"{nameof(DapperTransactionScopeAsync)} Update ProductName: {product.ProductName}");
+                }
+            }
+
+            using (var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                using (var connection = new SqlConnection(connString))
+                {
+                    await connection.OpenAsync();
+                    var parameters = new[]
+                    {
+                        new {ProductId = 1, ProductName = "TransactionScope Update Id1"},
+                        new {ProductId = 2, ProductName = "TransactionScope Update Id2"},
+                        new {ProductId = 3, ProductName = "TransactionScope Update id3"}
+                    };
+
+                    int affectedRows = await connection.ExecuteAsync(updateProducts, parameters);
+                    transaction.Complete();
+
+                    Console.WriteLine($"{nameof(DapperTransactionScopeAsync)} Update affected rows: {affectedRows}");
                 }
             }
         }
