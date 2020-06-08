@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Transactions;
 
 namespace DapperSample
 {
@@ -62,6 +63,9 @@ namespace DapperSample
                         case 10:
                             DapperTransaction(connString);
                             break;
+                        case 11:
+                            DapperTransactionScope(connString);
+                            break;
                     }
                 }
             } while (true);
@@ -81,6 +85,55 @@ namespace DapperSample
             Console.WriteLine("\t8. DapperParameterList");
             Console.WriteLine("\t9. DapperQueryBuffered");
             Console.WriteLine("\t10 DapperTransaction");
+            Console.WriteLine("\t11 DapperTransactionScope");
+        }
+
+        /// <summary>
+        /// Execute by TransactionScope
+        /// </summary>
+        /// <param name="connString">Connection String</param>
+        /// <remarks>
+        /// using System.Transactions;
+        /// </remarks>
+        private static void DapperTransactionScope(string connString)
+        {
+            string updateProducts = "UPDATE [Products] SET [ProductName] = @ProductName WHERE [ProductID] = @ProductId;";
+            string sqlProduct = "SELECT * FROM Products WHERE ProductID = @ProductId;";
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(connString))
+                {
+                    connection.Open();
+
+                    int affectedRows = connection.Execute(updateProducts,
+                        new { ProductId = 1, ProductName = "TransactionScope Update" });
+                    transaction.Complete();
+
+                    Console.WriteLine($"{nameof(DapperTransactionScope)} Update affected rows: {affectedRows}");
+
+
+                    var product = connection.QueryFirst<Products>(sqlProduct, new { ProductId = 1 });
+                    Console.WriteLine($"{nameof(DapperTransactionScope)} Update ProductName: {product.ProductName}");
+                }
+            }
+
+            using (var transaction = new TransactionScope())
+            {
+                using (var connection = new SqlConnection(connString))
+                {
+                    var parameters = new[]
+                    {
+                        new {ProductId = 1, ProductName = "TransactionScope Update Id1"},
+                        new {ProductId = 2, ProductName = "TransactionScope Update Id2"},
+                        new {ProductId = 3, ProductName = "TransactionScope Update id3"}
+                    };
+
+                    int affectedRows = connection.Execute(updateProducts, parameters);
+                    transaction.Complete();
+
+                    Console.WriteLine($"{nameof(DapperTransactionScope)} Update affected rows: {affectedRows}");
+                }
+            }
         }
 
         /// <summary>
@@ -107,9 +160,9 @@ namespace DapperSample
 
                 var parameters = new[]
                 {
-                    new {ProductId = 1, ProductName = "Update Id1"},
-                    new {ProductId = 2, ProductName = "Update Id2"},
-                    new {ProductId = 3, ProductName = "Update id3"}
+                    new {ProductId = 1, ProductName = "Transaction Update Id1"},
+                    new {ProductId = 2, ProductName = "Transaction Update Id2"},
+                    new {ProductId = 3, ProductName = "Transaction Update id3"}
                 };
 
                 using (var transaction = connection.BeginTransaction())
