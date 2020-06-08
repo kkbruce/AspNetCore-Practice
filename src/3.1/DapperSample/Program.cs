@@ -12,21 +12,17 @@ namespace DapperSample
     {
         static void Main(string[] args)
         {
-            ConsoleKeyInfo cki;
-            // Prevent example from ending if CTL+C is pressed.
-            Console.TreatControlCAsInput = true;
-            Console.WriteLine("Press 0 show Dapper demo menu and input key number to run demo.");
-            Console.WriteLine("Press the Escape (Esc) key to quit. \n");
+            Console.WriteLine("Press 0 show Dapper demo menu and input number to run demo.");
+            Console.WriteLine("Press the CTL+C key to quit. \n");
 
             do
             {
                 PrintMenu();
-                cki = Console.ReadKey();
+                string input = Console.ReadLine();
                 Console.WriteLine();
-                //Console.Write($"You pressed {cki.KeyChar.ToString()}");
 
                 int value;
-                if (int.TryParse(cki.KeyChar.ToString(), out value))
+                if (int.TryParse(input, out value))
                 {
                     var config = Startup.Configuration(args);
                     var connString = config.GetConnectionString("NorthwindDatabase");
@@ -63,15 +59,18 @@ namespace DapperSample
                         case 9:
                             DapperQueryBuffered(connString);
                             break;
+                        case 10:
+                            DapperTransaction(connString);
+                            break;
                     }
                 }
-            } while (cki.Key != ConsoleKey.Escape);
+            } while (true);
         }
 
         private static void PrintMenu()
         {
             Console.WriteLine();
-            Console.WriteLine("Dapper Demo List(\"Esc\" key to quit):");
+            Console.WriteLine("Dapper Demo List(\"CTL+C\" key to quit):");
             Console.WriteLine("\t1. DapperQueryAndExecute");
             Console.WriteLine("\t2. DapperStoredProcedure");
             Console.WriteLine("\t3. DapperQueryAnonymous");
@@ -81,6 +80,46 @@ namespace DapperSample
             Console.WriteLine("\t7. DapperParameterDynamic");
             Console.WriteLine("\t8. DapperParameterList");
             Console.WriteLine("\t9. DapperQueryBuffered");
+            Console.WriteLine("\t10 DapperTransaction");
+        }
+
+        /// <summary>
+        /// Execute by Transaction
+        /// </summary>
+        /// <param name="connString">Connection String</param>
+        private static void DapperTransaction(string connString)
+        {
+            string updateProducts = "UPDATE [Products] SET [ProductName] = @ProductName WHERE [ProductID] = @ProductId;";
+            string sqlProduct = "SELECT * FROM Products WHERE ProductID = @ProductId;";
+            using (var connection = new SqlConnection(connString))
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    int affectedRows = connection.Execute(updateProducts, new { ProductId = 1, ProductName = "Transaction Update" }, transaction: transaction);
+                    transaction.Commit();
+
+                    Console.WriteLine($"{nameof(DapperTransaction)} Update affected rows: {affectedRows}");
+                }
+
+                var product = connection.QueryFirst<Products>(sqlProduct, new { ProductId = 1 });
+                Console.WriteLine($"{nameof(DapperTransaction)} Update ProductName: {product.ProductName}");
+
+                var parameters = new[]
+                {
+                    new {ProductId = 1, ProductName = "Update Id1"},
+                    new {ProductId = 2, ProductName = "Update Id2"},
+                    new {ProductId = 3, ProductName = "Update id3"}
+                };
+
+                using (var transaction = connection.BeginTransaction())
+                {
+                    int affectedRows = connection.Execute(updateProducts, parameters, transaction: transaction);
+                    transaction.Commit();
+
+                    Console.WriteLine($"{nameof(DapperTransaction)} Update affected rows: {affectedRows}");
+                }
+            }
         }
 
         /// <summary>
@@ -107,7 +146,7 @@ namespace DapperSample
             var sql = "SELECT * FROM [Customers] WHERE City IN @City;";
             using (var connection = new SqlConnection(connString))
             {
-                var customerses = connection.Query<Customers>(sql,new { City = new[] {"Berlin", "London"}}).ToList();
+                var customerses = connection.Query<Customers>(sql, new { City = new[] { "Berlin", "London" } }).ToList();
                 Console.WriteLine($"{nameof(DapperParameterList)} Customer counter: {customerses.Count}");
             }
         }
@@ -143,7 +182,7 @@ namespace DapperSample
                 for (var i = 0; i < 3; i++)
                 {
                     var p = new DynamicParameters();
-                    p.Add("@ProductName", "DapperParameterDynamicTest"+(i+1), DbType.String, ParameterDirection.Input);
+                    p.Add("@ProductName", "DapperParameterDynamicTest" + (i + 1), DbType.String, ParameterDirection.Input);
                     p.Add("@Discontinued", i, DbType.Int32, ParameterDirection.Input);
                     p.Add("@ReturnValue", dbType: DbType.Int32, direction: ParameterDirection.ReturnValue);
                     parameters.Add(p);
