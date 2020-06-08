@@ -60,6 +60,9 @@ namespace DapperSample
                         case 8:
                             DapperParameterList(connString);
                             break;
+                        case 9:
+                            DapperQueryBuffered(connString);
+                            break;
                     }
                 }
             } while (cki.Key != ConsoleKey.Escape);
@@ -77,6 +80,22 @@ namespace DapperSample
             Console.WriteLine("\t6. DapperQueryMultiple");
             Console.WriteLine("\t7. DapperParameterDynamic");
             Console.WriteLine("\t8. DapperParameterList");
+            Console.WriteLine("\t9. DapperQueryBuffered");
+        }
+
+        /// <summary>
+        /// Query for Non-buffered
+        /// default buffered:true
+        /// </summary>
+        /// <param name="connString"></param>
+        private static void DapperQueryBuffered(string connString)
+        {
+            string sqlProducts = "SELECT * FROM Products;";
+            using (var connection = new SqlConnection(connString))
+            {
+                var products = connection.Query(sqlProducts, buffered: false).ToList();
+                Console.WriteLine($"Product counter: {products.Count}");
+            };
         }
 
         /// <summary>
