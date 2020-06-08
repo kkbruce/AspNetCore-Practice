@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace DapperAsyncSample
     {
         static async Task Main(string[] args)
         {
-              ConsoleKeyInfo cki;
+            ConsoleKeyInfo cki;
             // Prevent example from ending if CTL+C is pressed.
             Console.TreatControlCAsInput = true;
             Console.WriteLine("Press 0 show Dapper Async demo menu and input key number to run demo.");
@@ -54,6 +55,9 @@ namespace DapperAsyncSample
                         case 6:
                             DapperQueryMultipleAsync(connString);
                             break;
+                        case 7:
+                            DapperParameterDynamicAsync(connString);
+                            break;
                     }
                 }
             } while (cki.Key != ConsoleKey.Escape);
@@ -69,6 +73,7 @@ namespace DapperAsyncSample
             Console.WriteLine("\t4. DapperQueryAsyncStronglyTyped");
             Console.WriteLine("\t5. DapperQueryFirstAsync");
             Console.WriteLine("\t6. DapperQueryMultipleAsync");
+            Console.WriteLine("\t7. DapperParameterDynamicAsync");
         }
 
         /// <summary>
@@ -171,7 +176,7 @@ namespace DapperAsyncSample
         /// <summary>
         /// Execute QueryMultipleAsync
         /// </summary>
-        /// <param name="connString"></param>
+        /// <param name="connString">Connection String</param>
         private static void DapperQueryMultipleAsync(string connString)
         {
             string sqlMultiple = "SELECT * FROM Products WHERE ProductID = @ProductId; SELECT * FROM [Order Details] WHERE ProductID = @ProductId;";
@@ -189,6 +194,50 @@ namespace DapperAsyncSample
                     Console.WriteLine($"{nameof(DapperQueryMultipleAsync)} first: {products.ProductName}");
                     Console.WriteLine($"{nameof(DapperQueryMultipleAsync)} second: {orderDetails.Count}");
                 }
+            }
+        }
+
+        /// <summary>
+        /// Use DynamicParameters add single or many parameter(s)
+        /// </summary>
+        /// <param name="connString">Connection String</param>
+        private static async void DapperParameterDynamicAsync(string connString)
+        {
+            // First, you need run Usp_Insert_Products.sql in Northwind
+            // Because Northwind no any CUD Stored Procedure
+            string uspName = "Usp_Insert_Products";
+
+            using (var connection = new SqlConnection(connString))
+            {
+                connection.Open();
+
+
+                Console.WriteLine("Insert single data:");
+                DynamicParameters parameter = new DynamicParameters();
+                parameter.Add("@ProductName", "DapperParameterDynamicTest", DbType.String, ParameterDirection.Input);
+                parameter.Add("@Discontinued", 0, DbType.Int32, ParameterDirection.Input);
+                parameter.Add("@ReturnValue", dbType: DbType.Int32, direction: ParameterDirection.ReturnValue);
+
+                await connection.ExecuteAsync(uspName, parameter, commandType: CommandType.StoredProcedure);
+
+                int returnValue = parameter.Get<int>("@ReturnValue");
+                Console.WriteLine($"\t{nameof(DapperParameterDynamicAsync)} ReturnValue: {returnValue} (0 is success.)");
+
+                Console.WriteLine("Insert Many data:");
+                var parameters = new List<DynamicParameters>();
+                for (var i = 0; i < 3; i++)
+                {
+                    var p = new DynamicParameters();
+                    p.Add("@ProductName", "DapperParameterDynamicTest"+(i+1), DbType.String, ParameterDirection.Input);
+                    p.Add("@Discontinued", i, DbType.Int32, ParameterDirection.Input);
+                    p.Add("@ReturnValue", dbType: DbType.Int32, direction: ParameterDirection.ReturnValue);
+                    parameters.Add(p);
+                }
+
+                await connection.ExecuteAsync(uspName, parameters, commandType: CommandType.StoredProcedure);
+                int returnValues = parameters.Sum(x => x.Get<int>("@ReturnValue"));
+                Console.WriteLine($"\t{nameof(DapperParameterDynamicAsync)} ReturnValues: {returnValues} (0 is success.)");
+
             }
         }
 
