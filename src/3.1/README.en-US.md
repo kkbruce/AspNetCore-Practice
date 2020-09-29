@@ -142,3 +142,7 @@ How-to use Dapper (async,await) access database.
 * `DapperParameterListAsync`
 * `DapperTransactionAsync`
 * `DapperTransactionScopeAsync`
+
+### SampleTypeSample 6 Demo
+
+Article: [答客問:ASP.NET Core Web API簡單型別無法正常取值問題背後的問題](https://blog.kkbruce.net/2020/09/aspnet-core-webapi-sampletype-get-value-problem.html)
